@@ -6,7 +6,7 @@ import nav_classes from '../styles/nav.module.css';
 // import Register from "./auth/Register.jsx";
 // import Login from "./auth/Login.jsx";
 
-import axios from "axios";
+// import axios from "axios";
 
 const Nav = (props) => {
   // const [user,setUser] = useState();
