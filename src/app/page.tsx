@@ -10,6 +10,8 @@ import homeStyles from '../styles/home.module.css';
 import { GetStaticProps } from 'next';
 
 import Nav from "../components/Nav";
+import Gallery from "../components/Gallery";
+import Scheduler from "../components/Scheduler";
 
 
 export default function Home() {
@@ -38,12 +40,12 @@ export default function Home() {
 
       <div className="Gallery">
         <h3>Photo Gallery</h3>
-        {/* <Gallery/> */}
+        <Gallery/>
       </div>
 
       <div className="Calendar">
         <h3>Calendar</h3>
-        {/* <Scheduler/> */}
+        <Scheduler/>
       </div>
     </RootLayout>
   );
