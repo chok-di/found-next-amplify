@@ -1,6 +1,7 @@
+"use client"
 import React,{useState}from "react";
 // import { NavLink } from "react-router-dom";
-import nav_classes from '../styles/nac.module.css';
+import nav_classes from '../styles/nav.module.css';
 
 // import Register from "./auth/Register.jsx";
 // import Login from "./auth/Login.jsx";
@@ -32,8 +33,7 @@ const Nav = (props) => {
 
 
   return(
-    <>
-    
+    <div className={nav_classes.nav_background}>
     <nav className="navbar navbar-expand-lg">
       <a className={`${nav_classes.logo} navbar-brand`} href="#">FOUND.</a>
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,7 +72,7 @@ const Nav = (props) => {
         </ul>
       </div>  
     </nav>
-  </>
+  </div>
  );
 
 };
