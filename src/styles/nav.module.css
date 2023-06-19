@@ -1,0 +1,33 @@
+.nav_background{
+  background: url("../img/background.jpg");
+}
+
+.logo{
+  font-family: "Marcellus",cursive;
+  font-size:2em;
+  color: #F5F8F8;
+  margin-top: 2em;
+  margin-left: 3em;
+}
+
+.nav_contents{
+  margin-right: 3em;
+}
+
+.nav_item{
+  font-family: "Jost";
+  font-weight:600;
+  font-size: 1.3em;
+  color: #F5F8F8;
+  margin-top: 2em;
+  margin-right: 1em;
+  
+}
+
+.nav_button{
+  width:5em;
+  height:2.5em;
+  background-color: transparent;
+  border: 2px solid #F5F8F8;
+
+}

@@ -1,3 +1,5 @@
+import 'bootstrap/dist/css/bootstrap.css';
+
 import Link from 'next/link';
 // import Date from '../components/date';
 import Head from 'next/head';
@@ -7,10 +9,13 @@ import homeStyles from '../styles/home.module.css';
 // import { getSortedPostsData } from '../lib/posts';
 import { GetStaticProps } from 'next';
 
+import Nav from "../components/Nav";
+
 
 export default function Home() {
   return (
     <RootLayout>
+      <Nav />
       <div className = {`${homeStyles.top_page}`}>
         <span><h1>Let's Thrive Together.</h1></span>
         <div><button>Book Now</button></div>
