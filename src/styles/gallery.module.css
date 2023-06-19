@@ -1,0 +1,25 @@
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+.column {
+  flex: 25%;
+  padding: 0 4px;
+  max-width: 25%;
+}
+
+.container img{
+  margin-top:8px;
+  width:100%;
+}
+
+.long img{
+  height:424px;
+
+}
+
+.short img{
+  height:180px;
+}
