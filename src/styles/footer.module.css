@@ -1,11 +1,11 @@
-footer .container {
+.footer-container{
   background-color: #55463E;
   color:#FFFFFF;
   font-family: "Marcellus";
   height: 20em;
 }
 
-.container h4 {
+.footer-container h4 {
   padding-left: 2em;
   padding-bottom:1em;
   padding-top: 4em;

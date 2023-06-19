@@ -12,6 +12,7 @@ import { GetStaticProps } from 'next';
 import Nav from "../components/Nav";
 import Gallery from "../components/Gallery";
 import Scheduler from "../components/Scheduler";
+import Footer from "../components/Footer";
 
 
 export default function Home() {
@@ -47,6 +48,7 @@ export default function Home() {
         <h3>Calendar</h3>
         <Scheduler/>
       </div>
+      <Footer/>
     </RootLayout>
   );
 }

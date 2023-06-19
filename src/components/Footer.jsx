@@ -3,8 +3,8 @@ import classes_footer from "../styles/Footer.module.css";
 
 function Footer () {
   return(
-    <>
-    <footer>
+    // <div className={classes_footer["footer-container"]}>
+    <div className={classes_footer["footer-container"]}>
       <h4>FOUND.</h4>
       <div className = {classes_footer["footer-flexbox"]}>
         <div>
@@ -16,8 +16,8 @@ function Footer () {
         <div>For Corporates</div>
         </div>
       </div>
-    </footer>
-    </>
+    </div>
+    // </div>
   )
 
 }
