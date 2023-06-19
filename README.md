@@ -1,3 +1,11 @@
+This is an ongoing project in collaboration with a designer.
+Built with Nextjs,typescript
+Database hosted by AWS RDS
+Backend hosted with AWS Lambda
+User authentication function built with AWS Cognito
+Deployed with AWS Amplify
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
