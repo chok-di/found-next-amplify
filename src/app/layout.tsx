@@ -5,14 +5,16 @@ import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
 
 const name = 'Woody';
-export const siteTitle = 'Found';
+// export const siteTitle = 'Found';
 
-export default function Layout({
+export default function Layout(
+  {
   children,
   home}: {
     children: React.ReactNode
     home?: boolean
-  }){
+  }
+  ){
   return (
     <div className={styles.container}>
       <Head>
@@ -27,7 +29,7 @@ export default function Layout({
             siteTitle,
           )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
         />
-        <meta name="og:title" content={siteTitle} />
+        <meta name="og:title" content="change_to_site-title" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <header className={styles.header}> 

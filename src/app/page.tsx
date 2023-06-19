@@ -7,10 +7,13 @@ import homeStyles from '../styles/home.module.css';
 // import { getSortedPostsData } from '../lib/posts';
 import { GetStaticProps } from 'next';
 
+import Nav from "../components/Nav";
+
 
 export default function Home() {
   return (
     <Layout home>
+      <Nav/>
       <div className = {`${homeStyles.top_page}`}>
         <span><h1>Let's Thrive Together.</h1></span>
         <div><button>Book Now</button></div>
