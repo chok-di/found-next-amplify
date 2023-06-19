@@ -1,7 +1,7 @@
 import Link from 'next/link';
 // import Date from '../components/date';
 import Head from 'next/head';
-import Layout, { siteTitle } from './layout';
+import RootLayout from './layout';
 import utilStyles from '../styles/utils.module.css';
 import homeStyles from '../styles/home.module.css';
 // import { getSortedPostsData } from '../lib/posts';
@@ -12,8 +12,12 @@ import Nav from "../components/Nav";
 
 export default function Home() {
   return (
+<<<<<<< HEAD
     <Layout home>
       <Nav/>
+=======
+    <RootLayout>
+>>>>>>> master
       <div className = {`${homeStyles.top_page}`}>
         <span><h1>Let's Thrive Together.</h1></span>
         <div><button>Book Now</button></div>
@@ -43,7 +47,7 @@ export default function Home() {
         <h3>Calendar</h3>
         {/* <Scheduler/> */}
       </div>
-    </Layout>
+    </RootLayout>
   );
 }
 
