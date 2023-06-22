@@ -1,11 +1,11 @@
 "use client"
 
-import React, {useState} from "react";
-import {Amplify,Auth} from 'aws-amplify'
+
+import {Amplify} from 'aws-amplify'
 import awsmobile from '../../aws-exports';
-import { withAuthenticator } from '@aws-amplify/ui-react';
+import { Authenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
-import Home from "../page.tsx"
+
 
 
 
@@ -44,29 +44,20 @@ Amplify.configure( awsmobile
 
 
 
-function AuthPage({signOut,user}) {
-  
-  
-  return (
-    <>
-      <Home
-      loggedIn={true}
-      user={user}
-      signOut={signOut}/>
-      {/* <h1>Hello {user.username}</h1>
-      <button onClick={signOut}>Sign out</button> */}
-    </>
-      // <Authenticator>
-      //     {({ signOut, user }) => (
-      //         <div>
-      //             <button onClick={signOut}>Sign out</button>
-      //         </div>
-      //     )}
-      // </Authenticator>
-  );
+function AuthPage() {
+  return(
+      <Authenticator>
+          {({ signOut, user }) => (
+              <main>
+                  {user.username}
+                  <button onClick={signOut}>Sign out</button>
+              </main>
+          )}
+      </Authenticator>
+  )
 }
 
-export default withAuthenticator(AuthPage);
+export default AuthPage;
 
 
 // export const Login = (props) => {
