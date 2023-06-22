@@ -56,7 +56,6 @@ function AuthPage() {
       </Authenticator>
   )
 }
-
 export default AuthPage;
 
 

@@ -7,7 +7,7 @@ import RootLayout from './layout';
 import utilStyles from '../styles/utils.module.css';
 import homeStyles from '../styles/home.module.css';
 // import { getSortedPostsData } from '../lib/posts';
-import { GetStaticProps } from 'next';
+// import { GetStaticProps } from 'next';
 
 import Nav from "../components/Nav";
 import Gallery from "../components/Gallery";
@@ -15,7 +15,7 @@ import Scheduler from "../components/Scheduler";
 import Footer from "../components/Footer";
 
 
-export default function Home(props) {
+export default function Home() {
   return (
     <RootLayout>
       <Nav 
