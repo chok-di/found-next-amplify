@@ -15,10 +15,11 @@ import Scheduler from "../components/Scheduler";
 import Footer from "../components/Footer";
 
 
-export default function Home() {
+export default function Home(props) {
   return (
     <RootLayout>
-      <Nav />
+      <Nav 
+      user={props.user}/>
       <div className = {`${homeStyles.top_page}`}>
         <span><h1>Let's Thrive Together.</h1></span>
         <div><button>Book Now</button></div>
@@ -52,4 +53,3 @@ export default function Home() {
     </RootLayout>
   );
 }
-

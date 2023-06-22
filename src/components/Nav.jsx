@@ -1,6 +1,6 @@
 "use client"
 import React,{useState}from "react";
-// import { NavLink } from "react-router-dom";
+import Link from "next/link";
 import nav_classes from '../styles/nav.module.css';
 
 // import Register from "./auth/Register.jsx";
@@ -11,14 +11,15 @@ import nav_classes from '../styles/nav.module.css';
 const Nav = (props) => {
   // const [user,setUser] = useState();
   const loggedIn = !!props.user;
+  console.log(loggedIn);
 
   //display login/registeration form
-  const [loginWindow, setLoginWindow] = useState(false);
-  const [registerWindow,setRegisterWindow] = useState(false);
+  // const [loginWindow, setLoginWindow] = useState(false);
+  // const [registerWindow,setRegisterWindow] = useState(false);
 
-  const openLogin = () => {
-    loginWindow ? setLoginWindow(false) : setLoginWindow(true);
-  }
+  // const openLogin = () => {
+  //   loginWindow ? setLoginWindow(false) : setLoginWindow(true);
+  // }
 
   const logOut = async(e) => {
     e.preventDefault();
@@ -53,7 +54,8 @@ const Nav = (props) => {
           {loggedIn && (
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {props.user.name}
+                name
+                {/* {props.user.name} */}
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="/trips">Book</a>
@@ -66,7 +68,7 @@ const Nav = (props) => {
           )}
           {!loggedIn && (
             <li class="nav-item">
-            <button class={`nav-link ${nav_classes.nav_item} ${nav_classes.nav_button}`} onClick={openLogin}>Log In</button>
+            <button class={`nav-link ${nav_classes.nav_item} ${nav_classes.nav_button}`}><Link href="/auth">Log In</Link></button>
             </li>
           )}
         </ul>
