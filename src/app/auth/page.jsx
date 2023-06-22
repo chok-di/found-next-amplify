@@ -44,7 +44,7 @@ Amplify.configure( awsmobile
 
 
 
-function Auth({signOut,user}) {
+function AuthPage({signOut,user}) {
   
   
   return (
@@ -66,7 +66,7 @@ function Auth({signOut,user}) {
   );
 }
 
-export default withAuthenticator(Auth);
+export default withAuthenticator(AuthPage);
 
 
 // export const Login = (props) => {
