@@ -7,7 +7,7 @@ import Link from 'next/link';
 const name = 'Woody';
 const siteTitle = 'Next.js Sample Website';
 
-import Nav from "../components/Nav.jsx";
+
 
 
 
