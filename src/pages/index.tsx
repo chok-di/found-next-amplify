@@ -8,7 +8,7 @@ import Link from 'next/link';
 import Head from 'next/head';
 import RootLayout from '../app/components/Layout';
 import utilStyles from '../styles/utils.module.css';
-import homeStyles from '../styles/home.module.css';
+import homeStyles from '../app/styles/home.module.css';
 // import { getSortedPostsData } from '../lib/posts';
 import { GetStaticProps } from 'next';
 

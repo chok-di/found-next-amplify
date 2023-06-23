@@ -23,16 +23,38 @@ export async function getServerSideProps() {
     Payload: JSON.stringify({ key1: 'value1', key2: 'value2' })
   };
 
+  const lambdaPromise = new Promise((resolve, reject) => {
+    lambda.invoke(params, function (err, data) {
+      if (err) {
+        console.error("Error invoking Lambda function", err);
+        reject(err);
+      } else {
+        resolve(data);
+      }
+    });
+  });
+
+
   let trips;
-  lambda.invoke(params, function (err, data) {
-    if (err) {
-      console.log(err, err.stack);
-    } else {
-      console.log("no err");
-      console.log(data);
-      trips = data;
-    }
-  })
+
+  try {
+    // await the Lambda invocation
+    trips = await lambdaPromise;
+  } catch (err) {
+    console.error("Failed to fetch trips", err);
+    trips = null;
+  }
+
+  // lambda.invoke(params, function (err, data) {
+  //   if (err) {
+  //     console.log("err!");
+  //     console.log(err, err.stack);
+  //   } else {
+  //     console.log("no err");
+  //     console.log(data);
+  //     trips = data;
+  //   }
+  // })
   return {props:{ trips }}
 }
 
@@ -41,7 +63,23 @@ export async function getServerSideProps() {
 
 
 const BookEventPage = ({trips}) => {
-  // const [trips, setTrips] = useState([]);
+  console.log({trips});
+ 
+  return (
+    <>
+      <h2>Book Events</h2>
+      {/* {tripInformation} */}
+
+      {/* <Scheduler/> */}
+
+    </>
+  )
+}
+
+export default BookEventPage;
+
+
+ // const [trips, setTrips] = useState([]);
 
  
   //load trip information
@@ -63,18 +101,3 @@ const BookEventPage = ({trips}) => {
   //     </>
   //   );
   // });
-
-
-
-  return (
-    <>
-      <h2>Book Events</h2>
-      {/* {tripInformation} */}
-
-      {/* <Scheduler/> */}
-
-    </>
-  )
-}
-
-export default BookEventPage;
