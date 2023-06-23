@@ -17,7 +17,10 @@
         "foundnextamplify346caa01": {}
       },
       "function": {
-        "foundtrips": {}
+        "foundtrips": {
+          "deploymentBucketName": "amplify-foundnextamplify-dev-32853-deployment",
+          "s3Key": "amplify-builds/foundtrips-52506456436d74744e41-build.zip"
+        }
       }
     }
   }

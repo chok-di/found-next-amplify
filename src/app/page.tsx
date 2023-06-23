@@ -1,3 +1,6 @@
+//import .env for local development
+import 'dotenv/config'; 
+
 import 'bootstrap/dist/css/bootstrap.css';
 
 import Link from 'next/link';
@@ -7,7 +10,7 @@ import RootLayout from './layout';
 import utilStyles from '../styles/utils.module.css';
 import homeStyles from '../styles/home.module.css';
 // import { getSortedPostsData } from '../lib/posts';
-// import { GetStaticProps } from 'next';
+import { GetStaticProps } from 'next';
 
 import Nav from "../components/Nav";
 import Gallery from "../components/Gallery";
@@ -18,7 +21,7 @@ import Footer from "../components/Footer";
 export default function Home() {
   return (
     <RootLayout>
-      <Nav/>
+      <Nav />
       <div className = {`${homeStyles.top_page}`}>
         <span><h1>Let's Thrive Together.</h1></span>
         <div><button>Book Now</button></div>
