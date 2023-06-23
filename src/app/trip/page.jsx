@@ -1,12 +1,15 @@
 "use client";
 
+import "dotenv/config";
+
+console.log(process.env);
 import React, { useState, useEffect } from "react";
 
 import AWS from 'aws-sdk';
 
 AWS.config.region= "us-east-2";
 AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-  IdentityPoolId:process.env.Identity_Pool_Id
+  IdentityPoolId:"us-east-2:7dc220ca-2c98-428d-86c2-83fa56c53ebd"
 });
 
 // AWS.config = new AWS.Config({
