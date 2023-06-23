@@ -1,9 +1,9 @@
 /**
  * @type {import('@types/aws-lambda').APIGatewayProxyHandler}
  */
-import { Client } from "pg";
+const {Client} = require("pg");
 
-exports.handler = async (tripId) => {
+exports.handler = async () => {
     const client = new Client({
         host: process.env.RDS_HOSTNAME,
         port: process.env.RDS_PORT,
@@ -11,17 +11,11 @@ exports.handler = async (tripId) => {
         password: process.env.RDS_PASSWORD,
         database: process.env.RDS_DB_NAME,
     });
-
     await client.connect();
-
     let res;
-
-
-
     try {
         const res = await client.query(
-            `SELECT * FROM trips
-             WHERE id = $1`, [tripId]
+            `SELECT * FROM trips`
         );
         console.log(res.rows[0]);
     } catch (err) {
