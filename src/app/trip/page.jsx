@@ -1,61 +1,53 @@
-"use client";
+// "use client";
 
 import "dotenv/config";
-
-console.log(process.env);
-import React, { useState, useEffect } from "react";
-
+import React from "react";
 import AWS from 'aws-sdk';
+
+// import TripCard from "../components/TripCard";
+
+// import Scheduler from "../components/Scheduler";
+
 
 AWS.config.region= "us-east-2";
 AWS.config.credentials = new AWS.CognitoIdentityCredentials({
   IdentityPoolId:"us-east-2:7dc220ca-2c98-428d-86c2-83fa56c53ebd"
 });
 
-// AWS.config = new AWS.Config({
-//   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-//   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-//   region: 'us-east-2'
-// });
+export async function getServerSideProps() {
+  const lambda = new AWS.Lambda();
+  const params = {
+    FunctionName: 'foundtrips-dev',
+    InvocationType: 'RequestResponse',
+    LogType: 'Tail',
+    Payload: JSON.stringify({ key1: 'value1', key2: 'value2' })
+  };
+
+  let trips;
+  lambda.invoke(params, function (err, data) {
+    if (err) {
+      console.log(err, err.stack);
+    } else {
+      console.log("no err");
+      console.log(data);
+      trips = data;
+    }
+  })
+  return {props:{ trips }}
+}
 
 
-// AWS.config.update({
-//   accessKeyId:process.env.AWS_ACCESS_KEY_ID,
-//   secretAccessKey:process.env.AWS_SECRET_ACCESS_KEY,
-//   region: 'us-east-2'
-// });
 
-// import TripCard from "../components/TripCard";
 
-// import Scheduler from "../components/Scheduler";
 
-const BookEventPage = () => {
+const BookEventPage = ({trips}) => {
   // const [trips, setTrips] = useState([]);
 
-  async function getAllTrips() {
-    const lambda = new AWS.Lambda();
-
-    const params = {
-      FunctionName: 'foundtrips-dev',
-      InvocationType: 'RequestResponse',
-      LogType: 'Tail',
-      Payload: JSON.stringify({ key1: 'value1', key2: 'value2' })
-    };
-
-    lambda.invoke(params, function (err, data) {
-      if (err) {
-        console.log(err, err.stack);
-      } else {
-        console.log(data);
-      }
-    })
-
-  }
-
+ 
   //load trip information
-  useEffect(() => {
-    getAllTrips();
-  }, []);
+  // useEffect(() => {
+  //   getAllTrips();
+  // }, []);
 
 
   // const tripInformation = trips.map((trip) => {
