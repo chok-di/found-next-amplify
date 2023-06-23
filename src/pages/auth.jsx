@@ -2,7 +2,7 @@
 
 import {useEffect} from "react";
 import {Amplify,Auth} from 'aws-amplify'
-import awsmobile from '../../aws-exports';
+import awsmobile from '../aws-exports';
 import { Authenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import { useRouter } from 'next/navigation';

@@ -6,16 +6,16 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Link from 'next/link';
 // import Date from '../components/date';
 import Head from 'next/head';
-import RootLayout from './layout';
+import RootLayout from '../app/components/Layout';
 import utilStyles from '../styles/utils.module.css';
-import homeStyles from '../styles/home.module.css';
+import homeStyles from '../app/styles/home.module.css';
 // import { getSortedPostsData } from '../lib/posts';
 import { GetStaticProps } from 'next';
 
-import Nav from "../components/Nav";
-import Gallery from "../components/Gallery";
-import Scheduler from "../components/Scheduler";
-import Footer from "../components/Footer";
+import Nav from "../app/components/Nav";
+import Gallery from "../app/components/Gallery";
+import Scheduler from "../app/components/Scheduler";
+import Footer from "../app/components/Footer";
 
 
 export default function Home() {

@@ -2,10 +2,10 @@ import React from "react";
 import Image from 'next/image';
 import gallery_classes from "../styles/gallery.module.css";
 
-import a1 from "../img/a1.jpg";
-import a2 from "../img/a2.jpg";
-import b1 from "../img/b1.jpg";
-import b2 from "../img/b2.jpg";
+import a1 from "../../img/a1.jpg";
+import a2 from "../../img/a2.jpg";
+import b1 from "../../img/b1.jpg";
+import b2 from "../../img/b2.jpg";
 
 
 function Gallery (){
