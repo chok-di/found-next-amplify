@@ -1,8 +1,28 @@
-import React, { useState, useEffect } from "react";
-import AWS from 'aws-sdk';
-AWS.config, update({ region: 'us-east-2' });
-// import TripCard from "../components/TripCard";
+"use client";
 
+import React, { useState, useEffect } from "react";
+
+import AWS from 'aws-sdk';
+
+AWS.config.region= "us-east-2";
+AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+  IdentityPoolId:process.env.Identity_Pool_Id
+});
+
+// AWS.config = new AWS.Config({
+//   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+//   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+//   region: 'us-east-2'
+// });
+
+
+// AWS.config.update({
+//   accessKeyId:process.env.AWS_ACCESS_KEY_ID,
+//   secretAccessKey:process.env.AWS_SECRET_ACCESS_KEY,
+//   region: 'us-east-2'
+// });
+
+// import TripCard from "../components/TripCard";
 
 // import Scheduler from "../components/Scheduler";
 
