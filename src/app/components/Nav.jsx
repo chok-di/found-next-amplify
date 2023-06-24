@@ -60,7 +60,7 @@ const Nav = (props) => {
                 <a class="dropdown-item" href="#">My Bookings</a>
                 <a class="dropdown-item" href="#">Past Bookings</a>
                 <div class="dropdown-divider"></div>
-                <button class="dropdown-item" type="button" onClick={logOut} >Log Out</button>
+                <button class="dropdown-item" type="button" onClick={props.logOut} >Log Out</button>
               </div>
           </li>
           )}

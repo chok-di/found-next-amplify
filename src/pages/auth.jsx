@@ -1,7 +1,5 @@
-"use client"
-
 import {useEffect} from "react";
-import {Amplify,Auth} from 'aws-amplify'
+import {Amplify,Auth,Hub} from 'aws-amplify'
 import awsmobile from '../aws-exports';
 import { Authenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
@@ -15,27 +13,27 @@ function AuthPage() {
   const router = useRouter();
 
   useEffect(() => {
-    checkUser();
+    Hub.listen('auth', ({ payload: { event, data } }) => {
+      switch (event) {
+        case 'signIn':
+        case 'cognitoHostedUI':
+          console.log("jump");
+          router.push('/');
+          break;
+        case 'signOut':
+          router.push('/');
+          break;
+      }
+    });
+    
   }, []);
-
-  async function checkUser() {
-    try {
-      const user = await Auth.currentAuthenticatedUser();
-      console.log('user: ', user);
-      router.push('/');
-    } catch (err) {
-      console.log('error: ', err);
-    }
-  }
 
   return (
     <Authenticator>
-          {({ signOut, user }) => (
-           <button onClick={signOut}>Sign out</button>
-          )}
- 
+      <button onClick={() => Auth.signOut()}>Sign out</button>
     </Authenticator>
-  )
+  );
 }
+
 
 export default AuthPage;
