@@ -21,7 +21,6 @@ import Footer from "../app/components/Footer";
 export default function Home() {
   return (
     <RootLayout>
-      <Nav />
       <div className = {`${homeStyles.top_page}`}>
         <span><h1>Let's Thrive Together.</h1></span>
         <div><button>Book Now</button></div>
@@ -51,7 +50,6 @@ export default function Home() {
         <h3>Calendar</h3>
         <Scheduler/>
       </div>
-      <Footer/>
     </RootLayout>
   );
 }

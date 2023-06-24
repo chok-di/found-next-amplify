@@ -4,14 +4,14 @@ import "dotenv/config";
 import React from "react";
 import AWS from 'aws-sdk';
 
-// import TripCard from "../components/TripCard";
+import TripCard from "../app/components/TripCard";
 
 // import Scheduler from "../components/Scheduler";
 
 
-AWS.config.region= "us-east-2";
+AWS.config.region = "us-east-2";
 AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-  IdentityPoolId:"us-east-2:7dc220ca-2c98-428d-86c2-83fa56c53ebd"
+  IdentityPoolId: "us-east-2:7dc220ca-2c98-428d-86c2-83fa56c53ebd"
 });
 
 export async function getServerSideProps() {
@@ -33,10 +33,7 @@ export async function getServerSideProps() {
       }
     });
   });
-
-
   let trips;
-
   try {
     // await the Lambda invocation
     trips = await lambdaPromise;
@@ -44,31 +41,35 @@ export async function getServerSideProps() {
     console.error("Failed to fetch trips", err);
     trips = null;
   }
-
-  // lambda.invoke(params, function (err, data) {
-  //   if (err) {
-  //     console.log("err!");
-  //     console.log(err, err.stack);
-  //   } else {
-  //     console.log("no err");
-  //     console.log(data);
-  //     trips = data;
-  //   }
-  // })
-  return {props:{ trips }}
+  return { props: { trips } }
 }
 
 
 
 
 
-const BookEventPage = ({trips}) => {
-  console.log({trips});
- 
+const BookEventPage = ({ trips }) => {
+  console.log({ trips });
+  const tripInformation = JSON.parse(trips.Payload).body
+    .map((trip) => {
+      return (
+        <>
+          <TripCard
+            trip={trip}
+            id={trip.id}
+            title={trip.title}
+            start_time={trip.start_time}
+            end_time={trip.end_time}
+          />
+        </>
+      );
+    });
+  
+
   return (
     <>
       <h2>Book Events</h2>
-      {/* {tripInformation} */}
+      {tripInformation}
 
       {/* <Scheduler/> */}
 
@@ -79,25 +80,5 @@ const BookEventPage = ({trips}) => {
 export default BookEventPage;
 
 
- // const [trips, setTrips] = useState([]);
-
- 
-  //load trip information
-  // useEffect(() => {
-  //   getAllTrips();
-  // }, []);
 
 
-  // const tripInformation = trips.map((trip) => {
-  //   return (
-  //     <>
-  //       <TripCard
-  //         trip={trip}
-  //         id={trip.id}
-  //         title={trip.title}
-  //         start_time={trip.start_time}
-  //         end_time={trip.end_time}
-  //       />
-  //     </>
-  //   );
-  // });
