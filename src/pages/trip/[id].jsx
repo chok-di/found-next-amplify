@@ -10,9 +10,6 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({
 
 export async function getServerSideProps(context) {
   const lambda = new AWS.Lambda();
-  // const tripId = useRouter();
-  // const {context_params} = context;
-  // console.log(context_params.id);
   const tripId = context.params.id;
   const params = {
     FunctionName: 'foundtripdetail-dev',
@@ -47,8 +44,8 @@ export async function getServerSideProps(context) {
 
 const EventDetailPage = ({trip}) => {
   console.log({trip})
-  // trip = JSON.parse(trip.Payload).body[0];
-  // const description = trip.description.split("&").map(line => <p>{line}</p>);
+  trip = JSON.parse(trip.Payload).body[0];
+  const description = trip.description.split("&").map(line => <p>{line}</p>);
 
  
   // const [trip,setTrip] = useState({
@@ -111,13 +108,12 @@ const EventDetailPage = ({trip}) => {
 
   return(
     <>
-    hi
-   {/* <h4>{trip.title}</h4>
+   <h4>{trip.title}</h4>
     {description}
     {trip.start_time}
     {trip.end_time}
     {trip.total_spots}
-    {trip.available_spots} */}
+    {trip.available_spots}
 
     {/* {booked? 
     <>
