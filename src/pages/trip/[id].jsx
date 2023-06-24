@@ -46,8 +46,9 @@ export async function getServerSideProps(context) {
 
 
 const EventDetailPage = ({trip}) => {
-  trip = JSON.parse(trip.Payload).body[0];
-  const description = trip.description.split("&").map(line => <p>{line}</p>);
+  console.log({trip})
+  // trip = JSON.parse(trip.Payload).body[0];
+  // const description = trip.description.split("&").map(line => <p>{line}</p>);
 
  
   // const [trip,setTrip] = useState({
@@ -110,12 +111,13 @@ const EventDetailPage = ({trip}) => {
 
   return(
     <>
-   <h4>{trip.title}</h4>
+    hi
+   {/* <h4>{trip.title}</h4>
     {description}
     {trip.start_time}
     {trip.end_time}
     {trip.total_spots}
-    {trip.available_spots}
+    {trip.available_spots} */}
 
     {/* {booked? 
     <>
