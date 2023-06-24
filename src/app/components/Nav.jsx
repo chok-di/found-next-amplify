@@ -3,15 +3,13 @@ import React,{useState}from "react";
 import Link from "next/link";
 import nav_classes from '../styles/nav.module.css';
 
-// import Register from "./auth/Register.jsx";
-// import Login from "./auth/Login.jsx";
-
-// import axios from "axios";
-
 const Nav = (props) => {
+  console.log(props.user);
   // const [user,setUser] = useState();
   const loggedIn = !!props.user;
+  console.log("hello");
   console.log(loggedIn);
+  // console.log(loggedIn);
 
   //display login/registeration form
   // const [loginWindow, setLoginWindow] = useState(false);
@@ -54,7 +52,7 @@ const Nav = (props) => {
           {loggedIn && (
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                name
+                Di
                 {/* {props.user.name} */}
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
