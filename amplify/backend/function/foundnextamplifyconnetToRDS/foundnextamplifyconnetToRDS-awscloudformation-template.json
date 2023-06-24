@@ -20,50 +20,7 @@
     }
   },
   "Resources": {
-    "LambdaLayerVersion9e95fea9": {
-      "Type": "AWS::Lambda::LayerVersion",
-      "Properties": {
-        "CompatibleRuntimes": {
-          "Ref": "runtimes"
-        },
-        "Content": {
-          "S3Bucket": {
-            "Ref": "deploymentBucketName"
-          },
-          "S3Key": {
-            "Ref": "s3Key"
-          }
-        },
-        "Description": {
-          "Ref": "description"
-        },
-        "LayerName": {
-          "Fn::Sub": [
-            "foundnextamplifyconnetToRDS-${env}",
-            {
-              "env": {
-                "Ref": "env"
-              }
-            }
-          ]
-        }
-      },
-      "DeletionPolicy": "Delete",
-      "UpdateReplacePolicy": "Retain"
-    },
-    "LambdaLayerPermissionPrivate9e95fea9": {
-      "Type": "AWS::Lambda::LayerVersionPermission",
-      "Properties": {
-        "Action": "lambda:GetLayerVersion",
-        "LayerVersionArn": {
-          "Ref": "LambdaLayerVersion9e95fea9"
-        },
-        "Principal": {
-          "Ref": "AWS::AccountId"
-        }
-      }
-    },
-    "LambdaLayerVersion09a64ce4": {
+    "LambdaLayerVersioneab57f5a": {
       "Type": "AWS::Lambda::LayerVersion",
       "Properties": {
         "CompatibleRuntimes": [
@@ -73,9 +30,9 @@
           "S3Bucket": {
             "Ref": "deploymentBucketName"
           },
-          "S3Key": "amplify-builds/foundnextamplifyconnetToRDS-LambdaLayerVersion09a64ce4-build.zip"
+          "S3Key": "amplify-builds/foundnextamplifyconnetToRDS-LambdaLayerVersioneab57f5a-build.zip"
         },
-        "Description": "Updated layer version 2023-06-24T04:42:13.820Z",
+        "Description": "Updated layer version 2023-06-24T07:05:27.619Z",
         "LayerName": {
           "Fn::Sub": [
             "foundnextamplifyconnetToRDS-${env}",
@@ -90,48 +47,11 @@
       "DeletionPolicy": "Delete",
       "UpdateReplacePolicy": "Retain"
     },
-    "LambdaLayerPermissionPrivate09a64ce4": {
+    "LambdaLayerPermissionPrivateeab57f5a": {
       "Type": "AWS::Lambda::LayerVersionPermission",
       "Properties": {
         "Action": "lambda:GetLayerVersion",
-        "LayerVersionArn": "arn:aws:lambda:us-east-2:440987922632:layer:foundnextamplifyconnetToRDS-dev:2",
-        "Principal": {
-          "Ref": "AWS::AccountId"
-        }
-      }
-    },
-    "LambdaLayerVersiona721bea0": {
-      "Type": "AWS::Lambda::LayerVersion",
-      "Properties": {
-        "CompatibleRuntimes": [
-          "nodejs18.x"
-        ],
-        "Content": {
-          "S3Bucket": {
-            "Ref": "deploymentBucketName"
-          },
-          "S3Key": "amplify-builds/foundnextamplifyconnetToRDS-LambdaLayerVersiona721bea0-build.zip"
-        },
-        "Description": "Updated layer version 2023-06-24T04:29:13.398Z",
-        "LayerName": {
-          "Fn::Sub": [
-            "foundnextamplifyconnetToRDS-${env}",
-            {
-              "env": {
-                "Ref": "env"
-              }
-            }
-          ]
-        }
-      },
-      "DeletionPolicy": "Delete",
-      "UpdateReplacePolicy": "Retain"
-    },
-    "LambdaLayerPermissionPrivatea721bea0": {
-      "Type": "AWS::Lambda::LayerVersionPermission",
-      "Properties": {
-        "Action": "lambda:GetLayerVersion",
-        "LayerVersionArn": "arn:aws:lambda:us-east-2:440987922632:layer:foundnextamplifyconnetToRDS-dev:1",
+        "LayerVersionArn": "arn:aws:lambda:us-east-2:440987922632:layer:foundnextamplifyconnetToRDS-dev:4",
         "Principal": {
           "Ref": "AWS::AccountId"
         }
@@ -141,7 +61,7 @@
   "Outputs": {
     "Arn": {
       "Value": {
-        "Ref": "LambdaLayerVersion9e95fea9"
+        "Ref": "LambdaLayerVersioneab57f5a"
       }
     }
   }

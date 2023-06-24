@@ -1,6 +1,4 @@
 import AWS from 'aws-sdk';
-// import { useParams } from "react-router-dom";
-
 // import Confirm from "../components/book/Confirm.jsx";
 // import Status from "../components/book/Status.jsx";
 
@@ -10,13 +8,14 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({
 });
 
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
   const lambda = new AWS.Lambda();
+  const tripId = context.params.id;
   const params = {
-    FunctionName: 'foundtrips-dev',
+    FunctionName: 'foundtripdetail-dev',
     InvocationType: 'RequestResponse',
     LogType: 'Tail',
-    Payload: JSON.stringify({ key1: 'value1', key2: 'value2' })
+    Payload: JSON.stringify({ tripId: `${tripId}`})
   };
 
   const lambdaPromise = new Promise((resolve, reject) => {
@@ -30,6 +29,7 @@ export async function getServerSideProps() {
     });
   });
   let trip;
+
   try {
     // await the Lambda invocation
     trip = await lambdaPromise;
@@ -42,7 +42,11 @@ export async function getServerSideProps() {
 
 
 
-const EventDetailPage = () => {
+const EventDetailPage = ({trip}) => {
+  console.log({trip})
+  trip = JSON.parse(trip.Payload).body[0];
+  const description = trip.description.split("&").map(line => <p>{line}</p>);
+
  
   // const [trip,setTrip] = useState({
   //   description:"",
@@ -79,7 +83,6 @@ const EventDetailPage = () => {
 
   // },[]);
    
-  // const description = trip.description.split("&").map(line => <p>{line}</p>);
 
 
   // const bookTrip = async(e) => {
@@ -105,16 +108,14 @@ const EventDetailPage = () => {
 
   return(
     <>
-
-    hello
-    {/* <h4>{trip.title}</h4>
+   <h4>{trip.title}</h4>
     {description}
     {trip.start_time}
     {trip.end_time}
     {trip.total_spots}
     {trip.available_spots}
 
-    {booked? 
+    {/* {booked? 
     <>
     <button>Booked</button>
     <button>Cancel</button>
@@ -122,7 +123,7 @@ const EventDetailPage = () => {
     <button onClick={()=>{setConfirm(true)}}> Book! </button>}
     
     {confirm && <Confirm book={bookTrip} back={()=>{setConfirm(false)}}/> }
-    {status && <Status back={()=>{setStatus(false)}}/>} */}
+    {status && <Status back={()=>{setStatus(false)}}/>}  */}
     </>
   );
 }

@@ -14,6 +14,13 @@ export type AmplifyDependentResourcesAttributes = {
     "foundnextamplifyconnetToRDS": {
       "Arn": "string"
     },
+    "foundtripdetail": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
     "foundtrips": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
