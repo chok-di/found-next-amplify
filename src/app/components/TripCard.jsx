@@ -1,5 +1,5 @@
 import React from "react";
-import classes_TripCard from "../styles/tripCard.module.css";
+import classes_TripCard from "../styles/tripcard.module.css";
 
 
 
