@@ -1,9 +1,5 @@
-// "use client";
-
-import "dotenv/config";
 import React from "react";
 import AWS from 'aws-sdk';
-
 import TripCard from "../app/components/TripCard";
 
 // import Scheduler from "../components/Scheduler";
