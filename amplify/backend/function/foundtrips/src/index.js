@@ -1,31 +1,29 @@
 /**
  * @type {import('@types/aws-lambda').APIGatewayProxyHandler}
+
  */
- const {Client} = require("pg");
+ 
+ const { connectToDatabase } = require('/opt/nodejs/common');
 
  exports.handler = async () => {
-     const client = new Client({
-         host: process.env.RDS_HOSTNAME,
-         port: process.env.RDS_PORT,
-         user: process.env.RDS_USERNAME,
-         password: process.env.RDS_PASSWORD,
-         database: process.env.RDS_DB_NAME,
-     });
+
+     const client = await connectToDatabase();
      await client.connect();
+  
      try {
          const res = await client.query(
              `SELECT * FROM trips`
          );
-             const response = {
+         const response = {
          statusCode: 200,
-         body: res.rows,
+         body:res.rows,
      };
-     console.log(response);
-     return response;
+      return response;
+     
      } catch (err) {
          console.log(err.messages);
  
      } finally {
          await client.end();
      }
- };
+ 

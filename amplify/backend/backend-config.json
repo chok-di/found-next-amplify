@@ -28,6 +28,11 @@
     }
   },
   "function": {
+    "foundnextamplifyconnetToRDS": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "LambdaLayer"
+    },
     "foundtrips": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -35,6 +40,22 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_foundnextamplifyconnetToRDS_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "foundnextamplifyconnetToRDS"
+        }
+      ]
+    },
+    "AMPLIFY_function_foundnextamplifyconnetToRDS_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "foundnextamplifyconnetToRDS"
+        }
+      ]
+    },
     "AMPLIFY_function_foundtrips_deploymentBucketName": {
       "usedBy": [
         {
