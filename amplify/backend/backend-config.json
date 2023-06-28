@@ -66,6 +66,22 @@
         }
       ]
     },
+    "AMPLIFY_function_foundtripcheckbooked_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "foundtripcheckbooked"
+        }
+      ]
+    },
+    "AMPLIFY_function_foundtripcheckbooked_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "foundtripcheckbooked"
+        }
+      ]
+    },
     "AMPLIFY_function_foundtripdetail_deploymentBucketName": {
       "usedBy": [
         {
