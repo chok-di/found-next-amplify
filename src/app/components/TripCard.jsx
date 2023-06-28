@@ -10,7 +10,7 @@ const TripCard = (props) => {
         <h3>{props.title}</h3>
         <p>From:&nbsp;{props.start_time}</p>
         <p>To:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{props.end_time}</p>
-        <a href={`/trips/${props.id}`}><button>book</button></a>
+        <a href={`/trip/${props.id}`}><button>book</button></a>
       </div>
       <div>
         <img className={classes_TripCard.cover} src="https://media.nomadicmatt.com/2022/iscancunsafe.jpeg"/>

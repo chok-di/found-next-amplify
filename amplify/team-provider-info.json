@@ -28,7 +28,8 @@
         "foundtripdetail": {
           "deploymentBucketName": "amplify-foundnextamplify-dev-32853-deployment",
           "s3Key": "amplify-builds/foundtripdetail-384a6d56374355497059-build.zip"
-        }
+        },
+        "foundtripcheckbooked": {}
       }
     }
   }

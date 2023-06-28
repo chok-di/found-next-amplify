@@ -1,34 +1,15 @@
 "use client"
 import React,{useState}from "react";
 import Link from "next/link";
+
+import 'bootstrap/dist/css/bootstrap.css';
 import nav_classes from '../styles/nav.module.css';
 
 const Nav = (props) => {
   console.log(props.user);
-  // const [user,setUser] = useState();
   const loggedIn = !!props.user;
   console.log("hello");
   console.log(loggedIn);
-  // console.log(loggedIn);
-
-  //display login/registeration form
-  // const [loginWindow, setLoginWindow] = useState(false);
-  // const [registerWindow,setRegisterWindow] = useState(false);
-
-  // const openLogin = () => {
-  //   loginWindow ? setLoginWindow(false) : setLoginWindow(true);
-  // }
-
-  const logOut = async(e) => {
-    e.preventDefault();
-    try{
-      await axios.post("/users/logout");
-      props.removeCookie("user",{path:'/'});
-      return;
-    } catch(err){
-      console.log(err);
-    }
-  }
 
 
   return(

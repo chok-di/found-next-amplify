@@ -33,6 +33,11 @@
       "providerPlugin": "awscloudformation",
       "service": "LambdaLayer"
     },
+    "foundtripcheckbooked": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "foundtripdetail": {
       "build": true,
       "providerPlugin": "awscloudformation",
