@@ -33,6 +33,11 @@
       "providerPlugin": "awscloudformation",
       "service": "LambdaLayer"
     },
+    "foundtripcheckbooked": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "foundtripdetail": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -58,6 +63,22 @@
         {
           "category": "function",
           "resourceName": "foundnextamplifyconnetToRDS"
+        }
+      ]
+    },
+    "AMPLIFY_function_foundtripcheckbooked_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "foundtripcheckbooked"
+        }
+      ]
+    },
+    "AMPLIFY_function_foundtripcheckbooked_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "foundtripcheckbooked"
         }
       ]
     },
