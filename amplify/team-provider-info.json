@@ -32,6 +32,10 @@
         "foundtripcheckbooked": {
           "deploymentBucketName": "amplify-foundnextamplify-dev-32853-deployment",
           "s3Key": "amplify-builds/foundtripcheckbooked-38546f50666d30674d55-build.zip"
+        },
+        "foundallbookings": {
+          "deploymentBucketName": "amplify-foundnextamplify-dev-32853-deployment",
+          "s3Key": "amplify-builds/foundallbookings-48394d6761397a487a4a-build.zip"
         }
       }
     }

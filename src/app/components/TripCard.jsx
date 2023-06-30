@@ -4,13 +4,19 @@ import classes_TripCard from "../styles/tripcard.module.css";
 
 
 const TripCard = (props) => {
+  // is_booked =
   return(
     <div className={classes_TripCard.card}>
       <div>
         <h3>{props.title}</h3>
         <p>From:&nbsp;{props.start_time}</p>
         <p>To:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{props.end_time}</p>
+       
         <a href={`/trip/${props.id}`}><button>book</button></a>
+        {props.is_full && <button>Full</button>}
+        {}
+        
+        
       </div>
       <div>
         <img className={classes_TripCard.cover} src="https://media.nomadicmatt.com/2022/iscancunsafe.jpeg"/>

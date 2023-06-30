@@ -1,5 +1,6 @@
-import {useState} from "react";
+import { useState } from "react";
 
+import { Auth } from 'aws-amplify';
 import AWS from 'aws-sdk';
 // import Confirm from "../components/book/Confirm.jsx";
 // import Status from "../components/book/Status.jsx";
@@ -13,13 +14,12 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({
 export async function getServerSideProps(context) {
   const lambda = new AWS.Lambda();
   const tripId = context.params.id;
-  const email = JSON.parse(context.headers['e-amzn-oidc-data']).email;
 
   const params1 = {
     FunctionName: 'foundtripdetail-dev',
     InvocationType: 'RequestResponse',
     LogType: 'Tail',
-    Payload: JSON.stringify({ tripId: `${tripId}`})
+    Payload: JSON.stringify({ tripId: `${tripId}` })
   };
 
   const params2 = {
@@ -51,10 +51,9 @@ export async function getServerSideProps(context) {
     });
   });
 
-  let trip;
-  let isBooked;
-  try {// await the Lambda invocat
-    [trip, isBooked] = await Promise.all([lambdaPromise1,lambdaPromise2]);
+  let trip, isBooked;
+  try {
+    [trip, isBooked] = await Promise.all([lambdaPromise1, lambdaPromise2]);
   } catch (err) {
     console.error("Failed to fetch trips", err);
     trip = null;
@@ -64,16 +63,16 @@ export async function getServerSideProps(context) {
 
 
 
-const EventDetailPage = ({trip,isBooked}) => {
-  console.log({trip});
-  console.log({isBooked});
-  trip = JSON.parse(trip.Payload).body[0];
-  const description = trip.description.split("&").map(line => <p>{line}</p>);
+const EventDetailPage = ({ trip, isBooked }) => {
+  console.log({ trip });
+  console.log({ isBooked });
+  // trip = JSON.parse(trip.Payload).body[0];
+  // const description = trip.description.split("&").map(line => <p>{line}</p>);
 
-  const [confirm,setConfirm] = useState(false);
-  const [booked,setBooked] = useState(isBooked);
+  const [confirm, setConfirm] = useState(false);
+  const [booked, setBooked] = useState(isBooked);
   // const [status,setStatus] = useState(false);
-  
+
 
 
   // const bookTrip = async(e) => {
@@ -88,8 +87,8 @@ const EventDetailPage = ({trip,isBooked}) => {
   //     setStatus(true);
   //     setConfirm(false);
   //     setBooked(true);
-      
-      //why is the line below not printed?
+
+  //why is the line below not printed?
   //   } catch(err){
   //     console.log(err.message);
   //   }
@@ -97,19 +96,19 @@ const EventDetailPage = ({trip,isBooked}) => {
 
 
 
-  return(
+  return (
     <>
-   <h4>{trip.title}</h4>
-    {description}
-    {trip.start_time}
-    {trip.end_time}
-    {trip.total_spots}
-    {trip.available_spots}
+      <h4>{trip.title}</h4>
+      {description}
+      {trip.start_time}
+      {trip.end_time}
+      {trip.total_spots}
+      {trip.available_spots}
 
-    <button onClick={()=>{setConfirm(true)}}>Book</button>
-    {confirm && <Confirm book={bookTrip} back={()=>{setConfirm(false)}}/> }
+      <button onClick={() => { setConfirm(true) }}>Book</button>
+      {confirm && <Confirm book={bookTrip} back={() => { setConfirm(false) }} />}
 
-    {/* {booked? 
+      {/* {booked? 
     <>
     <button>Booked</button>
     <button>Cancel</button>

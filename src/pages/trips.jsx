@@ -12,15 +12,22 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({
 
 export async function getServerSideProps() {
   const lambda = new AWS.Lambda();
-  const params = {
+  const params1 = {
     FunctionName: 'foundtrips-dev',
     InvocationType: 'RequestResponse',
     LogType: 'Tail',
     Payload: JSON.stringify({ key1: 'value1', key2: 'value2' })
   };
 
-  const lambdaPromise = new Promise((resolve, reject) => {
-    lambda.invoke(params, function (err, data) {
+  const params2 = {
+    FunctionName: 'foundallbookings-dev',
+    InvocationType: 'RequestResponse',
+    LogType: 'Tail',
+    Payload: JSON.stringify({ key1: 'value1', key2: 'value2' })
+  };
+
+  const lambdaPromise1 = new Promise((resolve, reject) => {
+    lambda.invoke(params1, function (err, data) {
       if (err) {
         console.error("Error invoking Lambda function", err);
         reject(err);
@@ -29,25 +36,42 @@ export async function getServerSideProps() {
       }
     });
   });
-  let trips;
+
+  const lambdaPromise2 = new Promise((resolve, reject) => {
+    lambda.invoke(params2, function (err, data) {
+      if (err) {
+        console.error("Error invoking Lambda function", err);
+        reject(err);
+      } else {
+        resolve(data);
+      }
+    });
+  });
+
+  // lambdaPromise that has all booking data
+  let trips, bookings;
   try {
-    // await the Lambda invocation
-    trips = await lambdaPromise;
+    [trips, bookings] = await Promise.all([lambdaPromise1, lambdaPromise2]);
   } catch (err) {
     console.error("Failed to fetch trips", err);
-    trips = null;
+    trips, bookings = null;
   }
-  return { props: { trips } }
+  return { props: { trips, bookings } }
 }
 
 
 
 
 
-const BookEventPage = ({ trips }) => {
-  console.log({ trips });
+const BookEventPage = ({trips,bookings}) => {
+  const bookingsInformation = JSON.parse(bookings.Payload).body;
   const tripInformation = JSON.parse(trips.Payload).body
     .map((trip) => {
+      const bookedUser = bookingsInformation
+        .filter((booking) => booking.trip_id == trip.id)
+        .map((booking) => booking.email);
+
+      const is_full = bookedUser.length == trip.total_spots
       return (
         <>
           <TripCard
@@ -56,11 +80,13 @@ const BookEventPage = ({ trips }) => {
             title={trip.title}
             start_time={trip.start_time}
             end_time={trip.end_time}
+            is_full={is_full}
+            bookedUser={bookedUser}
           />
         </>
       );
     });
-  
+
 
   return (
     <>

@@ -28,6 +28,11 @@
     }
   },
   "function": {
+    "foundallbookings": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "foundnextamplifyconnetToRDS": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -50,6 +55,22 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_foundallbookings_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "foundallbookings"
+        }
+      ]
+    },
+    "AMPLIFY_function_foundallbookings_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "foundallbookings"
+        }
+      ]
+    },
     "AMPLIFY_function_foundnextamplifyconnetToRDS_deploymentBucketName": {
       "usedBy": [
         {
