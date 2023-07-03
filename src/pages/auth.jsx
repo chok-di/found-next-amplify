@@ -6,6 +6,8 @@ import awsmobile from '../aws-exports';
 import { Authenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import { useRouter } from 'next/navigation';
+
+import {saveToken} from "../hooks/checkUserGetEmail.js";
  
 
 
@@ -14,20 +16,20 @@ import { useRouter } from 'next/navigation';
 Amplify.configure( awsmobile);
 
 function AuthPage() {
+
   const router = useRouter();
 
-  async function sendTokenToServer(token) {
-    const response = await fetch('/api/user',{
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
-      },
-      body: JSON.stringify({message: 'Hello from client!'})
-    });
-    const data = await response.json();
-    console.log(data);
-  }
+  // async function sendTokenToServer(token,email) {
+  //   const response = await fetch('/api/user',{
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Authorization': `Bearer ${token}`,
+  //     },
+  //     body: JSON.stringify({ email: `${email}`})
+  //   });
+  //   const data = await response.json();
+  // }
 
   useEffect(() => {
 
@@ -35,8 +37,7 @@ function AuthPage() {
       try{
         const user = await Auth.currentAuthenticatedUser();
         const token = user.signInUserSession.idToken.jwtToken;
-        await sendTokenToServer(token);
-
+        saveToken(token);
       } catch (err) {
         console.log('Error during fetching user', error);
       }
