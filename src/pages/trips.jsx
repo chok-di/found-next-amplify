@@ -1,6 +1,8 @@
 import React from "react";
 import AWS from 'aws-sdk';
+import Cookies from 'js-cookie';
 import TripCard from "../app/components/TripCard";
+import {getToken} from "../hooks/checkUserGetEmail.js";
 
 // import Scheduler from "../components/Scheduler";
 
@@ -10,7 +12,11 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({
   IdentityPoolId: "us-east-2:7dc220ca-2c98-428d-86c2-83fa56c53ebd"
 });
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
+  const token = context.req.cookies.userToken;
+  const user = token? getToken(token) : null;
+  console.log({user});
+
   const lambda = new AWS.Lambda();
   const params1 = {
     FunctionName: 'foundtrips-dev',
