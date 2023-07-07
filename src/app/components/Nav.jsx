@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import nav_classes from '../styles/nav.module.css';
 
 const Nav = (props) => {
-  console.log(props.user);
+  // console.log(props.user);
   const loggedIn = !!props.user;
   console.log("hello");
   console.log(loggedIn);

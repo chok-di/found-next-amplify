@@ -1,19 +1,19 @@
 "use client"
 
-import {useEffect} from "react";
-import {Amplify,Auth,Hub} from 'aws-amplify'
+import { useEffect } from "react";
+import { Amplify, Auth, Hub } from 'aws-amplify'
 import awsmobile from '../aws-exports';
 import { Authenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import { useRouter } from 'next/navigation';
 
-import {saveToken} from "../hooks/checkUserGetEmail.js";
- 
+import { saveToken } from "../hooks/checkUserGetEmail.js";
 
 
 
 
-Amplify.configure( awsmobile);
+
+Amplify.configure(awsmobile);
 
 function AuthPage() {
 
@@ -34,7 +34,7 @@ function AuthPage() {
   useEffect(() => {
 
     const getUserAndSendToken = async () => {
-      try{
+      try {
         const user = await Auth.currentAuthenticatedUser();
         const token = user.signInUserSession.idToken.jwtToken;
         saveToken(token);
@@ -42,7 +42,6 @@ function AuthPage() {
         console.log('Error during fetching user', error);
       }
     }
-
 
     Hub.listen('auth', ({ payload: { event, data } }) => {
       switch (event) {
@@ -56,14 +55,15 @@ function AuthPage() {
           break;
       }
     });
-    
-  }, []);
 
-  return (
-    <Authenticator>
-      <button onClick={() => Auth.signOut()}>Sign out</button>
-    </Authenticator>
+    }, []
   );
+
+return (
+  <Authenticator>
+    <button onClick={() => Auth.signOut()}>Sign out</button>
+  </Authenticator>
+);
 }
 
 

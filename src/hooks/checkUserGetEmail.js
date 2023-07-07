@@ -1,70 +1,80 @@
 import jwt from "jsonwebtoken";
 import jwksClient from 'jwks-rsa';
+import Cookies from 'js-cookie';
 
 
 
 export function saveToken(token) {
-  localStorage.setItem('userToken', token);
-  console.log("token saved");
+  Cookies.set('userToken',token);
+  // console.log("token saved");
   console.log({token});
 }
 
-export function getToken() {
-  return localStorage.getItem('userToken');
-}
-
-
-export async function verifyToken(token) {
-
-  const cognitoPoolId = 'us-east-2_P7mubo59y'; //   replace with your Cognito Pool ID
-  const jwksUrl = `https://cognito-idp.us-east-2.amazonaws.com/${cognitoPoolId}/.well-known/jwks.json`;
-  // const jwks = await fetch('jwksUrl');
-  // const keys = jwks.data.keys;
-  const client = jwksClient({ jwksUri: jwksUrl });
-  const header = jwt.decode(token, { complete: true }).header;
-
-
-  client.getSigningKey(header, kid, (err, key) => {
-    if (err) {
-      console.log('Error getting signing key: ', err);
-      return;
-    }
-    const signingKey = key.publicKey || key.rsaPublicKey;
-    jwt.verify(token, signingKey, { algorithms: ['RS256'] }, (err, decoded) => {
-      if (err) {
-        console.log('Error verifying token: ', err);
-        return;
-      }
-      console.log('Decoded JWT: ', decoded);
-
-    });
-  })
-}
-
-async function fetchUserData() {
-  // Get the token from local storage.
-  const token = localStorage.getItem('userToken');
-
-  // Check if the token exists
-  if (!token) {
-    throw new Error('No token found');
-  }
-
-  const response = await fetch('/api/user', {
+export async function getToken(token) {
+  // console.log("node env is:")
+  // console.log(process.env.NODE_ENV);
+  const response = await fetch('http://localhost:3000/api/user', {
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`,
     },
   });
-
-  if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
+  if (response.ok) {
+    const data = await response.json();
+    return data;
+  } else {
+    console.error('Error:', response.status);
   }
-
-  const data = await response.json();
-
-  return data;
 }
+
+
+// export async function verifyToken(token) {
+
+
+//   const header = jwt.decode(token, { complete: true }).header;
+
+
+//   client.getSigningKey(header, kid, (err, key) => {
+//     if (err) {
+//       console.log('Error getting signing key: ', err);
+//       return;
+//     }
+//     const signingKey = key.publicKey || key.rsaPublicKey;
+//     jwt.verify(token, signingKey, { algorithms: ['RS256'] }, (err, decoded) => {
+//       if (err) {
+//         console.log('Error verifying token: ', err);
+//         return;
+//       }
+//       console.log('Decoded JWT: ', decoded);
+
+//     });
+//   })
+// }
+
+// async function fetchUserData() {
+//   // Get the token from local storage.
+//   const token = localStorage.getItem('userToken');
+
+//   // Check if the token exists
+//   if (!token) {
+//     throw new Error('No token found');
+//   }
+
+//   const response = await fetch('/api/user', {
+//     headers: {
+//       'Content-Type': 'application/json',
+//       'Authorization': `Bearer ${token}`,
+//     },
+//   });
+
+//   if (!response.ok) {
+//     throw new Error(`HTTP error! status: ${response.status}`);
+//   }
+
+//   const data = await response.json();
+
+//   return data;
+// }
 
 
 // export async function fetchUserData(token) {
