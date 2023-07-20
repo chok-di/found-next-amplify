@@ -4,7 +4,7 @@ import classes_TripCard from "../styles/tripcard.module.css";
 
 
 const TripCard = (props) => {
-  // is_booked =
+ 
   return(
     <div className={classes_TripCard.card}>
       <div>
@@ -14,9 +14,8 @@ const TripCard = (props) => {
        
         <a href={`/trip/${props.id}`}><button>book</button></a>
         {props.is_full && <button>Full</button>}
-        {}
-        
-        
+        {props.is_booked && <button>Booked</button>}
+        <button>Details</button>
       </div>
       <div>
         <img className={classes_TripCard.cover} src="https://media.nomadicmatt.com/2022/iscancunsafe.jpeg"/>
