@@ -14,8 +14,11 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({
 
 export async function getServerSideProps(context) {
   const token = context.req.cookies.userToken;
-  const user = token? getToken(token) : null;
+  const user = token? await getToken(token) : null;
+  console.log("can i get user?");
   console.log({user});
+  const email = user? user.decoded.email : null;
+
 
   const lambda = new AWS.Lambda();
   const params1 = {
@@ -62,14 +65,14 @@ export async function getServerSideProps(context) {
     console.error("Failed to fetch trips", err);
     trips, bookings = null;
   }
-  return { props: { trips, bookings } }
+  return { props: { trips, bookings , email } }
 }
 
 
 
 
 
-const BookEventPage = ({trips,bookings}) => {
+const BookEventPage = ({trips,bookings, email}) => {
   const bookingsInformation = JSON.parse(bookings.Payload).body;
   const tripInformation = JSON.parse(trips.Payload).body
     .map((trip) => {
@@ -78,6 +81,9 @@ const BookEventPage = ({trips,bookings}) => {
         .map((booking) => booking.email);
 
       const is_full = bookedUser.length == trip.total_spots
+      const is_booked = email in bookedUser;
+      console.log("booked?");
+      console.log(is_booked);
       return (
         <>
           <TripCard
@@ -87,7 +93,7 @@ const BookEventPage = ({trips,bookings}) => {
             start_time={trip.start_time}
             end_time={trip.end_time}
             is_full={is_full}
-            bookedUser={bookedUser}
+            is_booked={is_booked}
           />
         </>
       );

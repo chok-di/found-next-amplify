@@ -1,9 +1,12 @@
 import { useState } from "react";
 
-import { Auth } from 'aws-amplify';
+import Confirm from "../../app/components/Confirm";
+// import { Auth } from 'aws-amplify';
 import AWS from 'aws-sdk';
 // import Confirm from "../components/book/Confirm.jsx";
 // import Status from "../components/book/Status.jsx";
+
+import { getToken } from "../../hooks/checkUserGetEmail.js";
 
 AWS.config.region = "us-east-2";
 AWS.config.credentials = new AWS.CognitoIdentityCredentials({
@@ -12,9 +15,14 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({
 
 
 export async function getServerSideProps(context) {
-  const lambda = new AWS.Lambda();
+  const token = context.req.cookies.userToken;
+  const user = token? await getToken(token) : null;
+  const email = user? user.decoded.email: "not logged in";
   const tripId = context.params.id;
 
+
+  const lambda = new AWS.Lambda();
+  
   const params1 = {
     FunctionName: 'foundtripdetail-dev',
     InvocationType: 'RequestResponse',
@@ -23,7 +31,7 @@ export async function getServerSideProps(context) {
   };
 
   const params2 = {
-    FunctionName: 'foundtripbookcheck-dev',
+    FunctionName: 'foundtripcheckbooked-dev',
     InvocationType: 'RequestResponse',
     LogType: 'Tail',
     Payload: JSON.stringify({ tripId: `${tripId}`, email: `${email}` })
@@ -51,26 +59,27 @@ export async function getServerSideProps(context) {
     });
   });
 
-  let trip, isBooked;
+  let trip, is_booked;
   try {
-    [trip, isBooked] = await Promise.all([lambdaPromise1, lambdaPromise2]);
+    [trip,is_booked] = await Promise.all([lambdaPromise1,lambdaPromise2]);
   } catch (err) {
     console.error("Failed to fetch trips", err);
     trip = null;
   }
-  return { props: { trip, isBooked } }
+  return { props: { trip, is_booked } }
 }
 
 
 
-const EventDetailPage = ({ trip, isBooked }) => {
+const EventDetailPage = ({ trip, is_booked }) => {
   console.log({ trip });
-  console.log({ isBooked });
-  // trip = JSON.parse(trip.Payload).body[0];
-  // const description = trip.description.split("&").map(line => <p>{line}</p>);
+  // console.log({ isBooked });
+  trip = JSON.parse(trip.Payload).body[0];
+  const is_full = trip.available_spots == 0;
+  const description = trip.description.split("&").map(line => <p>{line}</p>);
 
   const [confirm, setConfirm] = useState(false);
-  const [booked, setBooked] = useState(isBooked);
+  // const [booked, setBooked] = useState(isBooked);
   // const [status,setStatus] = useState(false);
 
 
@@ -99,15 +108,24 @@ const EventDetailPage = ({ trip, isBooked }) => {
   return (
     <>
       <h4>{trip.title}</h4>
+      {is_booked && <p>You've already booked this trip</p>}
       {description}
       {trip.start_time}
       {trip.end_time}
       {trip.total_spots}
       {trip.available_spots}
+    
+      {is_booked && <button>Cancel</button> }
+      {!is_full && 
+      <button onClick = {() => { setConfirm(true) }}>Book</button>
+      }
+      {is_full && <button>Full</button>}
 
-      <button onClick={() => { setConfirm(true) }}>Book</button>
-      {confirm && <Confirm book={bookTrip} back={() => { setConfirm(false) }} />}
+      {/* <button onClick={() => { setConfirm(true) }}>Book</button> */}
+      {confirm && <Confirm />}
 
+
+     
       {/* {booked? 
     <>
     <button>Booked</button>
