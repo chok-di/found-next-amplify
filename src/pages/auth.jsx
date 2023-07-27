@@ -10,26 +10,11 @@ import { useRouter } from 'next/navigation';
 import { saveToken } from "../hooks/checkUserGetEmail.js";
 
 
-
-
-
 Amplify.configure(awsmobile);
 
 function AuthPage() {
 
   const router = useRouter();
-
-  // async function sendTokenToServer(token,email) {
-  //   const response = await fetch('/api/user',{
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'Authorization': `Bearer ${token}`,
-  //     },
-  //     body: JSON.stringify({ email: `${email}`})
-  //   });
-  //   const data = await response.json();
-  // }
 
   useEffect(() => {
 
