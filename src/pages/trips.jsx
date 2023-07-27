@@ -3,6 +3,7 @@ import AWS from 'aws-sdk';
 import Cookies from 'js-cookie';
 import TripCard from "../app/components/TripCard";
 import {getToken} from "../hooks/checkUserGetEmail.js";
+import {getAllTrips, getAllBookings} from "../hooks/getTripInfo.js";
 
 // import Scheduler from "../components/Scheduler";
 
@@ -15,52 +16,51 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({
 export async function getServerSideProps(context) {
   const token = context.req.cookies.userToken;
   const user = token? await getToken(token) : null;
-  console.log("can i get user?");
-  console.log({user});
   const email = user? user.decoded.email : null;
 
 
-  const lambda = new AWS.Lambda();
-  const params1 = {
-    FunctionName: 'foundtrips-dev',
-    InvocationType: 'RequestResponse',
-    LogType: 'Tail',
-    Payload: JSON.stringify({ key1: 'value1', key2: 'value2' })
-  };
+  // const lambda = new AWS.Lambda();
+  // const params1 = {
+  //   FunctionName: 'foundtrips-dev',
+  //   InvocationType: 'RequestResponse',
+  //   LogType: 'Tail',
+  //   Payload: JSON.stringify({ key1: 'value1', key2: 'value2' })
+  // };
 
-  const params2 = {
-    FunctionName: 'foundallbookings-dev',
-    InvocationType: 'RequestResponse',
-    LogType: 'Tail',
-    Payload: JSON.stringify({ key1: 'value1', key2: 'value2' })
-  };
+  // const params2 = {
+  //   FunctionName: 'foundallbookings-dev',
+  //   InvocationType: 'RequestResponse',
+  //   LogType: 'Tail',
+  //   Payload: JSON.stringify({ key1: 'value1', key2: 'value2' })
+  // };
 
-  const lambdaPromise1 = new Promise((resolve, reject) => {
-    lambda.invoke(params1, function (err, data) {
-      if (err) {
-        console.error("Error invoking Lambda function", err);
-        reject(err);
-      } else {
-        resolve(data);
-      }
-    });
-  });
+  // const lambdaPromise1 = new Promise((resolve, reject) => {
+  //   lambda.invoke(params1, function (err, data) {
+  //     if (err) {
+  //       console.error("Error invoking Lambda function", err);
+  //       reject(err);
+  //     } else {
+  //       resolve(data);
+  //     }
+  //   });
+  // });
 
-  const lambdaPromise2 = new Promise((resolve, reject) => {
-    lambda.invoke(params2, function (err, data) {
-      if (err) {
-        console.error("Error invoking Lambda function", err);
-        reject(err);
-      } else {
-        resolve(data);
-      }
-    });
-  });
+  // const lambdaPromise2 = new Promise((resolve, reject) => {
+  //   lambda.invoke(params2, function (err, data) {
+  //     if (err) {
+  //       console.error("Error invoking Lambda function", err);
+  //       reject(err);
+  //     } else {
+  //       resolve(data);
+  //     }
+  //   });
+  // });
 
-  // lambdaPromise that has all booking data
+
   let trips, bookings;
   try {
-    [trips, bookings] = await Promise.all([lambdaPromise1, lambdaPromise2]);
+    trips = await getAllTrips();
+    bookings = await getAllBookings();
   } catch (err) {
     console.error("Failed to fetch trips", err);
     trips, bookings = null;
