@@ -36,6 +36,10 @@
         "foundallbookings": {
           "deploymentBucketName": "amplify-foundnextamplify-dev-32853-deployment",
           "s3Key": "amplify-builds/foundallbookings-48394d6761397a487a4a-build.zip"
+        },
+        "foundBookTrip": {
+          "deploymentBucketName": "amplify-foundnextamplify-dev-32853-deployment",
+          "s3Key": "amplify-builds/foundBookTrip-4a48336a6a7954524458-build.zip"
         }
       }
     }

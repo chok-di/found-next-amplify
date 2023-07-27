@@ -28,6 +28,11 @@
     }
   },
   "function": {
+    "foundBookTrip": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "foundallbookings": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -55,6 +60,22 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_foundBookTrip_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "foundBookTrip"
+        }
+      ]
+    },
+    "AMPLIFY_function_foundBookTrip_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "foundBookTrip"
+        }
+      ]
+    },
     "AMPLIFY_function_foundallbookings_deploymentBucketName": {
       "usedBy": [
         {
