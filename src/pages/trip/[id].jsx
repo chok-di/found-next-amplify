@@ -66,12 +66,12 @@ export async function getServerSideProps(context) {
     console.error("Failed to fetch trips", err);
     trip = null;
   }
-  return { props: { trip, is_booked } }
+  return { props: { email, trip, is_booked } }
 }
 
 
 
-const EventDetailPage = ({ trip, is_booked }) => {
+const EventDetailPage = ({ email, trip, is_booked }) => {
   console.log({ trip });
   // console.log({ isBooked });
   trip = JSON.parse(trip.Payload).body[0];
@@ -79,31 +79,6 @@ const EventDetailPage = ({ trip, is_booked }) => {
   const description = trip.description.split("&").map(line => <p>{line}</p>);
 
   const [confirm, setConfirm] = useState(false);
-  // const [booked, setBooked] = useState(isBooked);
-  // const [status,setStatus] = useState(false);
-
-
-
-  // const bookTrip = async(e) => {
-  //   e.preventDefault();
-  //   try{
-  //     console.log("clicked")
-  //     const response = await axios.post("/trips/book",{
-  //       tripId:trip.id,
-  //       userId:props.user.id
-  //     });
-  //     console.log(response);
-  //     setStatus(true);
-  //     setConfirm(false);
-  //     setBooked(true);
-
-  //why is the line below not printed?
-  //   } catch(err){
-  //     console.log(err.message);
-  //   }
-  // }
-
-
 
   return (
     <>
@@ -115,16 +90,19 @@ const EventDetailPage = ({ trip, is_booked }) => {
       {trip.total_spots}
       {trip.available_spots}
     
-      {is_booked && <button>Cancel</button> }
-      {!is_full && 
+      {is_booked &&
+      <>
+       <button> Booked </button>
+       <button>Cancel</button> 
+      </>
+      }
+      {!is_full && !is_booked &&
       <button onClick = {() => { setConfirm(true) }}>Book</button>
       }
       {is_full && <button>Full</button>}
 
       {/* <button onClick={() => { setConfirm(true) }}>Book</button> */}
-      {confirm && <Confirm />}
-
-
+      {confirm && <Confirm email={email} tripId={trip.id} setShow={setConfirm} />}
      
       {/* {booked? 
     <>
