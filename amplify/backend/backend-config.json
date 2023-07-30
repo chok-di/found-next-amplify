@@ -38,6 +38,11 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
+    "foundcanceltrip": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "foundnextamplifyconnetToRDS": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -89,6 +94,22 @@
         {
           "category": "function",
           "resourceName": "foundallbookings"
+        }
+      ]
+    },
+    "AMPLIFY_function_foundcanceltrip_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "foundcanceltrip"
+        }
+      ]
+    },
+    "AMPLIFY_function_foundcanceltrip_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "foundcanceltrip"
         }
       ]
     },

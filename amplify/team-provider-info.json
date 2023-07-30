@@ -40,6 +40,10 @@
         "foundBookTrip": {
           "deploymentBucketName": "amplify-foundnextamplify-dev-32853-deployment",
           "s3Key": "amplify-builds/foundBookTrip-4a48336a6a7954524458-build.zip"
+        },
+        "foundcanceltrip": {
+          "deploymentBucketName": "amplify-foundnextamplify-dev-32853-deployment",
+          "s3Key": "amplify-builds/foundcanceltrip-4d3649416934506c4964-build.zip"
         }
       }
     }
