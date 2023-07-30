@@ -10,7 +10,7 @@ export function saveToken(token) {
   console.log({token});
 }
 
-export async function getToken(token) {
+export async function getUser(token) {
   // console.log("node env is:")
   // console.log(process.env.NODE_ENV);
   const response = await fetch('http://localhost:3000/api/user', {
@@ -21,10 +21,9 @@ export async function getToken(token) {
   });
   if (response.ok) {
     const data = await response.json();
-    return data;
+    const user = data.decoded;
+    return user;
   } else {
     console.error('Error:', response.status);
   }
 }
-
-

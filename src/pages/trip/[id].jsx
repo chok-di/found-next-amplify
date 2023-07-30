@@ -1,11 +1,7 @@
 import { useState } from "react";
 
 import Confirm from "../../app/components/Confirm";
-// import { Auth } from 'aws-amplify';
 import AWS from 'aws-sdk';
-// import Confirm from "../components/book/Confirm.jsx";
-// import Status from "../components/book/Status.jsx";
-
 import { getToken } from "../../hooks/checkUserGetEmail.js";
 
 AWS.config.region = "us-east-2";
@@ -17,7 +13,7 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({
 export async function getServerSideProps(context) {
   const token = context.req.cookies.userToken;
   const user = token? await getToken(token) : null;
-  const email = user? user.decoded.email: "not logged in";
+  const email = user? user.decoded.email: null;
   const tripId = context.params.id;
 
 
@@ -66,23 +62,27 @@ export async function getServerSideProps(context) {
     console.error("Failed to fetch trips", err);
     trip = null;
   }
+ 
   return { props: { email, trip, is_booked } }
 }
 
 
 
 const EventDetailPage = ({ email, trip, is_booked }) => {
-  console.log({ trip });
-  // console.log({ isBooked });
+
+  console.log(email);
+  is_booked = JSON.parse(is_booked.Payload);
   trip = JSON.parse(trip.Payload).body[0];
   const is_full = trip.available_spots == 0;
   const description = trip.description.split("&").map(line => <p>{line}</p>);
 
   const [confirm, setConfirm] = useState(false);
 
+
   return (
     <>
       <h4>{trip.title}</h4>
+    
       {is_booked && <p>You've already booked this trip</p>}
       {description}
       {trip.start_time}
@@ -93,15 +93,13 @@ const EventDetailPage = ({ email, trip, is_booked }) => {
       {is_booked &&
       <>
        <button> Booked </button>
-       <button>Cancel</button> 
+       <button> Cancel </button> 
       </>
       }
-      {!is_full && !is_booked &&
+      {!is_full && !is_booked && email &&
       <button onClick = {() => { setConfirm(true) }}>Book</button>
       }
       {is_full && <button>Full</button>}
-
-      {/* <button onClick={() => { setConfirm(true) }}>Book</button> */}
       {confirm && <Confirm email={email} tripId={trip.id} setShow={setConfirm} />}
      
       {/* {booked? 

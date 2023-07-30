@@ -23,9 +23,12 @@
              statusCode: 200,
              body: res.rows[0].exists,
          };
-         return response;
+         console.log(response);
+         return response.body;
+ 
      } catch (err) {
          console.log(err);
+ 
      } finally {
          await client.end();
      }
