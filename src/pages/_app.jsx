@@ -6,11 +6,14 @@ import Layout from '../app/components/Layout';
 import Nav from '../app/components/Nav';
 import Footer from '../app/components/Footer';
 
+import {getToken} from "../hooks/checkUserGetEmail.js";
+
 Amplify.configure({...awsmobile, ssr:true});
 
-export default function MyApp({Component,pageProps}){
+export default function MyApp({Component,pageProps,user}){
+
   const router = useRouter(); 
-  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(null);
   const logOut = () => {
     Auth.signOut()
     .then(setUser(null))
@@ -35,4 +38,13 @@ export default function MyApp({Component,pageProps}){
       <Footer/>
     </Layout>
   )
+}
+
+MyApp.getInitialProps = async (appContext) => {
+  const appProps = await App.getInitialProps(appContext);
+  let email = null;
+  const token = appContext.req.cookies.userToken;
+  if (token)  user = await getToken(token);
+  if (user) email = user.decoded.email
+  return {...appProps, email}
 }
