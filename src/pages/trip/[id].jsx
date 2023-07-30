@@ -1,11 +1,7 @@
 import { useState } from "react";
 
 import Confirm from "../../app/components/Confirm";
-// import { Auth } from 'aws-amplify';
 import AWS from 'aws-sdk';
-// import Confirm from "../components/book/Confirm.jsx";
-// import Status from "../components/book/Status.jsx";
-
 import { getToken } from "../../hooks/checkUserGetEmail.js";
 
 AWS.config.region = "us-east-2";
@@ -100,8 +96,6 @@ const EventDetailPage = ({ email, trip, is_booked }) => {
       <button onClick = {() => { setConfirm(true) }}>Book</button>
       }
       {is_full && <button>Full</button>}
-
-      {/* <button onClick={() => { setConfirm(true) }}>Book</button> */}
       {confirm && <Confirm email={email} tripId={trip.id} setShow={setConfirm} />}
      
       {/* {booked? 
