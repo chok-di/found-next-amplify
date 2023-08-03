@@ -7,9 +7,12 @@ import nav_classes from '../styles/nav.module.css';
 
 const Nav = (props) => {
   // console.log(props.user);
-  const loggedIn = !!props.user;
-  console.log("hello");
-  console.log(loggedIn);
+  // const loggedIn = !!props.user;
+  // console.log("hello");
+  // console.log(loggedIn);
+  console.log("user is");
+  console.log(props.user);
+  const loggedIn = true;
 
 
   return(

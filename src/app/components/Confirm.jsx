@@ -1,10 +1,8 @@
 import React from "react";
-
-import { bookTrip } from "../../hooks/bookCancelTrip.js";
+import { bookTrip, canceltrip } from "../../hooks/bookCancelTrip.js";
 
 function Confirm(props) {
 
-  console.log(bookTrip);
   const handleBook = async () => {
     try{
       const response = await bookTrip(props.email,props.tripId);
@@ -13,10 +11,30 @@ function Confirm(props) {
     }
   }
 
+  const handleCancel = async() => {
+    try{
+      const response = await canceltrip(props.email, props.tripId);
+    } catch(err){
+      console.log(err);
+    }
+  }
+
+  let handler,message;
+  switch(props.action){
+    case "book":
+      handler = handleBook;
+      message = "confirm booking?"
+      break;
+    case "cancel":
+      handler = handleCancel;
+      message = "confirm cancellation?"
+      break;
+  }
+
   return(
     <>
-      <h1>confirm booking?</h1>
-      <button onClick={handleBook}>yes</button>
+      <h1>{message}</h1>
+      <button onClick={handler}>yes</button>
       <button onClick={()=>props.setShow(false)}>no</button>
     </>
   )

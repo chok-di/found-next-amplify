@@ -1,7 +1,7 @@
 import React from "react";
 import TripCard from "../app/components/TripCard";
-import {getToken} from "../hooks/checkUserGetEmail.js";
-import {getAllTrips, getAllBookings} from "../hooks/getTripInfo.js";
+import { getUser } from "../hooks/checkUserGetEmail.js";
+import { getAllTrips, getAllBookings } from "../hooks/getTripInfo.js";
 
 // import Scheduler from "../components/Scheduler";
 
@@ -9,8 +9,9 @@ import {getAllTrips, getAllBookings} from "../hooks/getTripInfo.js";
 
 export async function getServerSideProps(context) {
   const token = context.req.cookies.userToken;
-  const user = token? await getToken(token) : null;
-  const email = user? user.decoded.email : null;
+  const user = await getUser(token);
+  const email = user ? user.email : null;
+
 
   let trips, bookings;
   try {
@@ -20,19 +21,20 @@ export async function getServerSideProps(context) {
     console.error("Failed to fetch trips", err);
     trips, bookings = null;
   }
-  return { props: { trips, bookings , email } }
+  return { props: { trips, bookings, email } }
 }
 
 
 
-const BookEventPage = ({trips,bookings, email}) => {
-  
+const BookEventPage = ({ trips, bookings, email }) => {
+
   const bookingsInformation = JSON.parse(bookings.Payload).body;
   const tripInformation = JSON.parse(trips.Payload).body
     .map((trip) => {
       const bookedUser = bookingsInformation
         .filter((booking) => booking.trip_id == trip.id)
-        .map((booking) => booking.email);
+        .map((booking) => booking.email
+        );
 
       const is_full = bookedUser.length == trip.total_spots
       const is_booked = email in bookedUser;

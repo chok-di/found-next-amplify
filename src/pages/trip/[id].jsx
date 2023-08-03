@@ -1,8 +1,10 @@
+"use client";
 import { useState } from "react";
-
+import Link from 'next/link';
 import Confirm from "../../app/components/Confirm";
 import AWS from 'aws-sdk';
-import { getToken } from "../../hooks/checkUserGetEmail.js";
+import { getUser } from "../../hooks/checkUserGetEmail.js";
+
 
 AWS.config.region = "us-east-2";
 AWS.config.credentials = new AWS.CognitoIdentityCredentials({
@@ -12,9 +14,13 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({
 
 export async function getServerSideProps(context) {
   const token = context.req.cookies.userToken;
-  const user = token? await getToken(token) : null;
-  const email = user? user.decoded.email: null;
+  const user = token? await getUser(token) : null;
+  const email = user? user.email: null;
+  
   const tripId = context.params.id;
+
+  console.log("email is");
+  console.log(email);
 
 
   const lambda = new AWS.Lambda();
@@ -71,12 +77,14 @@ export async function getServerSideProps(context) {
 const EventDetailPage = ({ email, trip, is_booked }) => {
 
   console.log(email);
+
   is_booked = JSON.parse(is_booked.Payload);
   trip = JSON.parse(trip.Payload).body[0];
   const is_full = trip.available_spots == 0;
   const description = trip.description.split("&").map(line => <p>{line}</p>);
 
   const [confirm, setConfirm] = useState(false);
+  const [status, setStatus] = useState("");
 
 
   return (
@@ -93,14 +101,18 @@ const EventDetailPage = ({ email, trip, is_booked }) => {
       {is_booked &&
       <>
        <button> Booked </button>
-       <button> Cancel </button> 
+       <button onClick={()=>{setStatus("cancel")}}> Cancel </button> 
       </>
       }
       {!is_full && !is_booked && email &&
-      <button onClick = {() => { setConfirm(true) }}>Book</button>
+      <button onClick = {() => { setStatus("book") }}>Book</button>
+      }
+      {!is_full && !is_booked && !email &&
+      <button><Link href={'/auth'}>LogIn</Link></button>
       }
       {is_full && <button>Full</button>}
-      {confirm && <Confirm email={email} tripId={trip.id} setShow={setConfirm} />}
+      {status=="book" && <Confirm email={email} tripId={trip.id} action="book" setShow={setConfirm} />}
+      {status=="cancel" && <Confirm email={email} tripId={trip.id} action="cancel" setShow={setConfirm} />}
      
       {/* {booked? 
     <>

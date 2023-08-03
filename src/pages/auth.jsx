@@ -16,6 +16,15 @@ function AuthPage() {
 
   const router = useRouter();
 
+  const handleLogIn = () => {
+    const referer = router?.query?.referer;
+    if(referer) {
+      router.push(referer);
+    } else {
+      router.push('/');
+    }
+  };
+
   useEffect(() => {
 
     const getUserAndSendToken = async () => {
@@ -33,7 +42,7 @@ function AuthPage() {
         case 'signIn':
         case 'cognitoHostedUI':
           getUserAndSendToken();
-          router.push('/');
+          handleLogIn();
           break;
         case 'signOut':
           router.push('/');
