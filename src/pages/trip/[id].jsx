@@ -83,8 +83,8 @@ const EventDetailPage = ({ email, trip, is_booked }) => {
   const is_full = trip.available_spots == 0;
   const description = trip.description.split("&").map(line => <p>{line}</p>);
 
-  const [confirm, setConfirm] = useState(false);
-  const [status, setStatus] = useState("");
+  // const [confirm, setConfirm] = useState(false);
+  const [status, setStatus] = useState(null);
 
 
   return (
@@ -111,8 +111,10 @@ const EventDetailPage = ({ email, trip, is_booked }) => {
       <button><Link href={'/auth'}>LogIn</Link></button>
       }
       {is_full && <button>Full</button>}
-      {status=="book" && <Confirm email={email} tripId={trip.id} action="book" setShow={setConfirm} />}
-      {status=="cancel" && <Confirm email={email} tripId={trip.id} action="cancel" setShow={setConfirm} />}
+      {status && <Confirm email={email} tripId={trip.id} action={status} setStatus={setStatus} />}
+      {/* {status=="cancel" && <Confirm email={email} tripId={trip.id} action="cancel" setShow={setConfirm} />}
+      {status == "waiting" && <Confirm action/>}
+     */}
      
       {/* {booked? 
     <>
