@@ -1,6 +1,5 @@
-"use client";
-import { useState } from "react";
-import Link from 'next/link';
+// import { useState } from "react";
+// import Link from 'next/link';
 import Confirm from "../../app/components/Confirm";
 import AWS from 'aws-sdk';
 import { getUser } from "../../hooks/checkUserGetEmail.js";
@@ -83,8 +82,6 @@ const EventDetailPage = ({ email, trip, is_booked }) => {
   const is_full = trip.available_spots == 0;
   const description = trip.description.split("&").map(line => <p>{line}</p>);
 
-  // const [confirm, setConfirm] = useState(false);
-  const [status, setStatus] = useState(null);
 
 
   return (
@@ -97,8 +94,8 @@ const EventDetailPage = ({ email, trip, is_booked }) => {
       {trip.end_time}
       {trip.total_spots}
       {trip.available_spots}
-    
-      {is_booked &&
+      <Confirm is_booked={is_booked} is_full={is_full} email={email} tripId={trip.id}/>
+      {/* {is_booked &&
       <>
        <button> Booked </button>
        <button onClick={()=>{setStatus("cancel")}}> Cancel </button> 
@@ -111,20 +108,9 @@ const EventDetailPage = ({ email, trip, is_booked }) => {
       <button><Link href={'/auth'}>LogIn</Link></button>
       }
       {is_full && <button>Full</button>}
-      {status && <Confirm email={email} tripId={trip.id} action={status} setStatus={setStatus} />}
-      {/* {status=="cancel" && <Confirm email={email} tripId={trip.id} action="cancel" setShow={setConfirm} />}
-      {status == "waiting" && <Confirm action/>}
-     */}
+      {status && <Confirm email={email} tripId={trip.id} action={status} setStatus={setStatus} />} */}
      
-      {/* {booked? 
-    <>
-    <button>Booked</button>
-    <button>Cancel</button>
-    </>:
-    <button onClick={()=>{setConfirm(true)}}> Book! </button>}
-    
-  
-    {status && <Status back={()=>{setStatus(false)}}/>}  */}
+     
     </>
   );
 }

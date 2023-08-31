@@ -1,21 +1,28 @@
-"use client"
-import React,{useState}from "react";
+
+import React,{useState,useEffect} from "react";
+
+import {getUser} from "../../hooks/checkUserGetEmail";
 import Link from "next/link";
+import Cookies from 'js-cookie';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import nav_classes from '../styles/nav.module.css';
 
-const Nav = (props) => {
-  // console.log(props.user);
-  // const loggedIn = !!props.user;
-  // console.log("hello");
-  // console.log(loggedIn);
-  console.log("user is");
-  console.log(props.user);
-  const loggedIn = true;
 
 
-  return(
+export default function Nav(){
+  const [email,setEmail] = useState(null);
+  
+
+  useEffect(async()=>{
+    const token = Cookies.get("userToken");
+    const user = await getUser(token);
+    setEmail(user.email);
+  }
+  ,[]);
+
+
+  return (
     <div className={nav_classes.nav_background}>
     <nav className="navbar navbar-expand-lg">
       <a className={`${nav_classes.logo} navbar-brand`} href="#">FOUND.</a>
@@ -33,22 +40,21 @@ const Nav = (props) => {
           <li class="nav-item">
             <a class={`nav-link ${nav_classes.nav_item}`} href="#">Gallery</a>
           </li>
-          {loggedIn && (
+          {email && (
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Di
-                {/* {props.user.name} */}
+                {email}
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="/trips">Book</a>
                 <a class="dropdown-item" href="#">My Bookings</a>
                 <a class="dropdown-item" href="#">Past Bookings</a>
                 <div class="dropdown-divider"></div>
-                <button class="dropdown-item" type="button" onClick={props.logOut} >Log Out</button>
+                <button class="dropdown-item" type="button" >Log Out</button>
               </div>
           </li>
           )}
-          {!loggedIn && (
+          {!email && (
             <li class="nav-item">
             <button class={`nav-link ${nav_classes.nav_item} ${nav_classes.nav_button}`}><Link href="/auth">Log In</Link></button>
             </li>
@@ -57,8 +63,8 @@ const Nav = (props) => {
       </div>  
     </nav>
   </div>
+
  );
 
 };
 
-export default Nav;
