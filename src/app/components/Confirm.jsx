@@ -1,31 +1,39 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
+import { useRouter } from 'next/router';
 import { bookTrip, canceltrip } from "../../hooks/bookCancelTrip.js";
 
+
 function Confirm(props) {
-  console.log(props);
+  const { is_booked, is_full, email, tripId } = props;
+  const [status, setStatus] = useState(null);
+
+  const router = useRouter();
+ 
+
 
   const handleBook = async () => {
-    try{
-      props.setStatus("waiting");
-      const response = await bookTrip(props.email,props.tripId);
-      props.setStatus("complete");
-    } catch(err){
+    try {
+      setStatus("waiting");
+      const response = await bookTrip(props.email, props.tripId);
+      setStatus("complete");
+    } catch (err) {
       console.log(err);
     }
   }
 
-  const handleCancel = async() => {
-    try{
-      props.setStatus("waiting");
+  const handleCancel = async () => {
+    try {
+      setStatus("waiting");
       const response = await canceltrip(props.email, props.tripId);
-      props.setStatus("complete");
-    } catch(err){
+      setStatus("complete");
+    } catch (err) {
       console.log(err);
     }
   }
 
-  let handler,message;
-  switch(props.action){
+  let handler, message;
+  switch (status) {
     case "book":
       handler = handleBook;
       message = "confirm booking?"
@@ -34,7 +42,7 @@ function Confirm(props) {
       handler = handleCancel;
       message = "confirm cancellation?"
       break;
-    case "wating":
+    case "waiting":
       message = "waiting"
       break;
     case "complete":
@@ -42,25 +50,42 @@ function Confirm(props) {
       break;
   }
 
-  return(
+  return (
     <>
-      {(props.action == "book" || props.action == "cancel" )&& 
-        <> 
+      {is_booked &&
+        <>
+          <button> Booked </button>
+          <button onClick={() => { setStatus("cancel") }}> Cancel </button>
+        </>
+      }
+      {!is_full && !is_booked && email &&
+        <button onClick={() => { setStatus("book") }}>Book</button>
+      }
+      {!is_full && !is_booked && !email &&
+        <button><Link href={'/auth'}>LogIn</Link></button>
+      }
+      {is_full && <button>Full</button>}
+
+      {(status == "book" || status == "cancel") &&
+        <>
           <h1>{message}</h1>
           <button onClick={handler}>yes</button>
-          <button onClick={()=>props.setStatus(null)}>no</button>
+          <button onClick={() => props.setStatus(null)}>no</button>
         </>
       }
 
-      {props.action == "waiting" && 
+      {status == "waiting" &&
         <>
           <h1>{message}</h1>
         </>
       }
 
-      {props.action == "complete" && 
+      {status == "complete" &&
         <>
           <h1>{message}</h1>
+          <button onClick={router.reload()}>
+            back
+          </button>
         </>
       }
     </>

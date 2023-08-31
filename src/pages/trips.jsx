@@ -13,7 +13,7 @@ export async function getServerSideProps(context) {
   const email = user ? user.email : null;
 
 
-  let trips, bookings;
+  let trips, bookings = null;
   try {
     trips = await getAllTrips();
     bookings = await getAllBookings();
@@ -35,9 +35,12 @@ const BookEventPage = ({ trips, bookings, email }) => {
         .filter((booking) => booking.trip_id == trip.id)
         .map((booking) => booking.email
         );
+      // console.log({email});
+      // console.log({bookedUser});
 
       const is_full = bookedUser.length == trip.total_spots
-      const is_booked = email in bookedUser;
+      const is_booked = bookedUser.includes(email);
+      // console.log(is_booked);
 
       return (
         <>

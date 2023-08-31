@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import Cookies from 'js-cookie';
+// import React, { useEffect, useState } from 'react';
+// import Cookies from 'js-cookie';
 // import {cookies} from 'next/headers';
 import {useRouter} from 'next/router';
 import {Amplify,Auth} from 'aws-amplify';
 import awsmobile from '../aws-exports.js';
 import Layout from '../app/components/Layout';
-import UserChecker from '../app/components/User.server.jsx';
-import useFetchUser from '../hooks/useFetchUser';
 import Nav from '../app/components/Nav';
 import Footer from '../app/components/Footer';
 
