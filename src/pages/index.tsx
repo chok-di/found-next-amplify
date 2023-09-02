@@ -1,7 +1,7 @@
 //import .env for local development
 import 'dotenv/config'; 
 
-import 'bootstrap/dist/css/bootstrap.css';
+// import 'bootstrap/dist/css/bootstrap.css';
 
 import Link from 'next/link';
 // import Date from '../components/date';
@@ -9,6 +9,7 @@ import Head from 'next/head';
 import RootLayout from '../app/components/Layout';
 import utilStyles from '../styles/utils.module.css';
 import homeStyles from '../app/styles/home.module.css';
+
 // import { getSortedPostsData } from '../lib/posts';
 import { GetStaticProps } from 'next';
 

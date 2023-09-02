@@ -3,8 +3,9 @@
 }
 
 .logo{
-  font-family: "Marcellus",cursive;
+  /* font-family: "Marcellus",cursive; */
   font-size:2em;
+  font-weight: 100px;
   color: #F5F8F8;
   margin-top: 2em;
   margin-left: 3em;
@@ -15,7 +16,7 @@
 }
 
 .nav_item{
-  font-family: "Jost";
+  /* font-family: "Jost"; */
   font-weight:600;
   font-size: 1.3em;
   color: #F5F8F8;

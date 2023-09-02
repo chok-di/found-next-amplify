@@ -5,7 +5,7 @@ import {getUser} from "../../hooks/checkUserGetEmail";
 import Link from "next/link";
 import Cookies from 'js-cookie';
 
-import 'bootstrap/dist/css/bootstrap.css';
+// import 'bootstrap/dist/css/bootstrap.css';
 import nav_classes from '../styles/nav.module.css';
 
 
@@ -25,7 +25,7 @@ export default function Nav(){
   return (
     <div className={nav_classes.nav_background}>
     <nav className="navbar navbar-expand-lg">
-      <a className={`${nav_classes.logo} navbar-brand`} href="#">FOUND.</a>
+      <a className= "text-green-600" href="#">FOUND.</a>
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>

@@ -7,6 +7,8 @@ import awsmobile from '../aws-exports.js';
 import Layout from '../app/components/Layout';
 import Nav from '../app/components/Nav';
 import Footer from '../app/components/Footer';
+import "../app/globals.css";
+
 
 // import {getUser} from "../hooks/checkUserGetEmail.js";
 
@@ -37,6 +39,8 @@ export default function MyApp({Component,pageProps}){
   // const navWithUserChecker = 
 
   return(
+   
+
       <Layout>
         <Nav/>
         <Component {...pageProps}/>
