@@ -6,17 +6,19 @@ module.exports = {
   ],
   theme: {
     colors: {
-          'white': '#f5f8f8',
-          'grey': '#f8f9f8',
-          'black': '#382720',
-          'brown': '#55463E',
-        },
-    
+      'white': '#f5f8f8',
+      'grey': '#f8f9f8',
+      'black': '#382720',
+      'brown': '#55463E',
+    },
+
+    fontFamily: {
+      'serif': ['var(--font-marcellus)'],
+      'mono': ['var(--font-jost)'],
+
+    },
     extend: {
-      fontFamily: {
-        serif: ['var(--font-marcellus)']
-  
-      },
+
     },
   },
   plugins: [],
