@@ -23,12 +23,22 @@ export default function Nav(){
 
 
   return (
-    <div className={nav_classes.nav_background}>
-    <nav className="navbar navbar-expand-lg">
-      <a className= "text-green-600" href="#">FOUND.</a>
-      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span className="navbar-toggler-icon"></span>
-      </button>
+    // <div className={nav_classes.nav_background}>
+    <nav className="flex flex-row bg-[url('../img/background.jpg')] text-white" >
+      {/* left */}
+      <div className="basis-1/4 text-[2em] font-serif">FOUND.</div>
+      {/* right */}
+      {/* <div className="basis-3/4  grid grid-cols-12 gap-5">
+        <div className="col-start-10"> 111</div>
+        <div className="col-start-11"> 1222</div>
+        <div className="col-start-12"> 1333</div>
+      </div> */}
+      <div className=" basis-3/4 flex flex-row justify-end">
+        <div className=""> 111</div>
+        <div className=""> 1222</div>
+        <div className=""> 1333</div>
+      </div>
+      {/* <a className= "text-green-600" href="#">FOUND.</a>
       <div className={`collapse navbar-collapse justify-content-end `} id="navbarSupportedContent">
         <ul className={`navbar-nav mr-auro ${nav_classes.nav_contents}`}>
           <li className="nav-item">
@@ -60,9 +70,9 @@ export default function Nav(){
             </li>
           )}
         </ul>
-      </div>  
+      </div>   */}
     </nav>
-  </div>
+  // </div>
 
  );
 
