@@ -23,9 +23,9 @@ export default function Nav() {
 
   return (
     // <div className={nav_classes.nav_background}>
-    <nav className="flex flex-row bg-[url('../img/background.jpg')] text-white" >
+    <nav className="m-0 p-0 flex flex-row bg-[url('../img/background.jpg')] text-white" >
       {/* left */}
-      <div className="basis-1/4 text-[2em] font-serif mt-16 ml-24">FOUND.</div>
+      <div className=" mt-16 ml-24 basis-1/4 text-[2em] font-serif">FOUND.</div>
       {/* right */}
       {/* <div className="basis-3/4  grid grid-cols-12 gap-5">
         <div className="col-start-10"> 111</div>

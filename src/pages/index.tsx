@@ -21,10 +21,11 @@ import Footer from "../app/components/Footer";
 
 export default function Home() {
   return (
-    <RootLayout>
-      <div className = {`${homeStyles.top_page}`}>
-        <span><h1>Let's Thrive Together.</h1></span>
-        <div><button>Book Now</button></div>
+    <div className="m-0 p-0">
+      {/* <div className = {`${homeStyles.top_page}`}> */}
+      <div className=" m-0 bg-[url('../img/background.jpg')]" >
+        <div><h1 className="ml-24 mt-48 text-7xl font-serif text-white ">Let's Thrive Together.</h1></div>
+        <button className="ml-24 mt-24 mb-24 text-white">Book Now</button>
       </div>
 
       <div className={`${homeStyles.mission} row`}>
@@ -51,6 +52,6 @@ export default function Home() {
         <h3>Calendar</h3>
         <Scheduler/>
       </div>
-    </RootLayout>
+    </div>
   );
 }
