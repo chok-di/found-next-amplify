@@ -1,34 +1,46 @@
-
-import React,{useState,useEffect} from "react";
-
-import {getUser} from "../../hooks/checkUserGetEmail";
+"use client";
+import React, { useState, useEffect } from "react";
+import { getUser } from "../../hooks/checkUserGetEmail";
 import Link from "next/link";
 import Cookies from 'js-cookie';
 
 // import 'bootstrap/dist/css/bootstrap.css';
-import nav_classes from '../styles/nav.module.css';
+// import nav_classes from '../styles/nav.module.css';
 
 
 
-export default function Nav(){
-  const [email,setEmail] = useState(null);
-  
+export default function Nav() {
+  const [email, setEmail] = useState(null);
 
-  useEffect(async()=>{
+
+  useEffect(async () => {
     const token = Cookies.get("userToken");
     const user = await getUser(token);
     setEmail(user.email);
   }
-  ,[]);
+    , []);
 
 
   return (
-    <div className={nav_classes.nav_background}>
-    <nav className="navbar navbar-expand-lg">
-      <a className= "text-green-600" href="#">FOUND.</a>
-      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span className="navbar-toggler-icon"></span>
-      </button>
+    // <div className={nav_classes.nav_background}>
+    <nav className="m-0 p-0 flex flex-row bg-[url('../img/background.jpg')] text-white" >
+      {/* left */}
+      <div className=" mt-16 ml-24 basis-1/4 text-[2em] font-serif">FOUND.</div>
+      {/* right */}
+      {/* <div className="basis-3/4  grid grid-cols-12 gap-5">
+        <div className="col-start-10"> 111</div>
+        <div className="col-start-11"> 1222</div>
+        <div className="col-start-12"> 1333</div>
+      </div> */}
+      <div className=" basis-3/4 text-[1.3em] font-mono flex flex-row justify-end">
+        <div className="mt-16 mr-8 "> About </div>
+        <div className="mt-16 mr-8"> Corporate Retreats</div>
+        <div className="mt-16 mr-8"> 中文 </div>
+        <div className="mt-14 mr-8">
+          <button className="border-2 w-24 h-12"> Log In </button> 
+        </div>
+      </div>
+      {/* <a className= "text-green-600" href="#">FOUND.</a>
       <div className={`collapse navbar-collapse justify-content-end `} id="navbarSupportedContent">
         <ul className={`navbar-nav mr-auro ${nav_classes.nav_contents}`}>
           <li className="nav-item">
@@ -60,11 +72,10 @@ export default function Nav(){
             </li>
           )}
         </ul>
-      </div>  
+      </div>   */}
     </nav>
-  </div>
+    // </div>
 
- );
+  );
 
 };
-
