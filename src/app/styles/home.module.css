@@ -1,11 +1,11 @@
-.top_page h1 {
+/* .top_page h1 {
   color: #F5F8F8;
-  /* font-family: 'Marcellus'; */
+  font-family: 'Marcellus';
   font-size:5em;
   margin-top: 3em;
   margin-left: 1.2em;
   margin-bottom: 3em;
-}
+}  */
 
 .top_page h3 {
   font-family: 'Marcellus';
@@ -25,7 +25,7 @@
   height:2.5em;
   width:8em;
   border:none;
-  /* font-family: "Jost"; */
+  font-family: "Jost"; 
   font-weight: 800;
   font-size:1.5em;
   color:#387170;
