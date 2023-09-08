@@ -1,6 +1,6 @@
 import React from "react";
 import Image from 'next/image';
-import gallery_classes from "../styles/gallery.module.css";
+
 
 import a1 from "../../img/a1.jpg";
 import a2 from "../../img/a2.jpg";
@@ -8,29 +8,27 @@ import b1 from "../../img/b1.jpg";
 import b2 from "../../img/b2.jpg";
 
 
-function Gallery (){
-  return(
+function Gallery() {
+  return (
     <>
-    <div className={gallery_classes.container}>
-      <div class={`${gallery_classes.row}`}>
-        <div className={`${gallery_classes.column}`}>
-          <div className={`${gallery_classes.long}`}> <Image src={a1}/> </div>
-          <div className={`${gallery_classes.short}`}> <Image src={a2}/> </div>
+      <div className="grid grid-cols-4 gap-8 px-16 pb-8 h-[40rem]">
+        <div className="grid grid-rows-3 gap-12">
+          <div className="row-span-2 relative "> <Image src={a1} layout="fill" /></div>
+          <div className="row-span-1 relative"> <Image src={a2} layout="fill" /> </div>
         </div>
-        <div className={`${gallery_classes.column}`}>
-          <div className={`${gallery_classes.short}`}><Image src={b1}/></div>
-          <div className={`${gallery_classes.long}`}><Image src={b2} /></div>
+        <div className="grid grid-rows-3 gap-12">
+          <div className="row-span-1 relative "> <Image src={b1} layout="fill" /></div>
+          <div className="row-span-2 relative"> <Image src={b2} layout="fill" /> </div>
         </div>
-        <div className={`${gallery_classes.column}`}>
-          <div className={`${gallery_classes.long}`}> <Image src={a1}/> </div>
-          <div className={`${gallery_classes.short}`}> <Image src={a2}/> </div>
+        <div className="grid grid-rows-3 gap-12">
+          <div className="row-span-2 relative "> <Image src={a1} layout="fill" /></div>
+          <div className="row-span-1 relative"> <Image src={a2} layout="fill" /> </div>
         </div>
-        <div className={`${gallery_classes.column}`}>
-          <div className={`${gallery_classes.short}`}><Image src={b1} /></div>
-          <div className={`${gallery_classes.long}`}><Image src={b2} /></div>
+        <div className="grid grid-rows-3 gap-12">
+          <div className="row-span-1 relative "> <Image src={b1} layout="fill" /></div>
+          <div className="row-span-2 relative"> <Image src={b2} layout="fill" /> </div>
         </div>
       </div>
-    </div>
     </>
   );
 }
