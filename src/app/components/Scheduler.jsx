@@ -52,7 +52,6 @@ function Scheduler() {
     <div className="flex flex-row">
       <div className="mx-24 w-1/2">
         <Calendar
-          className={calendar_styles["react-calendar"]}
           value={startTime}
           // tileClassName={highlightEventDays}
         />

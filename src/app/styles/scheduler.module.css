@@ -1,12 +1,12 @@
- /* .react-calendar {
+ .react-calendar {
   width: 90%;
-  background: #f8f9f8;
+  background: red;
   border: None;
   font-family: var(--font-inter);
   line-height: 1.125em;
   padding:2em;
   text-align:center;
-} */
+}
 
 .react-calendar__navigation {
   display: flex;
