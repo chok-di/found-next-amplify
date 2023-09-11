@@ -11,11 +11,14 @@ module.exports = {
       'black': '#382720',
       'brown': '#55463E',
       'ocean': '#387170',
+      'sand': '#f0e8e1',
+      'clay': '#ac7d53',
     },
 
     fontFamily: {
       'serif': ['var(--font-marcellus)'],
       'mono': ['var(--font-jost)'],
+      'inter': ['var(--font-inter)']
 
     },
     extend: {

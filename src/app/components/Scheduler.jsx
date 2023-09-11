@@ -31,20 +31,20 @@ function Scheduler() {
   let endTime = event.end
   let price = event.price;
 
-  // function highlightEventDays(date) {
-  //   let startDate = startTime.setHours(0, 0, 0, 0);
-  //   let endDate = endTime.setHours(0, 0, 0, 0);
-  //   let eachDay = date.date.setHours(0, 0, 0, 0);
+  function highlightEventDays(date) {
+    let startDate = startTime.setHours(0, 0, 0, 0);
+    let endDate = endTime.setHours(0, 0, 0, 0);
+    let eachDay = date.date.setHours(0, 0, 0, 0);
 
 
-  //   if (eachDay > startDate && eachDay < endDate) {
-  //     return classes_scheduler["eventDays"];
-  //   }
-  //   if (eachDay == startDate || eachDay == endDate) {
-  //     return classes_scheduler["eventStartEndDays"];
-  //   }
-  //   return {}
-  // }
+    if (eachDay > startDate && eachDay < endDate) {
+      return "eventDays";
+    }
+    if (eachDay == startDate || eachDay == endDate) {
+      return "eventStartEndDays";
+    }
+    return {}
+  }
 
   let activities = events[0].description.map(activity => { return (<div> &#8226;    {activity}</div>) });
 
@@ -53,7 +53,7 @@ function Scheduler() {
       <div className="mx-24 w-1/2">
         <Calendar
           value={startTime}
-          // tileClassName={highlightEventDays}
+          tileClassName={highlightEventDays}
         />
       </div>
 
