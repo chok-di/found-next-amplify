@@ -9,6 +9,8 @@ import Nav from '../app/components/Nav';
 import Footer from '../app/components/Footer';
 import "../app/globals.css";
 
+import "../app/styles/Scheduler.module.css";
+
 
 // import {getUser} from "../hooks/checkUserGetEmail.js";
 
