@@ -7,6 +7,12 @@ import Head from 'next/head';
 const name = 'Woody';
 const siteTitle = 'Next.js Sample Website';
 
+//font awesome
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import { config } from "@fortawesome/fontawesome-svg-core";
+config.autoAddCss = false;
+
+
 import { Marcellus, Jost, Inter } from 'next/font/google';
 
 
