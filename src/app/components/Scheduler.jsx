@@ -49,7 +49,7 @@ function Scheduler() {
   let activities = events[0].description.map(activity => { return (<div> &#8226;    {activity}</div>) });
 
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-row pb-24">
       <div className="mx-24 w-1/2">
         <Calendar
           value={startTime}

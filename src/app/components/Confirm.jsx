@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { useRouter } from 'next/router';
 import { bookTrip, canceltrip } from "../../hooks/bookCancelTrip.js";
+import Link from "next/link";
 
 
 function Confirm(props) {
