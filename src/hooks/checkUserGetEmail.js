@@ -1,8 +1,7 @@
 // import jwt from "jsonwebtoken";
 // import jwksClient from 'jwks-rsa';
 import Cookies from 'js-cookie';
-
-
+import {Auth} from 'aws-amplify';
 
 
 export function saveToken(token) {
@@ -34,5 +33,10 @@ export async function getUser(token) {
   } else {
     console.error('Error:', response.status);
   }
+}
+
+export function signOut(){
+  Cookies.remove('userToken');
+  Auth.signOut();
 }
 

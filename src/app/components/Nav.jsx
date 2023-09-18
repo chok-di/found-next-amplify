@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { getUser } from "../../hooks/checkUserGetEmail";
+import { useRouter } from "next/router";
+import { getUser,signOut } from "../../hooks/checkUserGetEmail";
 import Link from "next/link";
 import Cookies from 'js-cookie';
 
@@ -8,8 +9,7 @@ import Cookies from 'js-cookie';
 
 export default function Nav() {
   const [email, setEmail] = useState(null);
- 
-
+  const router = useRouter(); 
 
   useEffect(async () => {
     const token = Cookies.get("userToken");
@@ -36,9 +36,9 @@ export default function Nav() {
             <div className="dropdown relative inline-block">
               <button className="dropbtn w-24 h-12"> Name </button>
               <div className="dropdown-content">
-                <div>Trips</div>
+                <div><Link href="/trips">Trips</Link></div>
                 <div>My Bookings</div>
-                <div>Log Out</div>
+                <div><button onClick={()=>{signOut();router.reload()} }>Log Out</button></div>
               </div>
             </div>
 

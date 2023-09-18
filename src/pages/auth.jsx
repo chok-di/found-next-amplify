@@ -1,11 +1,13 @@
 "use client"
 
 import { useEffect } from "react";
+import { useRouter } from 'next/router';
+
 import { Amplify, Auth, Hub } from 'aws-amplify'
 import awsmobile from '../aws-exports';
 import { Authenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
-import { useRouter } from 'next/navigation';
+
 
 import { saveToken } from "../hooks/checkUserGetEmail.js";
 
@@ -16,16 +18,17 @@ function AuthPage() {
 
   const router = useRouter();
 
-  const handleLogIn = () => {
-    const referer = router?.query?.referer;
-    if(referer) {
-      router.push(referer);
-    } else {
-      router.push('/');
-    }
+  const handleLogIn = async() => {
+    const previousPath = localStorage.getItem('previousPath') || '/';
+    localStorage.removeItem('previousPath');
+    router.push(previousPath);  
   };
 
   useEffect(() => {
+    if(document.referrer){
+      const previousPath = new URL(document.referrer).pathname;
+      localStorage.setItem('previousPath', previousPath);
+    }
 
     const getUserAndSendToken = async () => {
       try {
