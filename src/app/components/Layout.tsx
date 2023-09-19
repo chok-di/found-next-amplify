@@ -7,7 +7,13 @@ import Head from 'next/head';
 const name = 'Woody';
 const siteTitle = 'Next.js Sample Website';
 
-import { Marcellus, Jost } from '@next/font/google';
+//font awesome
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import { config } from "@fortawesome/fontawesome-svg-core";
+config.autoAddCss = false;
+
+
+import { Marcellus, Jost, Inter } from 'next/font/google';
 
 
 const marcellus = Marcellus({
@@ -17,8 +23,15 @@ const marcellus = Marcellus({
 })
 
 const jost = Jost({
-  subsets:['latin']
+  subsets:['latin'],
+  weight:['600','400'],
+  variable:'--font-jost',
+})
 
+const inter = Inter({
+  subsets:['latin'],
+  weight:['400'],
+  variable:'--font-inter'
 })
 
 
@@ -29,7 +42,7 @@ export default function RootLayout({
   // home?: boolean
 }) {
   return (
-    <main className={marcellus.className}>
+    <main className={`${marcellus.variable} ${jost.variable} ${inter.variable}`}>
     <html lang="en">
       <Head>
         <link rel='icon' href='/favicon.ico'/>

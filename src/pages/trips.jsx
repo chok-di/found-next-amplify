@@ -43,7 +43,7 @@ const BookEventPage = ({ trips, bookings, email }) => {
       // console.log(is_booked);
 
       return (
-        <>
+        <div className=" flex flex-col justify-center align-center">
           <TripCard
             trip={trip}
             id={trip.id}
@@ -53,13 +53,13 @@ const BookEventPage = ({ trips, bookings, email }) => {
             is_full={is_full}
             is_booked={is_booked}
           />
-        </>
+        </div>
       );
     });
 
   return (
-    <>
-      <h2>Book Events</h2>
+    
+     <>
       {tripInformation}
 
       {/* <Scheduler/> */}

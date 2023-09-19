@@ -4,14 +4,10 @@ import { getUser } from "../../hooks/checkUserGetEmail";
 import Link from "next/link";
 import Cookies from 'js-cookie';
 
-// import 'bootstrap/dist/css/bootstrap.css';
-// import nav_classes from '../styles/nav.module.css';
-
 
 
 export default function Nav() {
   const [email, setEmail] = useState(null);
-
 
   useEffect(async () => {
     const token = Cookies.get("userToken");
