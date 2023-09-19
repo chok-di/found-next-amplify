@@ -4,50 +4,118 @@
 
 
 /** react calendar **/
-@layer components{
+@layer components {
   .react-calendar {
     @apply bg-grey font-inter text-center w-4/5;
 
-    .react-calendar__navigation{
+    .react-calendar__navigation {
       @apply flex font-serif pt-5 pb-2;
     }
 
     .react-calendar__month-view__weekdays {
       @apply font-mono pb-3;
     }
-    .react-calendar__month-view__days{
+
+    .react-calendar__month-view__days {
       @apply pb-6;
     }
-    .react-calendar__month-view__days__day{
+
+    .react-calendar__month-view__days__day {
       @apply py-0.5;
     }
+
     .react-calendar__month-view__days__day--neighboringMonth {
       @apply text-[#b5b5b5];
     }
+
     .eventDays {
       @apply bg-sand;
     }
+
     .eventStartEndDays {
       @apply bg-clay text-[#ffffff];
     }
   }
 }
 
- 
-  /* .react-calendar__month-view__weekdays {
+@layer utilities {
+
+  .dropdown {
+
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropbtn {
+    background-color: #f8f9f8;
+    color: #387010;
+    border-radius: 8px;
+    display: block;
+    text-align: right;
+    padding-right: 18px;
+  }
+
+
+
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    text-align: right;
+    padding-right: 18px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    position: absolute;
+    right: 0;
+    top: 105%;
+    background-color: #e5efef;
+    color: #387170;
+    border-radius: 8px;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    transition: visibility 2s, opacity 0.2s;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+
+
+
+  /* Show the dropdown menu on hover */
+  /* .dropdown:hover .dropdown-content {
+    display: block;
+  } */
+
+  /* Change the background color of the dropdown button when the dropdown content is shown */
+  .dropdown:hover .dropbtn {
+    background-color: #f8f9f8;
+  }
+
+  .dropbtn:hover+.dropdown-content,
+  .dropdown-content:hover {
+    visibility: visible;
+    opacity: 1;
+  }
+
+    /* Change color of dropdown links on hover */
+    .dropdown-content div:hover {
+      background-color: #f0f4f4;
+    }
+
+}
+
+/* .react-calendar__month-view__weekdays {
     @apply  */
-    /* text-align: center;
+/* text-align: center;
     text-transform: uppercase;
     font-weight: bold;
     font-size: 0.75em;
     color: #000000;
     font-family: var(--font-jost); */
-  /* } */
+/* } */
 
 
-  
 
-  /* .react-calendar,
+
+/* .react-calendar,
   .react-calendar *,
   .react-calendar *:before,
   .react-calendar *:after {
