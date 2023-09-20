@@ -35,8 +35,8 @@ export async function getUser(token) {
   }
 }
 
-export function signOut(){
+export async function signOut(){
   Cookies.remove('userToken');
-  Auth.signOut();
+  await Auth.signOut();
 }
 

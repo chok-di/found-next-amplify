@@ -21,7 +21,8 @@ function AuthPage() {
   const handleLogIn = async() => {
     const previousPath = localStorage.getItem('previousPath') || '/';
     localStorage.removeItem('previousPath');
-    router.push(previousPath);  
+    await router.push(previousPath);  
+    router.reload();
   };
 
   useEffect(() => {

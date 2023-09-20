@@ -9,10 +9,7 @@ import Cookies from 'js-cookie';
 
 export default function Nav() {
   const [email, setEmail] = useState(null);
-<<<<<<< HEAD
-=======
   const router = useRouter(); 
->>>>>>> tailwind
 
   useEffect(async () => {
     const token = Cookies.get("userToken");
@@ -41,49 +38,14 @@ export default function Nav() {
               <div className="dropdown-content">
                 <div><Link href="/trips">Trips</Link></div>
                 <div>My Bookings</div>
-                <div><button onClick={()=>{signOut();router.reload()} }>Log Out</button></div>
+                <div><button onClick={()=>{signOut().then(()=>{router.reload()});}}>Log Out</button></div>
               </div>
             </div>
-
-
           )}
         </div>
       </div>
-      {/* <a className= "text-green-600" href="#">FOUND.</a>
-      <div className={`collapse navbar-collapse justify-content-end `} id="navbarSupportedContent">
-        <ul className={`navbar-nav mr-auro ${nav_classes.nav_contents}`}>
-          <li className="nav-item">
-            <a className={`nav-link ${nav_classes.nav_item}`} href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class={`nav-link ${nav_classes.nav_item}`} href="#">Corporate Retreats</a>
-          </li>
-          <li class="nav-item">
-            <a class={`nav-link ${nav_classes.nav_item}`} href="#">Gallery</a>
-          </li>
-          {email && (
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {email}
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/trips">Book</a>
-                <a class="dropdown-item" href="#">My Bookings</a>
-                <a class="dropdown-item" href="#">Past Bookings</a>
-                <div class="dropdown-divider"></div>
-                <button class="dropdown-item" type="button" >Log Out</button>
-              </div>
-          </li>
-          )}
-          {!email && (
-            <li class="nav-item">
-            <button class={`nav-link ${nav_classes.nav_item} ${nav_classes.nav_button}`}><Link href="/auth">Log In</Link></button>
-            </li>
-          )}
-        </ul>
-      </div>   */}
     </nav>
-    // </div>
+  
 
   );
 

@@ -22,7 +22,7 @@ const TripCard = (props) => {
                 <button className="w-20 h-8 mr-4  bg-ocean text-white text-center">Book</button>
               </Link>}
             {props.is_full && <button>Full</button>}
-            {props.is_booked && <button>Booked</button>}
+            {props.is_booked && <button className="w-20 h-8 mr-4 bg-ocean text-white text-center">Booked</button>}
             <Link href={`/trip/${props.id}`}>
               <button className="w-20 h-8 bg-ocean text-white text=center">Details</button>
             </Link>

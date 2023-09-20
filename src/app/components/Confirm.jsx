@@ -10,7 +10,7 @@ function Confirm(props) {
   const [status, setStatus] = useState(null);
 
   const router = useRouter();
- 
+
 
 
   const handleBook = async () => {
@@ -52,7 +52,7 @@ function Confirm(props) {
   }
 
   return (
-    <>
+    <div className="">
       {is_booked &&
         <>
           <button> Booked </button>
@@ -67,29 +67,52 @@ function Confirm(props) {
       }
       {is_full && <button>Full</button>}
 
-      {(status == "book" || status == "cancel") &&
+      {status &&
         <>
-          <h1>{message}</h1>
-          <button onClick={handler}>yes</button>
-          <button onClick={() => props.setStatus(null)}>no</button>
+          <div className="fixed inset-0 bg-black bg-opacity-50 z-40"></div>
+
+          <div className="fixed inset-0 z-50 flex items-center justify-center">
+            <div className="bg-sand text-black border-2 p-4 rounded-md w-[40rem] h-[15rem] flex flex-col items-center">
+              <h1 className="font-mono text-2xl mb-4">{message}</h1>
+              {(status == "book" || status == "cancel") &&
+                <div className="flex space-x-4">
+                  <button
+                    className="bg-ocean hover:bg-blue-600 text-white p-2 rounded"
+                    onClick={handler}
+                  >
+                    Yes
+                  </button>
+                  <button
+                    className="bg-ocean hover:bg-red-600 text-white p-2 rounded"
+                    onClick={() => setStatus(null)}
+                  >
+                    No
+                  </button>
+                </div>}
+              {status == "complete" &&
+                <button onClick={router.reload()}>
+                  back
+                </button>}
+            </div>
+          </div>
         </>
       }
 
-      {status == "waiting" &&
-        <>
+      {/* {status == "waiting" &&
+        <div style={{ position: 'absolute', top: '0', left: '0', width: '100%', height: '100%', backgroundColor: 'blue', zIndex: 9999 }}>
           <h1>{message}</h1>
-        </>
-      }
+        </div>
+      } */}
 
-      {status == "complete" &&
+      {/* {status == "complete" &&
         <>
           <h1>{message}</h1>
           <button onClick={router.reload()}>
             back
           </button>
         </>
-      }
-    </>
+      } */}
+    </div>
   )
 }
 
