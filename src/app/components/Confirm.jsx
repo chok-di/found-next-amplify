@@ -8,7 +8,6 @@ import Link from "next/link";
 function Confirm(props) {
   const { is_booked, is_full, email, tripId } = props;
   const [status, setStatus] = useState(null);
-
   const router = useRouter();
 
 
@@ -41,23 +40,25 @@ function Confirm(props) {
       break;
     case "cancel":
       handler = handleCancel;
-      message = "confirm cancellation?"
+      message = "Cancel booking?"
       break;
     case "waiting":
       message = "waiting"
       break;
     case "complete":
-      message = "go back";
+      message = "Action complete.";
       break;
   }
 
   return (
     <div className="">
       {is_booked &&
-        <>
-          <button> Booked </button>
-          <button onClick={() => { setStatus("cancel") }}> Cancel </button>
-        </>
+        <div className="flex space-x-8">
+          <button className="bg-ocean hover:bg-blue-600 text-white px-4 py-2 w-18 rounded"> Booked </button>
+          <button  className="bg-ocean hover:bg-blue-600 text-white px-4 py-2 w-18 rounded"
+               onClick={() => { setStatus("cancel") }}> Cancel 
+          </button>
+        </div>
       }
       {!is_full && !is_booked && email &&
         <button onClick={() => { setStatus("book") }}>Book</button>
@@ -73,45 +74,32 @@ function Confirm(props) {
 
           <div className="fixed inset-0 z-50 flex items-center justify-center">
             <div className="bg-sand text-black border-2 p-4 rounded-md w-[40rem] h-[15rem] flex flex-col items-center">
-              <h1 className="font-mono text-2xl mb-4">{message}</h1>
+              <h1 className="font-mono text-3xl mt-8 mb-8">{message}</h1>
               {(status == "book" || status == "cancel") &&
-                <div className="flex space-x-4">
+                <div className="flex space-x-16">
                   <button
-                    className="bg-ocean hover:bg-blue-600 text-white p-2 rounded"
+                    className="bg-ocean hover:bg-blue-600 text-white p-2 w-16 rounded"
                     onClick={handler}
                   >
                     Yes
                   </button>
                   <button
-                    className="bg-ocean hover:bg-red-600 text-white p-2 rounded"
+                    className="bg-ocean hover:bg-red-600 text-white p-2 w-16 rounded"
                     onClick={() => setStatus(null)}
                   >
                     No
                   </button>
                 </div>}
               {status == "complete" &&
-                <button onClick={router.reload()}>
+                <button 
+                className=" bg-ocean hover:bg-red-600 text-white p-2 w-16 rounded"
+                onClick={router.reload()}>
                   back
                 </button>}
             </div>
           </div>
         </>
       }
-
-      {/* {status == "waiting" &&
-        <div style={{ position: 'absolute', top: '0', left: '0', width: '100%', height: '100%', backgroundColor: 'blue', zIndex: 9999 }}>
-          <h1>{message}</h1>
-        </div>
-      } */}
-
-      {/* {status == "complete" &&
-        <>
-          <h1>{message}</h1>
-          <button onClick={router.reload()}>
-            back
-          </button>
-        </>
-      } */}
     </div>
   )
 }

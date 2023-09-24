@@ -38,3 +38,26 @@ export async function getAllBookings(){
     throw err;
   }
 }
+
+export async function getTripDetails(email,tripId) {
+  const params1 = {
+    FunctionName: 'foundtripdetail-dev',
+    InvocationType: 'RequestResponse',
+    LogType: 'Tail',
+    Payload: JSON.stringify({ tripId: `${tripId}` })
+  };
+  const params2 = {
+    FunctionName: 'foundtripcheckbooked-dev',
+    InvocationType: 'RequestResponse',
+    LogType: 'Tail',
+    Payload: JSON.stringify({ tripId: `${tripId}`, email: `${email}` })
+  };
+  try{
+    const trip = await lambda.invoke(params1).promise();
+    const is_booked = await lambda.invoke(params2).promise();
+    return {trip,is_booked};
+  } catch(err){
+    console.error("Error invoking Lambda function", err);
+    throw err;
+  }
+}
