@@ -41,7 +41,6 @@
 @layer utilities {
 
   .dropdown {
-
     position: relative;
     display: inline-block;
   }
@@ -77,28 +76,21 @@
   }
 
 
-
-
-  /* Show the dropdown menu on hover */
-  /* .dropdown:hover .dropdown-content {
-    display: block;
-  } */
-
-  /* Change the background color of the dropdown button when the dropdown content is shown */
-  .dropdown:hover .dropbtn {
-    background-color: #f8f9f8;
-  }
-
   .dropbtn:hover+.dropdown-content,
   .dropdown-content:hover {
     visibility: visible;
     opacity: 1;
   }
 
-    /* Change color of dropdown links on hover */
-    .dropdown-content div:hover {
-      background-color: #f0f4f4;
-    }
+  /* Change the background color of the dropdown button when the dropdown content is shown */
+  .dropdown:hover .dropbtn {
+    background-color: #f8f9f8;
+  }
+
+  /* Change color of dropdown links on hover */
+  .dropdown-content div:hover {
+    background-color: #f0f4f4;
+  }
 
 }
 
