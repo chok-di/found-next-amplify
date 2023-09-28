@@ -20,8 +20,8 @@ export default function Nav() {
 
 
   return (
-    // <div className={nav_classes.nav_background}>
-    <nav className="m-0 p-0 flex flex-row bg-[url('../img/background.jpg')] text-white" >
+
+    <nav className="m-0 p-0 flex flex-row bg-transparent text-white z-10 h-30 " >
       {/* left */}
       <div className=" mt-16 ml-24 basis-1/4 text-[2em] font-serif">FOUND.</div>
       {/* right */}

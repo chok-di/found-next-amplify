@@ -3,6 +3,9 @@ import TripCard from "../app/components/TripCard";
 import { getUser } from "../hooks/checkUserGetEmail.js";
 import { getAllTrips, getAllBookings } from "../hooks/getTripInfo.js";
 
+import Layout from "../app/components/Layout";
+
+
 // import Scheduler from "../components/Scheduler";
 
 
@@ -43,6 +46,7 @@ const BookEventPage = ({ trips, bookings, email }) => {
       // console.log(is_booked);
 
       return (
+      
         <div className=" flex flex-col justify-center align-center">
           <TripCard
             trip={trip}
@@ -59,12 +63,12 @@ const BookEventPage = ({ trips, bookings, email }) => {
 
   return (
     
-     <>
+     <Layout>
       {tripInformation}
 
       {/* <Scheduler/> */}
 
-    </>
+    </Layout>
   )
 }
 

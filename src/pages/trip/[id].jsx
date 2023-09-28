@@ -3,7 +3,7 @@ import Confirm from "../../app/components/Confirm";
 import AWS from 'aws-sdk';
 import { getUser } from "../../hooks/checkUserGetEmail.js";
 import { getTripDetails } from "../../hooks/getTripInfo.js";
-import backgroundImage from '../../img/background.jpg';
+import Layout from ""
 
 
 
@@ -44,7 +44,7 @@ const EventDetailPage = ({ email, data }) => {
   return (
 
 
-    <>
+    <Layout>
       <div className="fixed inset-0 bg-[url('.././img/background.jpg')]  z-[-10]"></div>
       <div className=" relative container mx-auto my-16 p-8 space-y-6 bg-sand border  border-driftwood bg-opacity-90 shadow-md">
         <h4 className="text-4xl font-serif text-center mb-4">{trip.title}</h4>
@@ -68,7 +68,7 @@ const EventDetailPage = ({ email, data }) => {
           {description}
         </ul>
       </div>
-    </>
+    </Layout>
 
 
   );
@@ -77,6 +77,3 @@ const EventDetailPage = ({ email, data }) => {
 export default EventDetailPage;
 
 
-//z-[-10] bg-[url('.././img/background.jpg')]  z-[-10]
-//<div className="fixed inset-0 bg-cover bg-center  bg-gradient-to-b from-blue-500 to-transparent"
-//style={{ backgroundImage: "url('.././img/background.jpg')" }}></div>
