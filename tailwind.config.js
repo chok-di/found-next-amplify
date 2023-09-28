@@ -11,10 +11,15 @@ module.exports = {
       'black': '#382720',
       'brown': '#55463E',
       'ocean': '#387170',
+      'deep-ocean': '#23564D',
+      'sunset': '#FF6B57',
+      'sky': '#AEDFF7',
+      'driftwood': '#9A8B70',
+      'coral': '#FF8575',
       'sand': '#f0e8e1',
+      'seashell': '#FFF5E1',
       'clay': '#ac7d53',
     },
-
     fontFamily: {
       'serif': ['var(--font-marcellus)'],
       'mono': ['var(--font-jost)'],

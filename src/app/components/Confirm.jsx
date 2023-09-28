@@ -54,7 +54,7 @@ function Confirm(props) {
     <div className="">
       {is_booked &&
         <div className="flex space-x-8">
-          <button className="bg-ocean hover:bg-blue-600 text-white px-4 py-2 w-18 rounded"> Booked </button>
+          <button className="bg-ocean hover:bg-deep-ocean text-white px-4 py-2 w-18 rounded"> Booked </button>
           <button  className="bg-ocean hover:bg-blue-600 text-white px-4 py-2 w-18 rounded"
                onClick={() => { setStatus("cancel") }}> Cancel 
           </button>
@@ -64,7 +64,7 @@ function Confirm(props) {
         <button onClick={() => { setStatus("book") }}>Book</button>
       }
       {!is_full && !is_booked && !email &&
-        <button><Link href={'/auth'}>LogIn</Link></button>
+        <button className="bg-ocean hover:bg-deep-ocean text-white px-4 py-2 w-18 rounded"><Link href={'/auth'}>LogIn</Link></button>
       }
       {is_full && <button>Full</button>}
 

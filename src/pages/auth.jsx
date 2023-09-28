@@ -18,6 +18,7 @@ function AuthPage() {
 
   const router = useRouter();
 
+ // redirect to the page before 
   const handleLogIn = async() => {
     const previousPath = localStorage.getItem('previousPath') || '/';
     localStorage.removeItem('previousPath');
@@ -43,6 +44,10 @@ function AuthPage() {
 
     Hub.listen('auth', ({ payload: { event, data } }) => {
       switch (event) {
+        //sign out from user side when token expires
+        case 'tokenRefresh_failure':
+          Auth.signOut();
+          break;
         case 'signIn':
         case 'cognitoHostedUI':
           getUserAndSendToken();
