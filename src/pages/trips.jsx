@@ -1,13 +1,9 @@
-import React from "react";
+
 import TripCard from "../app/components/TripCard";
 import { getUser } from "../hooks/checkUserGetEmail.js";
 import { getAllTrips, getAllBookings } from "../hooks/getTripInfo.js";
 
 import Layout from "../app/components/Layout";
-
-
-// import Scheduler from "../components/Scheduler";
-
 
 
 export async function getServerSideProps(context) {
@@ -38,12 +34,14 @@ const BookEventPage = ({ trips, bookings, email }) => {
         .filter((booking) => booking.trip_id == trip.id)
         .map((booking) => booking.email
         );
-      // console.log({email});
-      // console.log({bookedUser});
 
+      
       const is_full = bookedUser.length == trip.total_spots
       const is_booked = bookedUser.includes(email);
-      // console.log(is_booked);
+      const start = new Date(trip.start_time).toLocaleString();
+      const end = new Date(trip.end_time).toLocaleString();
+    
+   
 
       return (
       
@@ -52,8 +50,8 @@ const BookEventPage = ({ trips, bookings, email }) => {
             trip={trip}
             id={trip.id}
             title={trip.title}
-            start_time={trip.start_time}
-            end_time={trip.end_time}
+            start_time={start}
+            end_time={end}
             is_full={is_full}
             is_booked={is_booked}
           />
