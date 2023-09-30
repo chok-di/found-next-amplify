@@ -7,7 +7,7 @@ import Cookies from 'js-cookie';
 
 
 
-export default function Nav() {
+export default function Nav({home}) {
   const [email, setEmail] = useState(null);
   const router = useRouter(); 
 
@@ -17,11 +17,13 @@ export default function Nav() {
     if (user) { setEmail(user.email); }
   }
     , []);
+  
+  const navStyle = home? "m-0 p-0 flex flex-row bg-transparent text-white z-10 h-30" : "m-0 p-0 flex flex-row bg-ocean text-white z-10 h-30";
 
 
   return (
-
-    <nav className="m-0 p-0 flex flex-row bg-transparent text-white z-10 h-30 " >
+    
+    <nav className={navStyle} >
       {/* left */}
       <div className=" mt-16 ml-24 basis-1/4 text-[2em] font-serif">FOUND.</div>
       {/* right */}

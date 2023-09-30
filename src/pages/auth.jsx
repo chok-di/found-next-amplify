@@ -11,6 +11,8 @@ import '@aws-amplify/ui-react/styles.css';
 
 import { saveToken } from "../hooks/checkUserGetEmail.js";
 
+import Layout from "../app/components/Layout";
+
 
 Amplify.configure(awsmobile);
 
@@ -50,6 +52,7 @@ function AuthPage() {
           break;
         case 'signIn':
         case 'cognitoHostedUI':
+          console.log("hello");
           getUserAndSendToken();
           handleLogIn();
           break;
@@ -63,9 +66,12 @@ function AuthPage() {
   );
 
 return (
+  <Layout>
   <Authenticator>
     <button onClick={() => Auth.signOut()}>Sign out</button>
   </Authenticator>
+  </Layout>
+
 );
 }
 

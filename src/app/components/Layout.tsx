@@ -62,7 +62,7 @@ export default function RootLayout({
             
               <div className="relative z-10 overflow-y-hidden">
                 <div className="absolute top-0 left-0 w-full h-[700px] bg-cover bg-[url('../img/background.jpg')]">
-                  <Nav />
+                  <Nav home/>
                   <span><h1 className="ml-24 pt-48 text-7xl font-serif text-white ">Let's Thrive Together.</h1></span>
                   <div>
                     <Link href="/trips">
