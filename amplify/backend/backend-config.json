@@ -1,19 +1,49 @@
 {
+  "api": {
+    "AdminQueries": {
+      "authorizationType": "AMAZON_COGNITO_USER_POOLS",
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "foundusers"
+        },
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "AdminQueries5973b966"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
   "auth": {
-    "foundnextamplify346caa01": {
+    "foundusers": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {
-        "mfaConfiguration": "OFF",
+        "mfaConfiguration": "OPTIONAL",
         "mfaTypes": [
           "SMS"
         ],
         "passwordProtectionSettings": {
           "passwordPolicyCharacters": [],
-          "passwordPolicyMinLength": 8
+          "passwordPolicyMinLength": "8"
         },
         "signupAttributes": [
-          "EMAIL"
+          "BIRTHDATE",
+          "EMAIL",
+          "FAMILY_NAME",
+          "GENDER",
+          "GIVEN_NAME",
+          "PHONE_NUMBER",
+          "ZONEINFO"
         ],
         "socialProviders": [],
         "usernameAttributes": [
@@ -25,9 +55,39 @@
       },
       "providerPlugin": "awscloudformation",
       "service": "Cognito"
+    },
+    "userPoolGroups": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId",
+            "AppClientIDWeb",
+            "AppClientID",
+            "IdentityPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "foundusers"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito-UserPool-Groups"
     }
   },
   "function": {
+    "AdminQueries5973b966": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "foundusers"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "foundBookTrip": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -65,6 +125,46 @@
     }
   },
   "parameters": {
+    "AMPLIFY_auth_foundusers_amazonAppId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "foundusers"
+        }
+      ]
+    },
+    "AMPLIFY_auth_foundusers_facebookAppId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "foundusers"
+        }
+      ]
+    },
+    "AMPLIFY_auth_foundusers_googleClientId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "foundusers"
+        }
+      ]
+    },
+    "AMPLIFY_function_AdminQueries5973b966_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "AdminQueries5973b966"
+        }
+      ]
+    },
+    "AMPLIFY_function_AdminQueries5973b966_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "AdminQueries5973b966"
+        }
+      ]
+    },
     "AMPLIFY_function_foundBookTrip_deploymentBucketName": {
       "usedBy": [
         {

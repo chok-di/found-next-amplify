@@ -14,16 +14,21 @@
     "categories": {
       "auth": {
         "foundnextamplify97867c9e": {},
-        "foundnextamplify346caa01": {}
+        "foundusers": {
+          "facebookAppId": "foundFacebook",
+          "googleClientId": "foundGoogle",
+          "amazonAppId": "foundApple"
+        },
+        "userPoolGroups": {}
       },
       "function": {
         "foundtrips": {
           "deploymentBucketName": "amplify-foundnextamplify-dev-32853-deployment",
-          "s3Key": "amplify-builds/foundtrips-79636c5a7a4e70646679-build.zip"
+          "s3Key": "amplify-builds/foundtrips-5a2b2f6b68536c374f38-build.zip"
         },
         "foundnextamplifyconnetToRDS": {
           "deploymentBucketName": "amplify-foundnextamplify-dev-32853-deployment",
-          "s3Key": "amplify-builds/foundnextamplifyconnetToRDS-LambdaLayerVersion9e95fea9-build.zip"
+          "s3Key": "amplify-builds/foundnextamplifyconnetToRDS-LambdaLayerVersion3955a0c0-build.zip"
         },
         "foundtripdetail": {
           "deploymentBucketName": "amplify-foundnextamplify-dev-32853-deployment",
@@ -31,7 +36,7 @@
         },
         "foundtripcheckbooked": {
           "deploymentBucketName": "amplify-foundnextamplify-dev-32853-deployment",
-          "s3Key": "amplify-builds/foundtripcheckbooked-38546f50666d30674d55-build.zip"
+          "s3Key": "amplify-builds/foundtripcheckbooked-6777637a70742f533265-build.zip"
         },
         "foundallbookings": {
           "deploymentBucketName": "amplify-foundnextamplify-dev-32853-deployment",
@@ -39,12 +44,19 @@
         },
         "foundBookTrip": {
           "deploymentBucketName": "amplify-foundnextamplify-dev-32853-deployment",
-          "s3Key": "amplify-builds/foundBookTrip-4a48336a6a7954524458-build.zip"
+          "s3Key": "amplify-builds/foundBookTrip-777537744b316c562b74-build.zip"
         },
         "foundcanceltrip": {
           "deploymentBucketName": "amplify-foundnextamplify-dev-32853-deployment",
           "s3Key": "amplify-builds/foundcanceltrip-4d3649416934506c4964-build.zip"
+        },
+        "AdminQueries5973b966": {
+          "deploymentBucketName": "amplify-foundnextamplify-dev-32853-deployment",
+          "s3Key": "amplify-builds/AdminQueries5973b966-672f476f4d78566e4d35-build.zip"
         }
+      },
+      "api": {
+        "AdminQueries": {}
       }
     }
   }

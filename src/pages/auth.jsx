@@ -67,7 +67,7 @@ function AuthPage() {
 
 return (
   <Layout>
-  <Authenticator>
+  <Authenticator >
     <button onClick={() => Auth.signOut()}>Sign out</button>
   </Authenticator>
   </Layout>
