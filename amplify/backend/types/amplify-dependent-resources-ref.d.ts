@@ -1,16 +1,39 @@
 export type AmplifyDependentResourcesAttributes = {
+  "api": {
+    "AdminQueries": {
+      "ApiId": "string",
+      "ApiName": "string",
+      "RootUrl": "string"
+    }
+  },
   "auth": {
-    "foundnextamplify346caa01": {
+    "foundusers": {
+      "AmazonWebClient": "string",
       "AppClientID": "string",
       "AppClientIDWeb": "string",
+      "CreatedSNSRole": "string",
+      "FacebookWebClient": "string",
+      "GoogleWebClient": "string",
+      "HostedUIDomain": "string",
       "IdentityPoolId": "string",
       "IdentityPoolName": "string",
+      "OAuthMetadata": "string",
       "UserPoolArn": "string",
       "UserPoolId": "string",
       "UserPoolName": "string"
+    },
+    "userPoolGroups": {
+      "foundnextamplifyGroupRole": "string"
     }
   },
   "function": {
+    "AdminQueries5973b966": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
     "foundBookTrip": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
