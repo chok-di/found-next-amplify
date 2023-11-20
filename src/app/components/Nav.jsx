@@ -16,15 +16,27 @@ export default function Nav({home}) {
     const token = Cookies.get("userToken");
     const user = await getUser(token);
     if (user) { setUser(user); }
+
+    const handleScroll = () => {
+        var navbar = document.getElementById('navbar');
+        if (window.scrollY>0){
+          navbar.classList.add("bg-ocean","opacity-95");
+        } else{
+          navbar.classList.remove('bg-ocean')
+        }
+    }
+    window.addEventListener('scroll',handleScroll);
+
   }
     , []);
   
-  const navStyle = home? "m-0 p-0 flex flex-row bg-transparent text-white z-10 h-30" : "m-0 p-0 flex flex-row bg-ocean text-white z-10 h-30";
+  const navStyle = home? "fixed w-full m-0 p-0 flex flex-row bg-transparent text-white z-10 h-30" : "m-0 p-0 flex flex-row bg-ocean text-white z-10 h-30";
+  const navScroll = "";
 
 
   return (
-    
-    <nav className={navStyle} >
+
+    <nav className={navStyle} id="navbar">
       {/* left */}
       <div className=" mt-16 ml-24 basis-1/4 text-[2em] font-serif">FOUND.</div>
       {/* right */}
