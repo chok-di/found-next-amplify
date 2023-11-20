@@ -11,6 +11,7 @@ module.exports = {
       'black': '#382720',
       'brown': '#55463E',
       'ocean': '#387170',
+      'ocean-light':'#3A9CA4',
       'deep-ocean': '#23564D',
       'sunset': '#FF6B57',
       'sky': '#AEDFF7',
