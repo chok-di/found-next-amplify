@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { getUser,signOut } from "../../hooks/checkUserGetEmail";
@@ -8,13 +9,13 @@ import Cookies from 'js-cookie';
 
 
 export default function Nav({home}) {
-  const [email, setEmail] = useState(null);
+  const [user, setUser] = useState(null);
   const router = useRouter(); 
 
   useEffect(async () => {
     const token = Cookies.get("userToken");
     const user = await getUser(token);
-    if (user) { setEmail(user.email); }
+    if (user) { setUser(user); }
   }
     , []);
   
@@ -33,10 +34,10 @@ export default function Nav({home}) {
         <div className="mt-16 mr-8"> Corporate Retreats</div>
         <div className="mt-16 mr-8"> 中文 </div>
         <div className="mt-14 mr-8">
-          {!email && <button className="border-2 w-24 h-12"> <Link href="/auth">Log In </Link> </button>}
-          {email && (
-            <div className="dropdown relative inline-block">
-              <button className="dropbtn w-24 h-12"> Name </button>
+          {!user && <button className="border-2 w-24 h-12"> <Link href="/auth">Log In</Link> </button>}
+          {user && (
+            <div className="dropdown w-24 relative ">
+              <button className="dropbtn w-24 h-12 flex justify-center items-center">{user.given_name}</button>
               <div className="dropdown-content">
                 <div><Link href="/trips">Trips</Link></div>
                 <div>My Bookings</div>
@@ -47,8 +48,6 @@ export default function Nav({home}) {
         </div>
       </div>
     </nav>
-  
-
   );
 
 };

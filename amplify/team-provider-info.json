@@ -14,12 +14,12 @@
     "categories": {
       "auth": {
         "foundnextamplify97867c9e": {},
-        "foundusers": {
-          "facebookAppId": "foundFacebook",
-          "googleClientId": "foundGoogle",
-          "amazonAppId": "foundApple"
-        },
-        "userPoolGroups": {}
+        "foundnextamplify": {
+          "userPoolId": "us-east-2_wDrBX8O9a",
+          "userPoolName": "foundusers",
+          "webClientId": "3stnf3uliima2phc8fpm0gupm0",
+          "nativeClientId": "3stnf3uliima2phc8fpm0gupm0"
+        }
       },
       "function": {
         "foundtrips": {
@@ -28,7 +28,7 @@
         },
         "foundnextamplifyconnetToRDS": {
           "deploymentBucketName": "amplify-foundnextamplify-dev-32853-deployment",
-          "s3Key": "amplify-builds/foundnextamplifyconnetToRDS-LambdaLayerVersion3955a0c0-build.zip"
+          "s3Key": "amplify-builds/foundnextamplifyconnetToRDS-LambdaLayerVersion4fa49bfd-build.zip"
         },
         "foundtripdetail": {
           "deploymentBucketName": "amplify-foundnextamplify-dev-32853-deployment",
@@ -49,14 +49,7 @@
         "foundcanceltrip": {
           "deploymentBucketName": "amplify-foundnextamplify-dev-32853-deployment",
           "s3Key": "amplify-builds/foundcanceltrip-4d3649416934506c4964-build.zip"
-        },
-        "AdminQueries5973b966": {
-          "deploymentBucketName": "amplify-foundnextamplify-dev-32853-deployment",
-          "s3Key": "amplify-builds/AdminQueries5973b966-672f476f4d78566e4d35-build.zip"
         }
-      },
-      "api": {
-        "AdminQueries": {}
       }
     }
   }

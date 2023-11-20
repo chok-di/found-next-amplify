@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 import jwksClient from 'jwks-rsa';
 
 
-const cognitoPoolId = 'us-east-2_AzOEoMGUl'; //   replace with your Cognito Pool ID
+const cognitoPoolId = 'us-east-2_wDrBX8O9a'; //   replace with your Cognito Pool ID
 const jwksUrl = `https://cognito-idp.us-east-2.amazonaws.com/${cognitoPoolId}/.well-known/jwks.json`;
 const client = jwksClient({ jwksUri: jwksUrl });
 
