@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { getUser,signOut } from "../../hooks/checkUserGetEmail";
@@ -8,22 +9,34 @@ import Cookies from 'js-cookie';
 
 
 export default function Nav({home}) {
-  const [email, setEmail] = useState(null);
+  const [user, setUser] = useState(null);
   const router = useRouter(); 
 
   useEffect(async () => {
     const token = Cookies.get("userToken");
     const user = await getUser(token);
-    if (user) { setEmail(user.email); }
+    if (user) { setUser(user); }
+
+    const handleScroll = () => {
+        var navbar = document.getElementById('navbar');
+        if (window.scrollY>0){
+          navbar.classList.add("bg-ocean","opacity-95");
+        } else{
+          navbar.classList.remove('bg-ocean')
+        }
+    }
+    window.addEventListener('scroll',handleScroll);
+
   }
     , []);
   
-  const navStyle = home? "m-0 p-0 flex flex-row bg-transparent text-white z-10 h-30" : "m-0 p-0 flex flex-row bg-ocean text-white z-10 h-30";
+  const navStyle = home? "fixed w-full m-0 p-0 flex flex-row bg-transparent text-white z-10 h-30" : "m-0 p-0 flex flex-row bg-ocean text-white z-10 h-30";
+  const navScroll = "";
 
 
   return (
-    
-    <nav className={navStyle} >
+
+    <nav className={navStyle} id="navbar">
       {/* left */}
       <div className=" mt-16 ml-24 basis-1/4 text-[2em] font-serif">FOUND.</div>
       {/* right */}
@@ -33,10 +46,10 @@ export default function Nav({home}) {
         <div className="mt-16 mr-8"> Corporate Retreats</div>
         <div className="mt-16 mr-8"> 中文 </div>
         <div className="mt-14 mr-8">
-          {!email && <button className="border-2 w-24 h-12"> <Link href="/auth">Log In </Link> </button>}
-          {email && (
-            <div className="dropdown relative inline-block">
-              <button className="dropbtn w-24 h-12"> Name </button>
+          {!user && <button className="border-2 w-24 h-12"> <Link href="/auth">Log In</Link> </button>}
+          {user && (
+            <div className="dropdown w-24 relative ">
+              <button className="dropbtn w-24 h-12 flex justify-center items-center">{user.given_name}</button>
               <div className="dropdown-content">
                 <div><Link href="/trips">Trips</Link></div>
                 <div>My Bookings</div>
@@ -47,8 +60,6 @@ export default function Nav({home}) {
         </div>
       </div>
     </nav>
-  
-
   );
 
 };
