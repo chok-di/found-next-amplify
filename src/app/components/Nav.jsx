@@ -1,6 +1,10 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircleChevronDown } from '@fortawesome/free-solid-svg-icons';
+
 import { useRouter } from "next/router";
 import { getUser,signOut } from "../../hooks/checkUserGetEmail";
 import Link from "next/link";
@@ -31,7 +35,7 @@ export default function Nav({home}) {
     , []);
   
   const navStyle = home? "fixed w-full h-28 m-0 p-0 flex flex-row items-center bg-transparent text-white z-10 " : "m-0 p-0 flex flex-row bg-ocean text-white z-10 h-30";
-  const navScroll = "";
+ 
 
 
   return (
@@ -49,7 +53,7 @@ export default function Nav({home}) {
           {!user && <button className="border-2 w-24 h-12"> <Link href="/auth">Log In</Link> </button>}
           {user && (
             <div className="dropdown w-24 relative ">
-              <button className="dropbtn w-24 h-12 flex justify-center items-center">{user.given_name}</button>
+              <button className="dropbtn w-24 h-12 flex justify-center items-center">{user.given_name}&nbsp;<FontAwesomeIcon icon={faCircleChevronDown} size="2xs" /></button>
               <div className="dropdown-content">
                 <div><Link href="/trips">Trips</Link></div>
                 <div>My Bookings</div>
