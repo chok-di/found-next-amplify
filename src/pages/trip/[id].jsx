@@ -6,9 +6,6 @@ import { getTripDetails } from "../../hooks/getTripInfo.js";
 import Layout from "../../app/components/Layout";
 
 
-
-
-
 AWS.config.region = "us-east-2";
 AWS.config.credentials = new AWS.CognitoIdentityCredentials({
   IdentityPoolId: "us-east-2:7dc220ca-2c98-428d-86c2-83fa56c53ebd"
@@ -46,7 +43,7 @@ const EventDetailPage = ({ email, data }) => {
 
     <Layout>
       {/* background pic */}
-      <div className="fixed inset-0 bg-[url('.././img/background.jpg')]  z-[-10] opacity-50"></div>
+      <div className="fixed inset-0 bg-[url('/img/background.jpg')]  z-[-10] opacity-50"></div>
       {/* main container */}
       <div className=" relative container mx-auto my-16 p-8 space-y-6  bg-sand bg-opacity-70 shadow-md">
         <h4 className="text-4xl font-serif text-center mb-4">{trip.title}</h4>
@@ -81,8 +78,7 @@ const EventDetailPage = ({ email, data }) => {
             <Image src="/img/a1.jpg" width={300} height={250}></Image>
             <Image src="/img/a1.jpg" width={300} height={250}></Image>
      
-     
-
+    
           </div>
         </div>
         

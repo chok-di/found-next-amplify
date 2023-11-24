@@ -2,14 +2,11 @@ import React, { useState } from "react";
 import Image from 'next/image';
 
 
-import a1 from "../../img/a1.jpg";
-import a2 from "../../img/a2.jpg";
-import b1 from "../../img/b1.jpg";
-import b2 from "../../img/b2.jpg";
+
 
 // const images = ['/img/a1','/img/a2','img/a3','img/a4','/img/a1','/img/a2','img/a3','img/a4'];
 
-const images = ['/img/a1.jpg', '/img/a2.jpg', '/img/b1.jpg', '/img/b2.jpg','/img/a1.jpg', '/img/a2.jpg', '/img/b1.jpg', '/img/b2.jpg'];
+const images = ['/img/a1.jpg', '/img/a2.jpg', '/img/b1.jpg', '/img/b2.jpg','/img/c1.jpg', '/img/c2.jpg', '/img/d1.jpg', '/img/d2.jpg'];
 
 
 
@@ -58,15 +55,15 @@ function Gallery() {
       </div>
       <div className="grid grid-rows-3 gap-12">
         <div className="row-span-1 relative " onClick={() => { openLightbox(2) }}> <Image src={"/img/b1.jpg"} fill /></div>
-        <div className="row-span-2 relative" onClick={() => { openLightbox(3) }}> <Image src={"/img/b2.jpg"} fill /> </div>
+        <div className="row-span-2 relative" onClick={() => { openLightbox(3) }}> <Image src={"/img/b2.jpg"} fill objectFit="cover" /> </div>
       </div>
       <div className="grid grid-rows-3 gap-12">
-        <div className="row-span-2 relative " onClick={() => { openLightbox(4) }}> <Image src={"/img/a1.jpg"} fill /></div>
-        <div className="row-span-1 relative" onClick={() => { openLightbox(5) }}> <Image src={"/img/a2.jpg"} fill /> </div>
+        <div className="row-span-2 relative " onClick={() => { openLightbox(4) }}> <Image src={"/img/c1.jpg"} fill /></div>
+        <div className="row-span-1 relative" onClick={() => { openLightbox(5) }}> <Image src={"/img/c2.jpg"} fill /> </div>
       </div>
       <div className="grid grid-rows-3 gap-12">
-        <div className="row-span-1 relative " onClick={() => { openLightbox(6) }}> <Image src={"/img/b1.jpg"} fill /></div>
-        <div className="row-span-2 relative" onClick={() => { openLightbox(7) }}> <Image src={"/img/b2.jpg"} fill /> </div>
+        <div className="row-span-1 relative " onClick={() => { openLightbox(6) }}> <Image src={"/img/d1.jpg"} fill /></div>
+        <div className="row-span-2 relative" onClick={() => { openLightbox(7) }}> <Image src={"/img/d2.jpg"} fill /> </div>
       </div>
     </div>
 

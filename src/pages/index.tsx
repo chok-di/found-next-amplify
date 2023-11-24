@@ -4,8 +4,14 @@ import Link from 'next/link';
 
 import Layout from "../app/components/Layout";
 import Gallery from "../app/components/Gallery";
-import Scheduler from "../app/components/Scheduler";
-import Nav from "../app/components/Nav";
+// import Scheduler from "../app/components/Scheduler";
+
+import dynamic from 'next/dynamic';
+
+const Scheduler = dynamic(
+  () => import('../app/components/Scheduler'),
+  { ssr: false }
+);
 
 
 
