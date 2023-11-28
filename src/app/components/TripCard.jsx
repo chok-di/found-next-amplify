@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import a1 from "../../img/a1.jpg";
+
 
 
 const TripCard = (props) => {
@@ -29,7 +29,7 @@ const TripCard = (props) => {
           </div>
         </div>
         <div className="pt-8">
-          <Image width={220} height={150} src={a1} />
+          <Image width={220} height={150} src={'/img/a1.jpg'} />
         </div>
       </div>
     </div>

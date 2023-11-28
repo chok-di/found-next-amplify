@@ -96,7 +96,9 @@ function Scheduler() {
         <br />
         <span className="font-semibold"> What's included:</span>
         {activities}
+        <button>Book</button>
       </div> 
+   
 
     </div>
   );
