@@ -3,10 +3,19 @@
 @tailwind utilities;
 
 
+@layer base{
+  abbr {
+    @apply no-underline;
+  }
+  button{
+    @apply cursor-auto;
+  }
+}
+
 /** react calendar **/
 @layer components {
   .react-calendar {
-    @apply bg-grey font-inter text-center w-4/5;
+    @apply bg-grey font-inter text-center w-4/5 hover:cursor-auto;
 
     .react-calendar__navigation {
       @apply flex font-serif pt-5 pb-2;
@@ -29,11 +38,18 @@
     }
 
     .eventDays {
-      @apply bg-sand;
+      @apply bg-sand hover:cursor-pointer;
     }
 
-    .eventStartEndDays {
-      @apply bg-clay text-[#ffffff];
+    .eventStartDay,.eventEndDay{
+      @apply bg-clay text-[#ffffff] ;
+      
+    }
+    .eventStartDay{
+      @apply rounded-tl rounded-bl;
+    }
+    .eventEndDay{
+      @apply rounded-tr rounded-br;
     }
   }
 }

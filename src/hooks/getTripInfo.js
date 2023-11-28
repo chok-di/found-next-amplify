@@ -15,7 +15,7 @@ export async function getAllTrips() {
   };
   try{
     const res = await lambda.invoke(params).promise();
-    return res;
+    return JSON.parse(res.Payload).body;
   } catch (err) {
     console.error("Error invoking Lambda function", err);
     throw err;
@@ -32,7 +32,7 @@ export async function getAllBookings(){
   };
   try{
     const res = await lambda.invoke(params).promise();
-    return res;
+    return JSON.parse(res).PayLoad.body;
   } catch (err) {
     console.error("Error invoking Lambda function", err);
     throw err;

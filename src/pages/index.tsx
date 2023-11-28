@@ -2,14 +2,34 @@
 import 'dotenv/config';
 import Link from 'next/link';
 
+import {getAllTrips} from "../hooks/getTripInfo";
+
 import Layout from "../app/components/Layout";
 import Gallery from "../app/components/Gallery";
-import Scheduler from "../app/components/Scheduler";
-import Nav from "../app/components/Nav";
+// import Scheduler from "../app/components/Scheduler";
+
+import dynamic from 'next/dynamic';
+
+import { GetServerSideProps } from 'next';
+
+const Scheduler = dynamic(
+  () => import('../app/components/Scheduler'),
+  { ssr: false }
+);
+
+export const getServerSideProps: GetServerSideProps = async() => {
+  const events = await getAllTrips();
+  return {
+    props:{
+      events,
+    },
+  };
+};
 
 
+export default function Home({events}:{events:{}[]}) {
+  console.log({events});
 
-export default function Home() {
   return (
     <Layout home>
       <div className="relative mt-[700px]">
@@ -35,7 +55,7 @@ export default function Home() {
 
         <div className="bg-#ffffff">
           <h4 className="font-serif text-xl py-16 text-center">Calendar</h4>
-          <Scheduler />
+          <Scheduler events = {events} />
         </div>
         </div>
     </Layout>

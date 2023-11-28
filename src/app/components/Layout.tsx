@@ -1,8 +1,5 @@
 import React from "react";
 import Head from 'next/head';
-// import Image from 'next/image';
-// import styles from './layout.module.css';
-// import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
 const name = 'Woody';
 const siteTitle = 'Next.js Sample Website';
@@ -61,7 +58,7 @@ export default function RootLayout({
           {home ? (
             
               <div className="relative z-10 overflow-y-hidden">
-                <div className="absolute top-0 left-0 w-full h-[700px] bg-cover bg-[url('../img/background.jpg')]">
+                <div className="absolute top-0 left-0 w-full h-[700px] bg-cover bg-[url('/img/background.jpg')]">
                   <Nav home/>
                   <span><h1 className="ml-24 pt-48 text-7xl font-serif text-white ">Let's Thrive Together.</h1></span>
                   <div>
