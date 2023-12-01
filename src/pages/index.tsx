@@ -28,11 +28,10 @@ export const getServerSideProps: GetServerSideProps = async() => {
 
 
 export default function Home({events}:{events:{}[]}) {
-  console.log({events});
 
   return (
     <Layout home>
-      <div className="relative mt-[700px]">
+      <div className="relative">
         <div className="flex flex-row bg-grey h-72">
           <div className="basis-1/3 text-center">
             <h3 className="font-serif text-2xl mt-16">UNPLUG</h3>

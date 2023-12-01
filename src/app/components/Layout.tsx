@@ -56,9 +56,8 @@ export default function RootLayout({
         </Head>
         <body className="relative">
           {home ? (
-            
               <div className="relative z-10 overflow-y-hidden">
-                <div className="absolute top-0 left-0 w-full h-[700px] bg-cover bg-[url('/img/background.jpg')]">
+                <div className="bg-cover m-0 p-0 w-full h-[50rem] bg-[url('/img/background.jpg')]">
                   <Nav home/>
                   <span><h1 className="ml-24 pt-48 text-7xl font-serif text-white ">Let's Thrive Together.</h1></span>
                   <div>
