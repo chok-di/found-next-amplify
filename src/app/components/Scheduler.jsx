@@ -2,23 +2,13 @@
 
 import React, { useState,useEffect } from "react";
 import Calendar from "react-calendar";
-// import  "../styles/Scheduler.module.css";
-
-
-// 
+import Link from "next/link";
 
 
 function Scheduler(props) {
   const events = props.events;
-  console.log(events);
   const firstEvent = events[0]
   const [displayEvent,setEvent] = useState(firstEvent);
-  console.log({displayEvent});
-  // let event = events[0];
-  // let startTime = event.start;
-  // let endTime = event.end
-  // let price = event.price;
-
 
   function highlightEventDays(date) {
     for (let event of events){
@@ -57,20 +47,20 @@ function Scheduler(props) {
           value={new Date(2023,0,1)}
           tileClassName={highlightEventDays}
           onClickDay={handleTileClick}
-          maxDate = {new Date(2024,1,1)}
-          minDate = {new Date(2023,0,1)}
+          maxDate = {new Date(2025,3,1)}
+          minDate = {new Date()}
           minDetail={"month"}
         />
       </div>
       <div className="mx-8 w-1/2 font-mono">
-        <div className="font-semibold">{displayEvent.start_time.toLocaleString()} to {displayEvent.end_time.toLocaleString()} </div>
+        <div className="font-semibold">{displayEvent.title} </div>
+        <div className="font-semibold">{new Date(displayEvent.start_time).toLocaleDateString()} to {new Date(displayEvent.end_time).toLocaleDateString()} </div>
         <div><span className="font-semibold">{displayEvent.available_spots} spots left</span> ({displayEvent.total_spots} spots total)</div>
         <div>From <span className="font-semibold">${displayEvent.price} (CAD)</span></div>
-        <br />
-        <br />
+        <br/>
         <span className="font-semibold"> What's included:</span>
         {activities}
-        <button>Book</button>
+        <Link href={"#"}><button className="bg-ocean text-white font-mono font-semibold w-24 h-8">Book</button></Link>
       </div> 
    
 
@@ -79,36 +69,3 @@ function Scheduler(props) {
 }
 export default Scheduler;
 
-
-
-  //const events = [
-  //   { "id":1,
-  //     "title": "YiLan",
-  //     "total_spots": 10,
-  //     "available_spots": 8,
-  //     "start": new Date(2023, 0, 5, 8, 0),
-  //     "end": new Date(2023, 0, 19, 18, 0),
-  //     "price": 2500,
-  //     "description":
-  //       ["Daily yoga classes",
-  //         "Daily surf/SUP sessions(equipment provided)",
-  //         "Daily coaching sessions(We also provide optional 1-on-1 life coaching sessions)",
-  //         "Daily meals(seasonal menus with locally sourced ingredients)",
-  //         "6 nights accommodation(shared room with one other person and en-suite bathroom)"]
-  //   },
-  //   {
-  //     "id":2,
-  //     "title": "YiLan",
-  //     "total_spots": 10,
-  //     "available_spots": 8,
-  //     "start": new Date(2023, 1, 5, 8, 0),
-  //     "end": new Date(2023, 1, 19, 18, 0),
-  //     "price": 2500,
-  //     "description":
-  //       ["Daily yoga classes",
-  //         "Daily surf/SUP sessions(equipment provided)",
-  //         "Daily coaching sessions(We also provide optional 1-on-1 life coaching sessions)",
-  //         "Daily meals(seasonal menus with locally sourced ingredients)",
-  //         "6 nights accommodation(shared room with one other person and en-suite bathroom)"]
-  //   }
-  // ];
