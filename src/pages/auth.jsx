@@ -2,7 +2,6 @@
 
 import { useEffect } from "react";
 import { useRouter } from 'next/router';
-
 import { Amplify, Auth, Hub } from 'aws-amplify'
 import awsmobile from '../aws-exports';
 import { Authenticator, SignUpContext } from '@aws-amplify/ui-react';
@@ -19,9 +18,7 @@ import Layout from "../app/components/Layout";
 Amplify.configure(awsmobile);
 
 function AuthPage() {
-
   const router = useRouter();
-
   // redirect to the page before 
   const handleLogIn = async () => {
     const previousPath = localStorage.getItem('previousPath') || '/';
@@ -67,12 +64,9 @@ function AuthPage() {
   }, []
   );
 
-
   return (
     <Layout>
-     
       <Authenticator>
-       
         <button onClick={() => Auth.signOut()}>Sign out</button>
       </Authenticator>
     </Layout>

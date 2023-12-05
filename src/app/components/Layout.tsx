@@ -57,31 +57,25 @@ export default function RootLayout({
         <body className="relative">
           {home ? (
               <div className="relative z-10 overflow-y-hidden">
-                <div className="bg-cover m-0 p-0 w-full h-[50rem] bg-[url('/img/background.jpg')]">
+                <div className="relative bg-cover m-0 p-0 w-full h-[50rem] bg-[url('/img/background.jpg')]">
                   <Nav home/>
-                  <span><h1 className="ml-24 pt-48 text-7xl font-serif text-white ">Let's Thrive Together.</h1></span>
-                  <div>
-                    <Link href="/trips">
+                  <h1 className="absolute top-60 left-24  text-7xl font-serif text-white ">Let's Thrive Together.</h1>
+                  <Link className="absolute top-96 left-24"href="/trips">
                       <button
-                        className="ml-24 mt-24 mb-24 font-mono font-semibold text-ocean bg-white w-40 h-10 shadow-[2px_4px_4px_4px_rgba(0,0,0,0.4)]">
+                        className="mt-24 font-mono font-semibold text-ocean bg-white w-44 h-16 text-xl shadow-[2px_4px_4px_4px_rgba(0,0,0,0.4)]">
                         Book Now &#8594;
                       </button>
-                    </Link>
-                  </div>
+                  </Link>
                 </div>
                 {children}
                 <Footer />
               </div>
-            
-
-
           ) : (
             <>
               <Nav />
               {children}
               <Footer />
             </>
-
           )}
         </body>
       </html>
