@@ -70,7 +70,6 @@ function Gallery() {
     {
     lightboxOpen && (
       <Lightbox
-        
         images={images}
         currentImage={currentImage}
         setCurrentImage={setCurrentImage}

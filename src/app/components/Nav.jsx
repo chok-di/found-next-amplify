@@ -44,7 +44,6 @@ export default function Nav({home}) {
       {/* left */}
       <div className=" ml-24 basis-1/4 text-[2em] font-serif">FOUND.</div>
       {/* right */}
-
       <div className=" basis-3/4 text-[1.3em] font-mono flex flex-row items-center justify-end">
         <div className="mr-8 "> About </div>
         <div className="mr-8"> Corporate Retreats</div>

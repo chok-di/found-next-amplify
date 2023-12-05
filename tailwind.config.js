@@ -28,6 +28,14 @@ module.exports = {
 
     },
     extend: {
+      backgroundSize: {
+        '150': '150%',  // Zoom to 150%
+        // add more sizes as needed
+      },
+      backgroundPosition: {
+        'neg-top-right': '-30% -30%', // Move the image to cut off bottom right
+          // add more positions as needed
+      }
 
     },
   },

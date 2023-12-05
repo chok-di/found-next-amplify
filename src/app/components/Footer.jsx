@@ -6,9 +6,9 @@ import { faFacebookF, faInstagram, faYoutube, faPinterest } from "@fortawesome/f
 
 function Footer() {
   return (
-    <div className="pt-24 bg-brown text-[#ffffff]">
-      <h4 className="ml-24 py-10 font-serif text-2xl">FOUND.</h4>
-      <div className="ml-24 pb-12 font-mono flex flex-row">
+    <div className="bg-brown text-[#ffffff]">
+      <h4 className="pt-20 ml-24 font-serif text-3xl">FOUND.</h4>
+      <div className="py-10 ml-24 font-mono flex flex-row">
         <div className="mr-12">
           <div>About</div>
           <div>Contact Us</div>
@@ -18,7 +18,7 @@ function Footer() {
           <div>For Corporates</div>
         </div>
       </div>
-      <div className="ml-24 pb-24">
+      <div className="pb-20 ml-24 ">
         <FontAwesomeIcon className="mr-6" icon={faFacebookF} />
         <FontAwesomeIcon className="mr-6" icon={faInstagram} />
         <FontAwesomeIcon className="mr-6" icon={faYoutube} />

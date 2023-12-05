@@ -8,7 +8,6 @@ const client = jwksClient({ jwksUri: jwksUrl });
 
 
 export default function handler(req, res) {
-
   const authHeader = req.headers.authorization;
   if (authHeader) {
     try {
