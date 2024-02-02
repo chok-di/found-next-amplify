@@ -9,7 +9,7 @@ config.autoAddCss = false;
 
 
 import "../app/globals.css";
-import "../app/styles/Scheduler.module.css";
+import "../app/styles/scheduler.module.css";
 
 
 
