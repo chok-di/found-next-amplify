@@ -14,40 +14,39 @@
 .top_page {
   margin: none;
   padding: none;
-  height:50em;
+  height: 50em;
   background-position: 0 14%;
-  display:flex;
+  display: flex;
   flex-direction: column;
-} 
+}
 
 .top_page button {
-  height:2.5em;
-  width:8em;
-  border:none;
-  font-family: "Jost"; 
+  height: 2.5em;
+  width: 8em;
+  border: none;
+  font-family: 'Jost';
   font-weight: 800;
-  font-size:1.5em;
-  color:#387170;
-  background-color:#F5F8F8;
+  font-size: 1.5em;
+  color: #387170;
+  background-color: #f5f8f8;
   margin-left: 4em;
-  box-shadow: 2px 4px 4px 5px rgba(0,0,0,0.4);
+  box-shadow: 2px 4px 4px 5px rgba(0, 0, 0, 0.4);
 }
 
 .mission {
-  background-color: #F8F9F8;
+  background-color: #f8f9f8;
 }
 
 .card {
-  height:30em;
-  padding-top:4em;
-  padding-bottom:4em;
-  text-align:center;
+  height: 30em;
+  padding-top: 4em;
+  padding-bottom: 4em;
+  text-align: center;
 }
 
 .card div {
   font-size: 25px;
   /* font-family:"Jost"; */
-  padding-left:15%;
-  padding-right:15%;
-  
+  padding-left: 15%;
+  padding-right: 15%;
 }

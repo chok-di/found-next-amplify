@@ -9,8 +9,6 @@ async function connectToDatabase() {
     database: process.env.RDS_DB_NAME,
   });
   return client;
-
 }
 
 module.exports = { connectToDatabase };
-

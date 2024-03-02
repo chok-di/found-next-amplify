@@ -1,10 +1,13 @@
-import React from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebookF, faInstagram, faYoutube, faPinterest } from "@fortawesome/free-brands-svg-icons";
+import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faFacebookF,
+  faInstagram,
+  faYoutube,
+  faPinterest,
+} from '@fortawesome/free-brands-svg-icons'
 
-
-
-function Footer() {
+export const Footer = (): JSX.Element => {
   return (
     <div className="bg-brown text-[#ffffff]">
       <h4 className="pt-20 ml-24 font-serif text-3xl">FOUND.</h4>
@@ -26,7 +29,6 @@ function Footer() {
       </div>
     </div>
   )
-
 }
 
-export default Footer;
+export default Footer

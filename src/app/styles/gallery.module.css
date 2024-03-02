@@ -10,16 +10,15 @@
   max-width: 25%;
 }
 
-.container img{
-  margin-top:8px;
-  width:100%;
+.container img {
+  margin-top: 8px;
+  width: 100%;
 }
 
-.long img{
-  height:424px;
-
+.long img {
+  height: 424px;
 }
 
-.short img{
-  height:180px;
+.short img {
+  height: 180px;
 }
