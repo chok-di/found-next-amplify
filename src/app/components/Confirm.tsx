@@ -14,13 +14,15 @@ export const Confirm: React.FC<Props> = ({
   isBooked,
   isFull,
   email,
-  tripId,
+  tripId
 }): JSX.Element => {
   // const { isBooked, is_full, email, tripId } = props
   const [status, setStatus] = useState('')
   const router = useRouter()
-
-  const handleBook = async () => {
+  const handleReload = (): void => {
+    router.reload();
+  }
+  const handleBook = async (): Promise<void> => {
     try {
       setStatus('waiting')
       await bookTrip(email, tripId)
@@ -30,7 +32,7 @@ export const Confirm: React.FC<Props> = ({
     }
   }
 
-  const handleCancel = async () => {
+  const handleCancel = async (): Promise<void> => {
     try {
       setStatus('waiting')
       await canceltrip(email, tripId)
@@ -77,7 +79,7 @@ export const Confirm: React.FC<Props> = ({
           </button>
         </div>
       )}
-      {!isFull && !isBooked && email && (
+      {!isFull && !isBooked && (email !== "") && (
         <button
           onClick={() => {
             setStatus('book')
@@ -86,21 +88,21 @@ export const Confirm: React.FC<Props> = ({
           Book
         </button>
       )}
-      {!isFull && !isBooked && !email && (
+      {!isFull && !isBooked && (email !== "") && (
         <button className="bg-ocean hover:bg-deep-ocean text-white px-4 py-2 w-18 rounded">
           <Link href={'/auth'}>LogIn</Link>
         </button>
       )}
       {isFull && <button>Full</button>}
 
-      {status && (
+      {status !== "" && (
         <>
           <div className="fixed inset-0 bg-black bg-opacity-50 z-40"></div>
 
           <div className="fixed inset-0 z-50 flex items-center justify-center">
             <div className="bg-sand text-black border-2 p-4 rounded-md w-[40rem] h-[15rem] flex flex-col items-center">
               <h1 className="font-mono text-3xl mt-8 mb-8">{message}</h1>
-              {(status == 'book' || status == 'cancel') && (
+              {(status === 'book' || status === 'cancel') && (
                 <div className="flex space-x-16">
                   <button
                     className="bg-ocean hover:bg-blue-600 text-white p-2 w-16 rounded"
@@ -118,10 +120,10 @@ export const Confirm: React.FC<Props> = ({
                   </button>
                 </div>
               )}
-              {status == 'complete' && (
+              {status === 'complete' && (
                 <button
                   className=" bg-ocean hover:bg-red-600 text-white p-2 w-16 rounded"
-                  onClick={void router.reload()}
+                  onClick={handleReload}
                 >
                   back
                 </button>
