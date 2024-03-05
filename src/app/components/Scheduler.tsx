@@ -44,19 +44,18 @@ const Scheduler = ({ events }: { events: Trip[] }): JSX.Element => {
     return ''
   }
 
-  const handleTileClick = (date: Date) => {
+  const handleTileClick = (date: Date): void => {
     const event = events.filter(
       (event) =>
-        new Date(event.start_time) <= date && new Date(event.end_time) >= date,
+        new Date(event.start_time) <= date && new Date(event.end_time) >= date
     )[0]
-    if (event) {
-      setEvent(event)
-      console.log('even set:' + event)
-    }
+    setEvent(event)
+    // console.log('even set:' + event)
+    
   }
 
-  const activities = displayEvent.description.split('&').map((activity) => {
-    return <div> &#8226; {activity}</div>
+  const activities = displayEvent.description.split('&').map((activity,index) => {
+    return <div key={index}> &#8226; {activity}</div>
   })
 
   return (

@@ -23,16 +23,16 @@ export const Gallery = (): JSX.Element => {
     setLightboxOpen(true)
   }
 
-  const closeLightbox = () => {
+  const closeLightbox = (): void => {
     setLightboxOpen(false)
   }
 
-  const Lightbox = () => {
-    const nextImage = () => {
+  const Lightbox = (): JSX.Element => {
+    const nextImage = (): void => {
       setCurrentImage((current) => (current + 1) % 8)
     }
 
-    const prevImage = () => {
+    const prevImage = (): void => {
       setCurrentImage((current) => (current + 7) % 8)
     }
 

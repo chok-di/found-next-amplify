@@ -20,7 +20,7 @@ export const Confirm: React.FC<Props> = ({
   const [status, setStatus] = useState('')
   const router = useRouter()
   const handleReload = (): void => {
-    router.reload();
+    router.reload()
   }
   const handleBook = async (): Promise<void> => {
     try {
@@ -79,7 +79,7 @@ export const Confirm: React.FC<Props> = ({
           </button>
         </div>
       )}
-      {!isFull && !isBooked && (email !== "") && (
+      {!isFull && !isBooked && (email !== '') && (
         <button
           onClick={() => {
             setStatus('book')
@@ -88,14 +88,14 @@ export const Confirm: React.FC<Props> = ({
           Book
         </button>
       )}
-      {!isFull && !isBooked && (email !== "") && (
+      {!isFull && !isBooked && (email !== '') && (
         <button className="bg-ocean hover:bg-deep-ocean text-white px-4 py-2 w-18 rounded">
           <Link href={'/auth'}>LogIn</Link>
         </button>
       )}
       {isFull && <button>Full</button>}
 
-      {status !== "" && (
+      {status !== '' && (
         <>
           <div className="fixed inset-0 bg-black bg-opacity-50 z-40"></div>
 

@@ -5,12 +5,12 @@ import Nav from './Nav'
 import Footer from './Footer'
 import { Marcellus, Jost, Inter } from 'next/font/google'
 
-
+// delete
 const siteTitle = 'Next.js Sample Website'
-
-
+//delete
+// delete
 // font awesome
-
+//delete
 const marcellus = Marcellus({
   subsets: ['latin'],
   weight: ['400'],
@@ -60,7 +60,7 @@ export const RootLayout = ({
               <div className="relative bg-cover m-0 p-0 w-full h-[50rem] bg-[url('/img/background.jpg')]">
                 <Nav home />
                 <h1 className="absolute top-60 left-24  text-7xl font-serif text-white ">
-                  Let's Thrive Together.
+                  Let &#39;'s Thrive Together.
                 </h1>
                 <Link className="absolute top-96 left-24" href="/trips">
                   <button className="mt-24 font-mono font-semibold text-ocean bg-white w-44 h-16 text-xl shadow-[2px_4px_4px_4px_rgba(0,0,0,0.4)]">

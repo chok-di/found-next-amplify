@@ -36,7 +36,7 @@ export const Nav = ({ home }: { home?: boolean }): JSX.Element => {
       try {
         const token = Cookies.get('userToken')
         const user = await getUser(token)
-        if (user) {
+        if (user !== undefined) {
           setUser(user)
         }
       } catch (err) {
@@ -44,20 +44,20 @@ export const Nav = ({ home }: { home?: boolean }): JSX.Element => {
       }
     }
 
-    const handleScroll = () => {
-      var navbar = document.getElementById('navbar')
-      if (window.scrollY > 0) {
-        navbar!.classList.add('bg-ocean-light', 'opacity-95')
-      } else {
-        navbar!.classList.remove('bg-ocean-light', 'opacity-95')
+    const handleScroll = (): void => {
+      const navbar = document.getElementById('navbar')
+      if (window.scrollY > 0 && navbar !== null) {
+        navbar.classList.add('bg-ocean-light', 'opacity-95')
+      } else if (navbar!== null) {
+        navbar.classList.remove('bg-ocean-light', 'opacity-95')
       }
     }
 
-    setUserData()
+    void setUserData()
     window.addEventListener('scroll', handleScroll)
   }, [])
 
-  const navStyle = home
+  const navStyle = (home !== null && home !== false)
     ? 'fixed w-full h-28 m-0 p-0 flex flex-row items-center bg-transparent text-white z-10 '
     : 'm-0 p-0 flex flex-row bg-ocean text-white z-10 h-30'
 
@@ -71,13 +71,13 @@ export const Nav = ({ home }: { home?: boolean }): JSX.Element => {
         <div className="mr-8"> Corporate Retreats</div>
         <div className="mr-8"> 中文 </div>
         <div className="mr-8">
-          {!user && (
+          {user !== null && (
             <button className="border-2 w-24 h-12">
               {' '}
               <Link href="/auth">Log In</Link>{' '}
             </button>
           )}
-          {user && (
+          {user !== null && (
             <div className="dropdown w-24 relative ">
               <button className="dropbtn w-24 h-12 flex justify-center items-center">
                 {user.given_name}&nbsp;
