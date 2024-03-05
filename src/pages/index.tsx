@@ -14,7 +14,7 @@ import { type GetServerSideProps } from 'next'
 
 const Scheduler = dynamic(
   async () => await import('../app/components/Scheduler'),
-  { ssr: false },
+  { ssr: false }
 )
 
 interface Trip {
@@ -32,8 +32,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const events = await getAllTrips()
   return {
     props: {
-      events,
-    },
+      events
+    }
   }
 }
 

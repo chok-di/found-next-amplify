@@ -25,13 +25,13 @@ export const saveToken = (token: string): void => {
 }
 
 export const getUser = async (
-  token: string | undefined,
+  token: string | undefined
 ): Promise<CognitoUser | undefined> => {
   const response = await fetch('http://localhost:3000/api/user', {
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-    },
+      Authorization: `Bearer ${token}`
+    }
   })
   if (response.ok) {
     const data = await response.json()
