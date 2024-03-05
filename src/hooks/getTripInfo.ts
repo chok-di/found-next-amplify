@@ -37,6 +37,10 @@ export const getAllTrips = async (): Promise<Trip[]> => {
       console.error('Lambda response or Payload is undefined')
       throw new Error('Lambda response or Payload is undefined')
     }
+    if (typeof res.Payload !== 'string') {
+      console.error('Expected Payload to be a string', res.Payload)
+      throw new Error('Expected Payload to be a string')
+    }
     return JSON.parse(res.Payload).body
   } catch (err) {
     console.error('Error invoking Lambda function', err)
@@ -56,6 +60,10 @@ export const getAllBookings = async (): Promise<Booking[]> => {
     if (res.Payload === undefined) {
       console.error('Lambda response or Payload is undefined')
       throw new Error('Lambda response or Payload is undefined')
+    }
+    if (typeof res.Payload !== 'string') {
+      console.error('Expected Payload to be a string', res.Payload)
+      throw new Error('Expected Payload to be a string')
     }
     return JSON.parse(res.Payload).body
   } catch (err) {
@@ -86,12 +94,20 @@ export const getTripDetails = async (
       console.error('Lambda response or Payload is undefined')
       throw new Error('Lambda response or Payload is undefined')
     }
+    if (typeof resTrip.Payload !== 'string') {
+      console.error('Expected Payload to be a string', resTrip.Payload)
+      throw new Error('Expected Payload to be a string')
+    }
     const trip: Trip = JSON.parse(resTrip.Payload).body[0]
 
     const resIsBooked = await lambda.invoke(params2).promise()
     if (resIsBooked.Payload === undefined) {
       console.error('Lambda response or Payload is undefined')
       throw new Error('Lambda response or Payload is undefined')
+    }
+    if (typeof resIsBooked.Payload !== 'string') {
+      console.error('Expected Payload to be a string', resIsBooked.Payload)
+      throw new Error('Expected Payload to be a string')
     }
     const isBooked: boolean = JSON.parse(resIsBooked.Payload)
 
