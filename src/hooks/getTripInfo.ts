@@ -3,7 +3,7 @@ import { type InvocationResponse } from 'aws-sdk/clients/lambda'
 
 AWS.config.region = 'us-east-2'
 AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-  IdentityPoolId: 'us-east-2:7dc220ca-2c98-428d-86c2-83fa56c53ebd',
+  IdentityPoolId: 'us-east-2:7dc220ca-2c98-428d-86c2-83fa56c53ebd'
 })
 const lambda = new AWS.Lambda()
 
@@ -29,7 +29,7 @@ export const getAllTrips = async (): Promise<Trip[]> => {
     FunctionName: 'foundtrips-dev',
     InvocationType: 'RequestResponse',
     LogType: 'Tail',
-    Payload: JSON.stringify({ key1: 'value1', key2: 'value2' }),
+    Payload: JSON.stringify({ key1: 'value1', key2: 'value2' })
   }
   try {
     const res: InvocationResponse = await lambda.invoke(params).promise()
@@ -49,7 +49,7 @@ export const getAllBookings = async (): Promise<Booking[]> => {
     FunctionName: 'foundallbookings-dev',
     InvocationType: 'RequestResponse',
     LogType: 'Tail',
-    Payload: JSON.stringify({ key1: 'value1', key2: 'value2' }),
+    Payload: JSON.stringify({ key1: 'value1', key2: 'value2' })
   }
   try {
     const res: InvocationResponse = await lambda.invoke(params).promise()
@@ -66,19 +66,19 @@ export const getAllBookings = async (): Promise<Booking[]> => {
 
 export const getTripDetails = async (
   email: string,
-  tripId: number,
-): Promise<{ trip: Trip; isBooked: boolean }> => {
+  tripId: number
+): Promise<{ trip: Trip, isBooked: boolean }> => {
   const params1 = {
     FunctionName: 'foundtripdetail-dev',
     InvocationType: 'RequestResponse',
     LogType: 'Tail',
-    Payload: JSON.stringify({ tripId: `${tripId}` }),
+    Payload: JSON.stringify({ tripId: `${tripId}` })
   }
   const params2 = {
     FunctionName: 'foundtripcheckbooked-dev',
     InvocationType: 'RequestResponse',
     LogType: 'Tail',
-    Payload: JSON.stringify({ tripId: `${tripId}`, email: `${email}` }),
+    Payload: JSON.stringify({ tripId: `${tripId}`, email: `${email}` })
   }
   try {
     const resTrip = await lambda.invoke(params1).promise()

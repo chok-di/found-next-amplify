@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { useRouter } from 'next/router'
-import { getUser, signOut } from '../../hooks/checkUserGetEmail.ts'
+import { getUser, signOut } from '../../hooks/checkUserGetEmail'
 import Link from 'next/link'
 import Cookies from 'js-cookie'
 
