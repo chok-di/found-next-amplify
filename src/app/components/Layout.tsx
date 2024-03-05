@@ -1,41 +1,41 @@
 import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
-const name = 'Woody'
-const siteTitle = 'Next.js Sample Website'
-
 import Nav from './Nav'
 import Footer from './Footer'
-
-//font awesome
-
 import { Marcellus, Jost, Inter } from 'next/font/google'
+
+
+const siteTitle = 'Next.js Sample Website'
+
+
+// font awesome
 
 const marcellus = Marcellus({
   subsets: ['latin'],
   weight: ['400'],
-  variable: '--font-marcellus',
+  variable: '--font-marcellus'
 })
 
 const jost = Jost({
   subsets: ['latin'],
   weight: ['600', '400'],
-  variable: '--font-jost',
+  variable: '--font-jost'
 })
 
 const inter = Inter({
   subsets: ['latin'],
   weight: ['400'],
-  variable: '--font-inter',
+  variable: '--font-inter'
 })
 
-export default function RootLayout({
+export const RootLayout = ({
   children,
-  home,
+  home
 }: {
   children: React.ReactNode
   home?: boolean
-}) {
+}): JSX.Element => {
   return (
     <main
       className={`${marcellus.variable} ${jost.variable} ${inter.variable}`}
@@ -55,7 +55,7 @@ export default function RootLayout({
           <meta name="twitter:card" content="summary_large_image" />
         </Head>
         <body className="relative">
-          {home ? (
+          {(home !== null && home !== false) && (
             <div className="relative z-10 overflow-y-hidden">
               <div className="relative bg-cover m-0 p-0 w-full h-[50rem] bg-[url('/img/background.jpg')]">
                 <Nav home />
@@ -83,3 +83,5 @@ export default function RootLayout({
     </main>
   )
 }
+
+export default RootLayout

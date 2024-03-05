@@ -11,14 +11,14 @@ const images = [
   '/img/c1.jpg',
   '/img/c2.jpg',
   '/img/d1.jpg',
-  '/img/d2.jpg',
+  '/img/d2.jpg'
 ]
 
 export const Gallery = (): JSX.Element => {
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [currentImage, setCurrentImage] = useState(0)
 
-  const openLightbox = (index: number) => {
+  const openLightbox = (index: number): void => {
     setCurrentImage(index)
     setLightboxOpen(true)
   }
