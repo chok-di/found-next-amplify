@@ -55,7 +55,7 @@ export const RootLayout = ({
           <meta name="twitter:card" content="summary_large_image" />
         </Head>
         <body className="relative">
-          {(home !== null && home !== false) && (
+          (home !== null && home !== false) ? (
             <div className="relative z-10 overflow-y-hidden">
               <div className="relative bg-cover m-0 p-0 w-full h-[50rem] bg-[url('/img/background.jpg')]">
                 <Nav home />
@@ -77,7 +77,7 @@ export const RootLayout = ({
               {children}
               <Footer />
             </>
-          )}
+          )
         </body>
       </html>
     </main>
