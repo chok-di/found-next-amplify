@@ -4,7 +4,7 @@ import {
   faFacebookF,
   faInstagram,
   faYoutube,
-  faPinterest,
+  faPinterest
 } from '@fortawesome/free-brands-svg-icons'
 
 export const Footer = (): JSX.Element => {
