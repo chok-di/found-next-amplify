@@ -1,4 +1,5 @@
 import React from 'react'
+import { type GetServerSideProps } from 'next'
 import Image from 'next/image'
 import Confirm from '../../app/components/Confirm'
 import AWS from 'aws-sdk'
@@ -11,23 +12,37 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({
   IdentityPoolId: 'us-east-2:7dc220ca-2c98-428d-86c2-83fa56c53ebd',
 })
 
-export const getServerSideProps = async (context) => {
-  const token = context.req.cookies.userToken
-  const user = token ? await getUser(token) : null
-  const email = user ? user.email : null
-  const tripId = context.params.id
-  const data = await getTripDetails(email, tripId)
-  console.log(data)
-
-  return { props: { email, data } }
+interface Trip {
+  id: number
+  title: string
+  total_spots: number
+  available_spots: number
+  start_time: string // timestamp: "2023-12-28T07:00:00.000Z",
+  end_time: string // timestamp: "2024-01-16T20:00:00.000Z",
+  price: number
+  description: string
 }
 
-const EventDetailPage = ({ email, data }): JSX.Element => {
-  // let is_booked = JSON.parse(data.is_booked.Payload);
-  // let trip = JSON.parse(data.trip.Payload).body[0];
-  const is_full = trip.available_spots == 0
-  const description = trip.description.split('&').map((line) => <li>{line}</li>)
+interface Props{
+  email: string
+  trip: Trip
+  isBooked: boolean
+}
+// Promise<{ trip: Trip; isBooked: boolean }
+export const getServerSideProps:GetServerSideProps = async (context) => {
+  const token = context.req.cookies.userToken
+  const user = token ? await getUser(token) : null
+  const email = user && user.email ? user.email : ""
+  const tripIdParams = context.params!.id as string
+  const tripId = parseInt(tripIdParams)
+  const data = await getTripDetails(email, tripId)
+  const {trip,isBooked} = data
+  return { props: { email, trip, isBooked } }
+}
 
+const EventDetailPage: React.FC<Props> = ({ email, trip, isBooked }): JSX.Element => {
+  const isFull = trip.available_spots == 0
+  const description = trip.description.split('&').map((line) => <li>{line}</li>)
   const start = new Date(trip.start_time).toLocaleString()
   const end = new Date(trip.end_time).toLocaleString()
 
@@ -42,8 +57,8 @@ const EventDetailPage = ({ email, data }): JSX.Element => {
           <div className="w-2/3 space-y-6">
             <div className="relative">
               <Confirm
-                is_booked={is_booked}
-                is_full={is_full}
+                isBooked={isBooked}
+                isFull={isFull}
                 email={email}
                 tripId={trip.id}
               />
@@ -73,12 +88,12 @@ const EventDetailPage = ({ email, data }): JSX.Element => {
             <ul className="list-disc pl-5 space-y-2 ">{description}</ul>
           </div>
           <div className="w-1/3 space-y-6 max-h-[60rem] overflow-y-auto">
-            <Image src="/img/a1.jpg" width={300} height={250}></Image>
-            <Image src="/img/a1.jpg" width={300} height={250}></Image>
-            <Image src="/img/a1.jpg" width={300} height={250}></Image>
-            <Image src="/img/a1.jpg" width={300} height={250}></Image>
-            <Image src="/img/a1.jpg" width={300} height={250}></Image>
-            <Image src="/img/a1.jpg" width={300} height={250}></Image>
+            <Image src="/img/a1.jpg" alt="img" width={300} height={250}></Image>
+            <Image src="/img/a1.jpg" alt="img" width={300} height={250}></Image>
+            <Image src="/img/a1.jpg" alt="img" width={300} height={250}></Image>
+            <Image src="/img/a1.jpg" alt="img" width={300} height={250}></Image>
+            <Image src="/img/a1.jpg" alt="img" width={300} height={250}></Image>
+            <Image src="/img/a1.jpg" alt="img" width={300} height={250}></Image>
           </div>
         </div>
       </div>

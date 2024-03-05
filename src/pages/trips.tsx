@@ -31,7 +31,7 @@ interface Props {
 }
 
 export const getServerSideProps: GetServerSideProps<Props> = async (
-  context,
+  context
 ) => {
   const token = context.req.cookies.userToken
   const user = await getUser(token)
@@ -53,7 +53,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
 const BookEventPage: React.FC<Props> = ({
   trips,
   bookings,
-  email,
+  email
 }): JSX.Element => {
   const bookingsInformation = bookings
   const tripInformation = trips.map((trip, index) => {
@@ -69,11 +69,11 @@ const BookEventPage: React.FC<Props> = ({
     return (
       <div key={index} className=" flex flex-col justify-center align-center">
         <TripCard
-          trip={trip}
+          // trip={trip}
           id={trip.id}
           title={trip.title}
-          start_time={start}
-          end_time={end}
+          start={start}
+          end={end}
           isFull={isFull}
           isBooked={isBooked}
         />
