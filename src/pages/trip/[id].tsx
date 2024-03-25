@@ -9,7 +9,7 @@ import Layout from '../../app/components/Layout'
 
 AWS.config.region = 'us-east-2'
 AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-  IdentityPoolId: 'us-east-2:7dc220ca-2c98-428d-86c2-83fa56c53ebd'
+  IdentityPoolId: 'us-east-2:7dc220ca-2c98-428d-86c2-83fa56c53ebd',
 })
 
 interface Trip {
@@ -32,7 +32,7 @@ interface Props {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const token = context.req.cookies.userToken
   const user = token != undefined ? await getUser(token) : null
-  const email = (user != null && user.email != null) ? user.email : ''
+  const email = user != null && user.email != null ? user.email : ''
   const tripIdParam = context?.params?.id as string
   const tripId = parseInt(tripIdParam)
   const data = await getTripDetails(email, tripId)
@@ -40,9 +40,15 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return { props: { email, trip, isBooked } }
 }
 
-const EventDetailPage: React.FC<Props> = ({ email, trip, isBooked }): JSX.Element => {
+const EventDetailPage: React.FC<Props> = ({
+  email,
+  trip,
+  isBooked,
+}): JSX.Element => {
   const isFull = trip.available_spots === 0
-  const description = trip.description.split('&').map((line,index) => <li key={index}>{line}</li>)
+  const description = trip.description
+    .split('&')
+    .map((line, index) => <li key={index}>{line}</li>)
   const start = new Date(trip.start_time).toLocaleString()
   const end = new Date(trip.end_time).toLocaleString()
 

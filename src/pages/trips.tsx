@@ -1,9 +1,9 @@
 import React from 'react'
-import { type GetServerSideProps } from 'next'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 
 import TripCard from '../app/components/TripCard'
-import { getUser } from '../hooks/checkUserGetEmail'
-import { getAllTrips, getAllBookings } from '../hooks/getTripInfo'
+import { getUser } from '@/hooks/checkUserGetEmail'
+import { getAllTrips, getAllBookings } from '@/hooks/getTripInfo'
 
 import Layout from '../app/components/Layout'
 
@@ -30,9 +30,7 @@ interface Props {
   email: string
 }
 
-export const getServerSideProps: GetServerSideProps<Props> = async (
-  context
-) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const token = context.req.cookies.userToken
   const user = await getUser(token)
   let email = ''
@@ -45,7 +43,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
     trips = await getAllTrips()
     bookings = await getAllBookings()
   } catch (err) {
-    console.error('Failed to fetch trips', err)
+    throw err
   }
   return { props: { trips, bookings, email } }
 }
@@ -53,7 +51,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
 const BookEventPage: React.FC<Props> = ({
   trips,
   bookings,
-  email
+  email,
 }): JSX.Element => {
   const bookingsInformation = bookings
   const tripInformation = trips.map((trip, index) => {
@@ -81,13 +79,7 @@ const BookEventPage: React.FC<Props> = ({
     )
   })
 
-  return (
-    <Layout>
-      {tripInformation}
-
-      {/* <Scheduler/> */}
-    </Layout>
-  )
+  return <Layout>{tripInformation}</Layout>
 }
 
 export default BookEventPage

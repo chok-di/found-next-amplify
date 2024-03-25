@@ -32,7 +32,7 @@ export const Nav = ({ home }: { home?: boolean }): JSX.Element => {
   const router = useRouter()
 
   useEffect(() => {
-    const setUserData = async (): Promise<void> => {
+    const setUserData = async () => {
       try {
         const token = Cookies.get('userToken')
         const user = await getUser(token)
@@ -40,7 +40,7 @@ export const Nav = ({ home }: { home?: boolean }): JSX.Element => {
           setUser(user)
         }
       } catch (err) {
-        console.error(err)
+        return err
       }
     }
 
@@ -48,7 +48,7 @@ export const Nav = ({ home }: { home?: boolean }): JSX.Element => {
       const navbar = document.getElementById('navbar')
       if (window.scrollY > 0 && navbar !== null) {
         navbar.classList.add('bg-ocean-light', 'opacity-95')
-      } else if (navbar!== null) {
+      } else if (navbar !== null) {
         navbar.classList.remove('bg-ocean-light', 'opacity-95')
       }
     }
@@ -57,9 +57,10 @@ export const Nav = ({ home }: { home?: boolean }): JSX.Element => {
     window.addEventListener('scroll', handleScroll)
   }, [])
 
-  const navStyle = (home !== null && home !== false)
-    ? 'fixed w-full h-28 m-0 p-0 flex flex-row items-center bg-transparent text-white z-10 '
-    : 'm-0 p-0 flex flex-row bg-ocean text-white z-10 h-30'
+  const navStyle =
+    home !== null && home !== false
+      ? 'fixed w-full h-28 m-0 p-0 flex flex-row items-center bg-transparent text-white z-10 '
+      : 'm-0 p-0 flex flex-row bg-ocean text-white z-10 h-30'
 
   return (
     <nav className={navStyle} id="navbar">

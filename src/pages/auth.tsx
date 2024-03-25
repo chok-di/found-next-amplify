@@ -8,9 +8,9 @@ import { Authenticator } from '@aws-amplify/ui-react'
 
 import '@aws-amplify/ui-react/styles.css'
 
-import { saveToken } from '../hooks/checkUserGetEmail.ts'
+import { saveToken } from '@/hooks/checkUserGetEmail'
 
-import Layout from '../app/components/Layout.tsx'
+import Layout from '../app/components/Layout'
 
 Amplify.configure(awsmobile)
 
@@ -38,7 +38,7 @@ export const AuthPage = (): JSX.Element => {
         const token: string = user.signInUserSession.idToken.jwtToken
         saveToken(token)
       } catch (err) {
-        console.log('Error during fetching user', err)
+        throw err
       }
     }
     Hub.listen('auth', ({ payload: { event, data } }) => {
@@ -49,7 +49,6 @@ export const AuthPage = (): JSX.Element => {
           break
         case 'signIn':
         case 'cognitoHostedUI':
-          console.log('hello')
           void getUserAndSendToken()
           void handleLogIn()
           break

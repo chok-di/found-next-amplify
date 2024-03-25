@@ -30,15 +30,14 @@ export const getUser = async (
   const response = await fetch('http://localhost:3000/api/user', {
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`
-    }
+      Authorization: `Bearer ${token}`,
+    },
   })
   if (response.ok) {
     const data = await response.json()
-    const user: CognitoUser = data.decoded
-    return user
+    return data.decoded
   } else {
-    console.error('Error:', response.status)
+    throw Error('Failed to get User')
   }
 }
 
