@@ -14,7 +14,7 @@ Amplify.configure({ ...awsmobile, ssr: true })
 
 export const MyApp: React.FC<AppProps> = ({
   Component,
-  pageProps
+  pageProps,
 }: AppProps) => {
   return <Component {...pageProps} />
 }

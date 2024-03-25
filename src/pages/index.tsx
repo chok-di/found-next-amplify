@@ -32,8 +32,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const events = await getAllTrips()
   return {
     props: {
-      events
-    }
+      events,
+    },
   }
 }
 

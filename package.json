@@ -29,6 +29,8 @@
     "aws-sdk": "^2.1403.0",
     "bootstrap": "^5.3.0",
     "dotenv": "^16.3.1",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^14.1.4",
     "fs": "^0.0.1-security",
     "gray-matter": "^4.0.3",
     "install": "^0.13.0",
@@ -43,25 +45,22 @@
     "remark": "^14.0.3",
     "remark-html": "^15.0.2",
     "sass": "^1.66.1",
-    "sharp": "^0.32.1"
+    "sharp": "^0.32.1",
+    "typescript": "^5.3.3"
   },
   "devDependencies": {
     "@types/aws-sdk": "^2.7.0",
     "@types/js-cookie": "^3.0.6",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "autoprefixer": "^10.4.15",
-    "eslint": "^8.57.0",
-    "eslint-config-standard-with-typescript": "^43.0.1",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-n": "^16.6.2",
-    "eslint-plugin-promise": "^6.1.1",
+    "eslint-config-prettier": "^8.10.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "postcss": "^8.4.29",
     "postcss-nested": "^6.0.1",
     "postcss-nesting": "^12.0.1",
-    "prettier": "^3.2.5",
-    "tailwindcss": "^3.3.3",
-    "typescript": "^5.3.3"
+    "prettier": "^2.8.8",
+    "tailwindcss": "^3.3.3"
   }
 }

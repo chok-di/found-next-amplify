@@ -15,7 +15,6 @@ export const handler = async (req: Request, res: Response): Promise<void> => {
         ?.header as JwtHeader
       client.getSigningKey(header.kid, (err, key: SigningKey | undefined) => {
         if (err) {
-          console.log('Error getting signing key: ', err)
           res.status(500).json({ error: 'Error getting signing key' })
           return
         }
@@ -26,16 +25,14 @@ export const handler = async (req: Request, res: Response): Promise<void> => {
           { algorithms: ['RS256'] },
           (err, decoded) => {
             if (err) {
-              console.log('Error verifying token: ', err)
               res.status(401).json({ error: 'Invalid token' })
               return
             }
             res.status(200).json({ decoded })
-          },
+          }
         )
       })
     } catch (err) {
-      console.log(err)
       res.status(401).json({ error: 'No token provided' })
     }
   } else {

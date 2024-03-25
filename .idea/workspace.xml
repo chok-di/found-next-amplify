@@ -5,9 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5da483c4-d289-43e8-83f7-e20a4e450b66" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.eslintrc.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.husky/pre-commit" beforeDir="false" afterPath="$PROJECT_DIR$/.husky/pre-commit" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintrc.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/Confirm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/Confirm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/Footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/Gallery.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/Gallery.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/Layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/Nav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/Nav.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/Scheduler.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/Scheduler.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/TripCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/TripCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/bookCancelTrip.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/bookCancelTrip.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/checkUserGetEmail.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/checkUserGetEmail.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/getTripInfo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/getTripInfo.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_app.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/auth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/auth.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/trip/[id].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/trip/[id].tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/trips.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/trips.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,23 +49,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;lint&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/diwuj/Desktop/apps/found-next-amplify&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "lint",
+    "last_opened_file_path": "/Users/diwuj/Desktop/apps/found-next-amplify",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "ts.external.directory.path": "/Users/diwuj/Desktop/apps/found-next-amplify/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />

@@ -11,7 +11,7 @@ const images = [
   '/img/c1.jpg',
   '/img/c2.jpg',
   '/img/d1.jpg',
-  '/img/d2.jpg'
+  '/img/d2.jpg',
 ]
 
 export const Gallery = (): JSX.Element => {

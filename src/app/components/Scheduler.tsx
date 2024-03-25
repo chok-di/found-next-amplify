@@ -26,7 +26,6 @@ const Scheduler = ({ events }: { events: Trip[] }): JSX.Element => {
   }
 
   const highlightEventDays = (date: Tile): string => {
-    console.log(date)
     for (const event of events) {
       const startDate = new Date(event.start_time).setHours(0, 0, 0, 0)
       const endDate = new Date(event.end_time).setHours(0, 0, 0, 0)
@@ -51,12 +50,13 @@ const Scheduler = ({ events }: { events: Trip[] }): JSX.Element => {
     )[0]
     setEvent(event)
     // console.log('even set:' + event)
-    
   }
 
-  const activities = displayEvent.description.split('&').map((activity,index) => {
-    return <div key={index}> &#8226; {activity}</div>
-  })
+  const activities = displayEvent.description
+    .split('&')
+    .map((activity, index) => {
+      return <div key={index}> &#8226; {activity}</div>
+    })
 
   return (
     <div className="flex flex-row pb-24">
@@ -87,7 +87,7 @@ const Scheduler = ({ events }: { events: Trip[] }): JSX.Element => {
           <span className="font-semibold">${displayEvent.price} (CAD)</span>
         </div>
         <br />
-        <span className="font-semibold"> What's included:</span>
+        <span className="font-semibold"> What&apos;s included:</span>
         {activities}
         <Link href={'#'}>
           <button className="bg-ocean text-white font-mono font-semibold w-24 h-8">

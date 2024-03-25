@@ -14,7 +14,7 @@ export const Confirm: React.FC<Props> = ({
   isBooked,
   isFull,
   email,
-  tripId
+  tripId,
 }): JSX.Element => {
   // const { isBooked, is_full, email, tripId } = props
   const [status, setStatus] = useState('')
@@ -22,23 +22,23 @@ export const Confirm: React.FC<Props> = ({
   const handleReload = (): void => {
     router.reload()
   }
-  const handleBook = async (): Promise<void> => {
+  const handleBook = async () => {
     try {
       setStatus('waiting')
       await bookTrip(email, tripId)
       setStatus('complete')
     } catch (err) {
-      console.log(err)
+      return err
     }
   }
 
-  const handleCancel = async (): Promise<void> => {
+  const handleCancel = async () => {
     try {
       setStatus('waiting')
       await canceltrip(email, tripId)
       setStatus('complete')
     } catch (err) {
-      console.log(err)
+      return err
     }
   }
 
@@ -79,7 +79,7 @@ export const Confirm: React.FC<Props> = ({
           </button>
         </div>
       )}
-      {!isFull && !isBooked && (email !== '') && (
+      {!isFull && !isBooked && email !== '' && (
         <button
           onClick={() => {
             setStatus('book')
@@ -88,7 +88,7 @@ export const Confirm: React.FC<Props> = ({
           Book
         </button>
       )}
-      {!isFull && !isBooked && (email !== '') && (
+      {!isFull && !isBooked && email !== '' && (
         <button className="bg-ocean hover:bg-deep-ocean text-white px-4 py-2 w-18 rounded">
           <Link href={'/auth'}>LogIn</Link>
         </button>
