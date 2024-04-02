@@ -14,7 +14,7 @@ exports.handler = async (params) => {
     const res = await client.query(
       `SELECT * FROM trips
              WHERE id = $1`,
-      [tripId],
+      [tripId]
     );
     const response = {
       statusCode: 200,

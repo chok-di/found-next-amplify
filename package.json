@@ -56,6 +56,7 @@
     "eslint-config-prettier": "^8.10.0",
     "eslint-plugin-prettier": "^4.2.1",
     "husky": "^9.0.11",
+    "json5": "^2.2.3",
     "lint-staged": "^15.2.2",
     "postcss": "^8.4.29",
     "postcss-nested": "^6.0.1",

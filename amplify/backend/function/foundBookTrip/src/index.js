@@ -13,14 +13,14 @@ exports.handler = async (params) => {
       `INSERT INTO bookings (email,trip_id)
                 VALUES($1, $2)
                 RETURNING *;`,
-      [email, tripId],
+      [email, tripId]
     );
     const reduced_spot = await client.query(
       `UPDATE trips
                 SET available_spots = available_spots - 1
                 WHERE id = $1
                 RETURNING *;`,
-      [tripId],
+      [tripId]
     );
     return {
       statusCode: 200,

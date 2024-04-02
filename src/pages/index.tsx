@@ -2,7 +2,7 @@ import React from 'react'
 import 'dotenv/config'
 // import Link from 'next/link'
 
-import { getAllTrips } from '../hooks/getTripInfo'
+import { getAllTrips } from '@/hooks/getTripInfo'
 
 import Layout from '../app/components/Layout'
 import Gallery from '../app/components/Gallery'
