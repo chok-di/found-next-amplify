@@ -1,3 +1,13 @@
+<h1>FOUND.</h1>
+FOUND is an online platform born from founder’s passion for spirituality and travel. This platform is a marketplace that sells wellness retreats and cultivates a community of like-minded individuals.
+
+<h3>Tech Stacks used:</h3>
+<p>Front-end: Built with Next.js and TypeScript, styled with TailwindCSS</p>
+<p>Back-end: Utilized Next.js API route and AWS Lambda functions</p>
+<p>Database: Powered by AWS RDS(postgres)</p>
+<p>Deployment: Hosted on AWS Amplify, integrated AWS Cognito for user authentication</p>
+
+<h3>Tech Stacks used:</h3>
 This is an ongoing project in collaboration with a designer.
 Built with Nextjs,typescript
 Database hosted by AWS RDS
