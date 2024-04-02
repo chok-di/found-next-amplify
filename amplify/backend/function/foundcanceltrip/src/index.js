@@ -13,14 +13,14 @@ exports.handler = async (params) => {
       `DELETE FROM bookings
             WHERE email = $1 and trip_id = $2
             RETURNING *;`,
-      [email, tripId],
+      [email, tripId]
     );
     const increased_spot = await client.query(
       `UPDATE trips
                 SET available_spots = available_spots + 1
                 WHERE id = $1
                 RETURNING *;`,
-      [tripId],
+      [tripId]
     );
     return {
       statusCode: 200,

@@ -16,7 +16,7 @@ exports.handler = async (params) => {
       `SELECT EXISTS
              (SELECT 1 FROM bookings
              WHERE trip_id = $1 and email = $2)`,
-      [tripId, email],
+      [tripId, email]
     );
     const response = {
       statusCode: 200,

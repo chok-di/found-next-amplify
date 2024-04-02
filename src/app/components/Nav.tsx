@@ -57,10 +57,9 @@ export const Nav = ({ home }: { home?: boolean }): JSX.Element => {
     window.addEventListener('scroll', handleScroll)
   }, [])
 
-  const navStyle =
-    home !== null && home !== false
-      ? 'fixed w-full h-28 m-0 p-0 flex flex-row items-center bg-transparent text-white z-10 '
-      : 'm-0 p-0 flex flex-row bg-ocean text-white z-10 h-30'
+  const navStyle = home
+    ? 'fixed w-full h-28 m-0 p-0 flex flex-row items-center bg-transparent text-white z-10 '
+    : 'm-0 p-0 flex flex-row bg-ocean text-white z-10 h-30'
 
   return (
     <nav className={navStyle} id="navbar">
