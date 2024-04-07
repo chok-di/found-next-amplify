@@ -1,19 +1,12 @@
 <h1>FOUND.</h1>
 FOUND is an online platform born from founder’s passion for spirituality and travel. This platform is a marketplace that sells wellness retreats and cultivates a community of like-minded individuals.
 
-<h3>Tech Stacks used:</h3>
+<h3>Tech Stack used:</h3>
 <p>Front-end: Built with Next.js and TypeScript, styled with TailwindCSS</p>
 <p>Back-end: Utilized Next.js API route and AWS Lambda functions</p>
 <p>Database: Powered by AWS RDS(postgres)</p>
 <p>Deployment: Hosted on AWS Amplify, integrated AWS Cognito for user authentication</p>
 
-<h3>Tech Stacks used:</h3>
-This is an ongoing project in collaboration with a designer.
-Built with Nextjs,typescript
-Database hosted by AWS RDS
-Backend hosted with AWS Lambda
-User authentication function built with AWS Cognito
-Deployed with AWS Amplify
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
@@ -44,8 +37,3 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
