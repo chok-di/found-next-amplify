@@ -7,6 +7,9 @@ FOUND is an online platform born from founder’s passion for spirituality and t
 <p>Database: Powered by AWS RDS(postgres)</p>
 <p>Deployment: Hosted on AWS Amplify, integrated AWS Cognito for user authentication</p>
 
+<h3>Video Demo</h3>
+<img src="https://github.com/chok-di/found-next-amplify/blob/master/public/README/found_demo.gif"></img>
+
 <h3>System Design</h3>
 <img src="https://github.com/chok-di/found-next-amplify/blob/master/public/README/FOUND._System_Design.svg" height=400></img>
 
