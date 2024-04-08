@@ -71,13 +71,13 @@ export const Nav = ({ home }: { home?: boolean }): JSX.Element => {
         <div className="mr-8"> Corporate Retreats</div>
         <div className="mr-8"> 中文 </div>
         <div className="mr-8">
-          {user !== null && (
+          {!user && (
             <button className="border-2 w-24 h-12">
               {' '}
               <Link href="/auth">Log In</Link>{' '}
             </button>
           )}
-          {user !== null && (
+          {user && (
             <div className="dropdown w-24 relative ">
               <button className="dropbtn w-24 h-12 flex justify-center items-center">
                 {user.given_name}&nbsp;
